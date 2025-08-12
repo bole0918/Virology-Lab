@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>王文宏｜研究與介紹</title>
+  <meta name="description" content="王文宏（Wen-Hung Wang）個人研究、發表、教學與產學合作介紹。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230ea5e9'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-family='Arial' font-size='60' fill='white'%3EW%3C/text%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config for dark mode
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          container: { center: true, padding: '1rem' },
+          boxShadow: { soft: '0 8px 30px rgba(0,0,0,0.06)' }
+        }
+      }
+    };
+  </script>
+  <!-- Optional: small, safe Markdown renderer for content blocks -->
+  <script>
+    // Minimal Markdown -> HTML (headings, bold/italic, links, lists, line breaks)
+    // Safe enough for personal use; avoids script tags.
+    function md(markdown = '') {
+      const esc = (s) => s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      let html = esc(markdown);
+      html = html.replace(/^###### (.*)$/gm, '<h6 class="text-sm font-semibold mt-6 mb-2">$1</h6>')
+                 .replace(/^##### (.*)$/gm, '<h5 class="text-base font-semibold mt-6 mb-2">$1</h5>')
+                 .replace(/^#### (.*)$/gm, '<h4 class="text-lg font-semibold mt-6 mb-2">$1</h4>')
+                 .replace(/^### (.*)$/gm, '<h3 class="text-xl font-semibold mt-6 mb-2">$1</h3>')
+                 .replace(/^## (.*)$/gm, '<h2 class="text-2xl font-semibold mt-6 mb-3">$1</h2>')
+                 .replace(/^# (.*)$/gm, '<h1 class="text-3xl font-bold mt-6 mb-4">$1</h1>')
+                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1<\/strong>')
+                 .replace(/\*(.*?)\*/g, '<em>$1<\/em>')
+                 .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-sky-600 hover:underline" target="_blank" rel="noopener">$1<\/a>')
+                 .replace(/(^|\n)\s*\- (.*)/g, '$1<li>$2<\/li>')
+                 .replace(/(<li>.*<\/li>)/gs, '<ul class="list-disc pl-6 space-y-1">$1<\/ul>')
+                 .replace(/\n\n/g, '<br/><br/>' );
+      return html;
+    }
+  </script>
+  <style>
+    /* Smooth hide for mobile menu */
+    .collapsible[aria-expanded="false"] { height: 0; overflow: hidden; }
+    .collapsible[aria-expanded="true"]  { height: auto; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+  <!-- =========================== -->
+  <!-- Top Bar / Header            -->
+  <!-- =========================== -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/90 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between py-3">
+        <a href="#/home" class="flex items-center gap-3">
+          <img id="heroAvatar" alt="avatar" class="w-10 h-10 rounded-full shadow-soft object-cover" />
+          <div class="leading-tight">
+            <div class="font-semibold text-lg" id="siteTitle">研究者姓名</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400" id="siteSubtitle">單位與職稱</div>
+          </div>
+        </a>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800" title="切換深淺色">
+            <span id="themeIcon" aria-hidden="true">🌙</span>
+          </button>
+          <button id="menuBtn" class="md:hidden p-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800" aria-controls="mobileNav" aria-expanded="false">☰</button>
+        </div>
+      </div>
+      <nav id="mobileNav" class="md:hidden collapsible" aria-expanded="false">
+        <ul id="mobileNavList" class="flex flex-col gap-2 pb-3 text-sm"></ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================== -->
+  <!-- Main                        -->
+  <!-- =========================== -->
+  <main class="max-w-6xl mx-auto px-4 py-8 md:py-12">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <!-- Left: Navigation (desktop) -->
+      <aside class="md:col-span-3 hidden md:block">
+        <nav class="sticky top-24">
+          <ul id="sideNav" class="space-y-1"></ul>
+        </nav>
+      </aside>
+      <!-- Right: Content -->
+      <section class="md:col-span-9">
+        <div id="pageRoot" class="space-y-8"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- =========================== -->
+  <!-- Footer                      -->
+  <!-- =========================== -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8">
+    <div class="max-w-6xl mx-auto px-4 text-sm flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-8 justify-between">
+      <div>
+        <div class="font-semibold" id="footerName">研究者姓名</div>
+        <div class="text-slate-500 dark:text-slate-400" id="footerAffil">單位與職稱</div>
+      </div>
+      <div id="footerLinks" class="flex flex-wrap gap-3"></div>
+      <div class="text-slate-500 dark:text-slate-400">© <span id="year"></span> All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- =========================== -->
+  <!-- Editable Site Data (JUST edit the JSON below; no code changes needed) -->
+  <!-- 說明：您只要編輯下方這段 JSON，就能更新全站內容、增加分頁、換圖片。        -->
+  <!--     1) 姓名/頭像/單位改在 profile 區塊。                                           -->
+  <!--     2) 新增分頁：在 pages 陣列新增一個物件（type 可選 markdown/projects/publications/news/contact/students/gallery/home）。-->
+  <!--     3) 發表/計畫：直接在 publications / projects 陣列增修。                          -->
+  <!--     4) 圖片：把圖片檔放在與此檔相同資料夾，或填入外部連結 URL。                        -->
+  <script id="site-data" type="application/json">
+  {
+    "profile": {
+      "nameZh": "王文宏",
+      "nameEn": "Wen-Hung Wang",
+      "title": "國立中山大學 學士後醫學系｜助理教授",
+      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=200&auto=format&fit=crop",
+      "location": "高雄，台灣",
+      "keywords": ["Virology", "Dengue", "Exosome", "uPA/uPAR", "Fibrinolysis"],
+      "contacts": [
+        { "label": "Email", "href": "mailto:yourname@university.edu" },
+        { "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=EqXibw0AAAAJ&hl=zh-TW" },
+        { "label": "ORCID", "href": "https://orcid.org/0000-0002-4494-1123" },
+        { "label": "GitHub", "href": "https://github.com/" }
+      ]
+    },
+
+    "pages": [
+      { 
+       "id": "home", 
+       "title": "首頁", 
+       "icon": "🏠", 
+       "type": "home", 
+       "hero": { "src": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=200&auto=format&fit=crop", "alt": "Wen-Hung Wang" },
+       "content": "# 歡迎來到我的研究頁\n我是 **王文宏**（Wen-Hung Wang），專長為登革熱病毒與血管通透性、纖溶系統（uPA/uPAR/plasmin）與外泌體（EV）在感染中的角色。\n\n目前的研究聚焦於：\n- 病毒誘導 uPAR 表達與作用機制\n- EV 介導之免疫與內皮調控\n- 臨床轉譯：以 TXA 與廣效中和抗體為核心的治療策略"
+      },
+
+      { 
+        "id": "research",
+        "title": "研究主題",
+        "icon": "🔬",
+        "type": "research",
+        "research_topics": [
+          {
+            "title": "登革熱病毒與血管通透性",
+            "image": "https://images.unsplash.com/photo-1559757175-08fda9a41f2b?w=1600",
+            "description": "聚焦 **uPA/uPAR** 與 **plasmin** 對內皮完整性的影響，並探討與 **focal adhesion**（如 Talin/FAK）之關聯。亦結合臨床資料建立通透性相關生物標記。",
+            "links": [{ "text": "計畫摘要", "url": "#" }]
+          },
+          {
+            "title": "外泌體（EV）在感染中的功能",
+            "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600",
+            "description": "解析 EV 在病毒感染過程中媒介之**跨細胞通訊**與**免疫調控**；建立血清 EV **伴隨診斷**與**疾病分層**的可能性。",
+            "links": [{ "text": "海報下載", "url": "#" }]
+          },
+          {
+            "title": "臨床轉譯：TXA 與廣效中和抗體",
+            "image": "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=1600",
+            "description": "以 **TXA** 或其他路徑調節劑減少血漿外滲，並透過 **bnAb 工程**提升交叉中和能力。結合結構建模與臨床資料驗證。",
+            "links": [{ "text": "相關論文", "url": "https://doi.org/10.1016/j.jmii.2020.03.007" }]
+          }
+        ]
+      },
+
+      { "id": "projects", "title": "研究計畫", "icon": "📂", "type": "projects" },
+
+      { "id": "publications", "title": "期刊論文", "icon": "📚", "type": "publications" },
+
+      { "id": "industry", "title": "產學合作", "icon": "🤝", "type": "markdown", "content": "## 產學合作方向\n- 抗病毒藥物與抗體開發\n- 快速檢測與臨床決策支援\n- EV 生物標記與伴隨診斷\n\n> 歡迎來信洽談合作與技術移轉。" },
+
+      { "id": "news", "title": "最新消息", "icon": "🗞️", "type": "news" },
+
+      { "id": "teaching", "title": "指導學生", "icon": "🎓", "type": "students" },
+
+      { "id": "gallery", "title": "相簿", "icon": "🖼️", "type": "gallery" },
+
+      { "id": "contact", "title": "聯絡", "icon": "✉️", "type": "contact" }
+    ],
+                   
+    "projects": [
+      {
+        "title": "DENV 感染下 uPAR 介導 EV 訊號與內皮通透性",
+        "sponsor": "NSTC",
+        "period": "2025–2027",
+        "status": "進行中",
+        "summary": "結合單細胞分析與 EV 功能學，釐清 uPAR/Plasmin 軸在血管滲漏中的角色。",
+        "links": [{"label":"計畫簡介PDF","href":"#"}]
+      },
+      {
+        "title": "廣效中和抗體工程與逃逸突變預測",
+        "sponsor": "Industry",
+        "period": "2024–2026",
+        "status": "進行中",
+        "summary": "以 AI/AlphaFold 模擬 E 蛋白與抗體交互作用，優化抗體廣度與效力。",
+        "links": []
+      }
+    ],
+
+    "interests": ["病毒致病機轉", "內皮通透性", "焦點黏附（Talin/FAK）", "外泌體訊息傳遞", "廣效中和抗體設計", "臨床轉譯與生物標記"],
+
+    "publications": [
+
+       {
+            "title": "Development of the novel gene chip and restriction fragment length polymorphism (RFLP) methods for rapid detection of Mycobacterium tuberculosis complex in broth culture",
+            "authors": ["Wen-Hung Wang", "Chun-Yu Lin", "Shu-Huei Jain", "Po-Liang Lu", "Yen-Hsu Chen"],
+            "venue": "Journal of Microbiology, Immunology and Infection",
+            "year": 2025,
+            "doi": "10.1016/j.jmii.2024.09.003",
+            "tags": ["Diagnostics", "Tuberculosis"],
+            "citations": 0
+          },
+          {
+            "title": "Antibodies from dengue patients with prior exposure to Japanese encephalitis virus are broadly neutralizing against Zika virus",
+            "authors": ["Gielenny M Salem", "Jedhan Ucat Galula", "Shang-Rung Wu", "Jyung-Hurng Liu", "Jyung-Hurng Liu", "Yen-Hsu Chen", "Wen-Hung Wang", "Sheng-Fan Wang", "Cheng-Sheng Song", "Fan-Chi Chen", "Adrian B Abarientos", "Guan-Wen Chen", "Cheng-I Wang", "Day-Yu Chao"],
+            "venue": "Communications Biology",
+            "year": 2024,
+            "doi": "10.1038/s42003-023-05661-w",
+            "tags": ["Dengue", "Zika", "Neutralizing antibodies"],
+            "citations": 0
+          },
+          {
+            "title": "Obesity as a clinical predictor for severe manifestation of dengue: a systematic review and meta-analysis",
+            "authors": ["Chao-Ying Chen", "Yu-Yao Chiu", "Yu-Cheng Chen", "Chung-Hao Huang", "Wen-Hung Wang", "Yen-Hsu Chen", "Chun-Yu Lin"],
+            "venue": "BMC Infectious Diseases",
+            "year": 2023,
+            "doi": "10.1186/s12879-023-08481-9",
+            "tags": ["Dengue", "Obesity", "Meta-analysis"],
+            "citations": 0
+          },
+          {
+            "title": "The association of obesity and dengue severity in hospitalized adult patients",
+            "authors": ["Yu-Yao Chiu", "Chun-Yu Lin", "Ling-Shan Yu", "Wen-Hung Wang", "Chung-Hao Huang", "Yen-Hsu Chen"],
+            "venue": "Journal of Microbiology, Immunology and Infection",
+            "year": 2023,
+            "doi": "10.1016/j.jmii.2022.08.008",
+            "tags": ["Dengue", "Clinical"],
+            "citations": 0
+          },
+          {
+            "title": "Quantitative detection of dengue serotypes using a smartphone-connected handheld lab-on-chip platform",
+            "authors": ["Nicolas Moser", "Ling-Shan Yu", "Jesus Rodriguez Manzano", "Kenny Malpartida-Cardenas", "Anselm Au", "Paul Arkell", "Chiara Cicatiello", "Ahmad Moniri", "Luca Miglietta", "Wen-Hung Wang", "Sheng-Fan Wang", "Alison Holmes", "Yen-Hsu Chen", "Pantelis Georgiou"],
+            "venue": "Frontiers in Bioengineering and Biotechnology",
+            "year": 2022,
+            "doi": "10.3389/fbioe.2022.892853",
+            "tags": ["Diagnostics", "Dengue", "Point-of-care"],
+            "citations": 0
+          },
+          {
+            "title": "Synthesis, Assembly and Processing of Viral Proteins",
+            "authors": ["Wen-Hung Wang", "Arunee Thitithanyanont", "Sheng-Fan Wang"],
+            "venue": "Viruses",
+            "year": 2022,
+            "doi": "10.3390/v14081650",
+            "tags": ["Review", "Virology"],
+            "citations": 0
+          },
+          {
+            "title": "The Autophagosomes Containing Dengue Virus Proteins and Full-Length Genomic RNA Are Infectious",
+            "authors": ["Shan-Ying Wu", "Yu-Lun Chen", "Ying-Ray Lee", "Chiou-Feng Lin", "Sheng-Hui Lan", "Kai-Ying Lan", "Man-Ling Chu", "Pei-Wen Lin", "Zong-Lin Yang", "Yen-Hsu Chen", "Wen-Hung Wang", "Hsiao-Sheng Liu"],
+            "venue": "Viruses",
+            "year": 2021,
+            "doi": "10.3390/v13102034",
+            "tags": ["Dengue", "Autophagy"],
+            "citations": 0
+          },
+          {
+            "title": "Mono-(2-ethylhexyl) phthalate Promotes Dengue Virus Infection by Decreasing IL-23-Mediated Antiviral Responses",
+            "authors": ["Chun-Yu Lin", "Chung-Hao Huang", "Wen-Hung Wang", "Jyrki Tenhunen", "Ling-Chien Hung", "Chi-Chou Lin", "Yu-Cheng Chen", "Yen-Hsu Chen", "Wei-Ting Liao"],
+            "venue": "Frontiers in Immunology",
+            "year": 2021,
+            "doi": "10.3389/fimmu.2021.599345",
+            "tags": ["Dengue", "Immunology"],
+            "citations": 0
+          },
+          {
+            "title": "Dengue hemorrhagic fever - A systemic literature review of current perspectives on pathogenesis, prevention and control",
+            "authors": ["Wen-Hung Wang", "Aspiro Nayim Urbina", "Max R Chang", "Wanchai Assavalapsakul", "Po-Liang Lu", "Yen-Hsu Chen", "Sheng-Fan Wang"],
+            "venue": "Journal of Microbiology, Immunology and Infection",
+            "year": 2020,
+            "doi": "10.1016/j.jmii.2020.03.007",
+            "tags": ["Dengue", "Review"],
+            "citations": 0
+          },
+          {
+            "title": "The role of galectins in virus infection - A systemic literature review",
+            "authors": ["Wen-Hung Wang", "Chih-Yen Lin", "Max R Chang", "Po-Liang Lu", "Yen-Hsu Chen", "Sheng-Fan Wang"],
+            "venue": "Journal of Microbiology, Immunology and Infection",
+            "year": 2020,
+            "doi": "10.1016/j.jmii.2019.09.005",
+            "tags": ["Galectins", "Review", "Virus-host interactions"],
+            "citations": 0
+          }
+    ],
+
+    "news": [
+      { "date": "2025-08-01", "title": "獲 NSTC 計畫補助", "desc": "啟動 uPAR–EV 研究計畫（2025–2027）。" },
+      { "date": "2025-06-30", "title": "論文接收", "desc": "Exosome 與纖溶的研究入選 Nat Commun。" }
+    ],
+
+    "students": {
+      "current": [
+        { "name": "張小明", "degree": "碩二", "years": "2024–", "topic": "uPAR 與內皮通透性", "avatar": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200", "links": [] },
+        { "name": "李小華", "degree": "博一", "years": "2025–", "topic": "EV 與纖溶系統交互", "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200", "links": [] }
+      ],
+      "alumni": [
+        { "name": "王大同", "degree": "碩士（2023）", "years": "2021–2023", "topic": "DENV VLP 與免疫分析", "avatar": "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=200", "links": [ {"label":"論文","href":"#"} ] }
+      ]
+    },
+
+    "gallery": [
+      { "src": "https://images.unsplash.com/photo-1581091870622-7c61fc4b2b9b?w=1200", "alt": "實驗室儀器", "caption": "顯微鏡觀察日常" },
+      { "src": "https://images.unsplash.com/photo-1532634896-26909d0d4b6a?w=1200", "alt": "研究會議", "caption": "每週 Journal Club" },
+      { "src": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200", "alt": "校園風景", "caption": "中山大學海景" }
+    ]
+  }
+  </script>
+
+  <!-- =========================== -->
+  <!-- Render Logic (no framework) -->
+  <!-- =========================== -->
+  <script>
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    // Parse JSON config (will throw if invalid) — basic self-test
+    const rawData = document.getElementById('site-data').textContent;
+    let data;
+    try {
+      data = JSON.parse(rawData);
+    } catch (e) {
+      console.error('[CONFIG ERROR] JSON 解析失敗：', e);
+      throw e; // stop here if config is broken
+    }
+
+    // ---------- DEV: Self-tests (simple runtime checks) ----------
+    (function selfTests(){
+      try {
+        console.assert(typeof data.profile.nameZh === 'string' && data.profile.nameZh.length > 0, 'profile.nameZh 應為非空字串');
+        console.assert(Array.isArray(data.pages) && data.pages.some(p=>p.id==='publications'), 'pages 應包含 publications 分頁');
+        console.assert(Array.isArray(data.news), 'news 應為陣列');
+        console.assert(data.pages.find(p=>p.id==='home' && p.type==='home'), 'home 分頁應存在且為 type:home');
+        console.assert(data.pages.find(p=>p.id==='teaching' && p.type==='students'), 'teaching 分頁應為 type:students');
+        // md renderer test
+        const mdIn = '# T\n**b** and *i* and [l](http://e)\n- x';
+        const mdOut = md(mdIn);
+        console.assert(/<h1/.test(mdOut) && /<strong>b<\/strong>/.test(mdOut) && /<em>i<\/em>/.test(mdOut) && /<a href=/.test(mdOut) && /<ul/.test(mdOut), 'Markdown 轉換測試');
+        console.log('%cSelf-tests passed','color:green');
+      } catch (e) { console.warn('Self-tests failed', e); }
+    })();
+
+    // ---------- Theme ----------
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    function setTheme(mode) {
+      if (mode === 'dark') document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', mode);
+      themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
+    }
+    const preferred = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(preferred);
+    themeToggle.addEventListener('click', () => setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'));
+
+    // ---------- Header/Profile ----------
+    $('#siteTitle').textContent = `${data.profile.nameZh}｜${data.profile.nameEn}`;
+    $('#siteSubtitle').textContent = data.profile.title;
+    $('#footerName').textContent = `${data.profile.nameZh}（${data.profile.nameEn}）`;
+    $('#footerAffil').textContent = data.profile.title;
+    $('#year').textContent = new Date().getFullYear();
+    $('#heroAvatar').src = data.profile.avatar;
+
+    // ---------- Footer Links ----------
+    const footerLinks = document.getElementById('footerLinks');
+    data.profile.contacts.forEach(c => {
+      const a = document.createElement('a');
+      a.href = c.href; a.target = '_blank'; a.rel = 'noopener';
+      a.className = 'px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800';
+      a.textContent = c.label;
+      footerLinks.appendChild(a);
+    });
+
+    // ---------- Navigation ----------
+    function renderNav() {
+      const sideNav = document.getElementById('sideNav');
+      sideNav.innerHTML = '';
+      data.pages.forEach(p => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="#/${p.id}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 ${location.hash === '#/' + p.id ? 'bg-slate-100 dark:bg-slate-800' : ''}">${p.icon || ''}<span>${p.title}</span></a>`;
+        sideNav.appendChild(li);
+      });
+
+      const mobileNavList = document.getElementById('mobileNavList');
+      mobileNavList.innerHTML = '';
+      data.pages.forEach(p => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="#/${p.id}" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">${p.icon || ''} ${p.title}</a>`;
+        mobileNavList.appendChild(li);
+      });
+    }
+
+    // ---------- Mobile Menu ----------
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => {
+      const exp = mobileNav.getAttribute('aria-expanded') === 'true';
+      mobileNav.setAttribute('aria-expanded', !exp);
+      menuBtn.setAttribute('aria-expanded', !exp);
+    });
+
+    // ---------- Page Renderers ----------
+    const pageRoot = document.getElementById('pageRoot');
+
+    const renderers = {
+      markdown: (page) => {
+        const section = document.createElement('section');
+        section.className = 'prose dark:prose-invert max-w-none';
+        section.innerHTML = md(page.content || '');
+        return section;
+      },
+
+      home: (page) => {
+        const wrap = document.createElement('div');
+        // Hero / Intro
+        const intro = document.createElement('section');
+        intro.className = 'prose dark:prose-invert max-w-none';
+        intro.innerHTML = md(page.content || '');
+        wrap.appendChild(intro);
+        // Latest News (top 3)
+        if (Array.isArray(data.news) && data.news.length) {
+          const block = document.createElement('section');
+          block.innerHTML = `
+            <div class="mt-6 flex items-center justify-between">
+              <h2 class="text-xl font-semibold">最新消息</h2>
+              <a href="#/news" class="text-sm text-sky-600 hover:underline">查看全部 →</a>
+            </div>
+            <div class="mt-3 space-y-3" id="homeNews"></div>
+          `;
+          const list = block.querySelector('#homeNews');
+          data.news.slice().sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,3).forEach(n=>{
+            const card = document.createElement('div');
+            card.className = 'rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-soft';
+            card.innerHTML = `
+              <div class="text-xs text-slate-500 dark:text-slate-400">${n.date}</div>
+              <div class="font-semibold mt-1">${n.title}</div>
+              <p class="mt-1 text-sm">${n.desc||''}</p>
+            `;
+            list.appendChild(card);
+          });
+          wrap.appendChild(block);
+        }
+        return wrap;
+      },
+
+      research: (page) => {
+  const wrap = document.createElement('div');
+  const header = document.createElement('div');
+  header.innerHTML = `
+    <h2 class="text-2xl font-semibold">研究主題</h2>
+    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">在 JSON 的 research_topics 陣列可手動新增/排序</p>
+  `;
+  wrap.appendChild(header);
+
+  const grid = document.createElement('div');
+  grid.className = 'mt-4 grid sm:grid-cols-2 gap-4';
+  wrap.appendChild(grid);
+
+  const topics = page.research_topics || [];
+  if (!topics.length) {
+    const empty = document.createElement('p');
+    empty.className = 'text-slate-500 dark:text-slate-400';
+    empty.textContent = '尚未設定研究主題。請在 JSON 的 pages[?].research_topics 陣列加入項目。';
+    grid.appendChild(empty);
+    return wrap;
+  }
+
+  topics.forEach(t => {
+    const card = document.createElement('article');
+    card.className = 'rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-soft';
+    card.innerHTML = `
+      ${t.image ? `<img src="${t.image}" alt="${t.title||''}" class="w-full h-40 object-cover">` : ''}
+      <div class="p-5">
+        <h3 class="font-semibold text-lg">${t.title||''}</h3>
+        <p class="mt-2 text-sm leading-6">${t.description||''}</p>
+        ${
+          Array.isArray(t.links) && t.links.length
+            ? `<div class="mt-3 flex flex-wrap gap-2">
+                 ${t.links.map(l => `<a target="_blank" rel="noopener" href="${l.url}" class="text-sm px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700">${l.text}</a>`).join('')}
+               </div>`
+            : ''
+        }
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  return wrap;
+},
+      projects: () => {
+        const wrap = document.createElement('div');
+        // Interests
+        if (Array.isArray(data.interests) && data.interests.length) {
+          const interests = document.createElement('div');
+          interests.innerHTML = `
+            <h2 class="text-2xl font-semibold">研究計畫</h2>
+            <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">研究興趣：</div>
+            <div class="mt-2 flex flex-wrap gap-2">${data.interests.map(i=>`<span class='text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'>${i}</span>`).join('')}</div>
+          `;
+          wrap.appendChild(interests);
+        } else {
+          const h = document.createElement('h2');
+          h.className = 'text-2xl font-semibold';
+          h.textContent = '研究計畫';
+          wrap.appendChild(h);
+        }
+
+        // Head with search
+        const head = document.createElement('div');
+        head.className = 'mt-3 flex items-center justify-between gap-4';
+        head.innerHTML = `
+          <p class="text-slate-500 dark:text-slate-400 text-sm">可於下方快速檢索與篩選</p>
+          <input id="projSearch" type="search" placeholder="搜尋計畫…" class="w-56 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" />
+        `;
+        wrap.appendChild(head);
+
+        const grid = document.createElement('div');
+        grid.className = 'mt-4 grid sm:grid-cols-2 gap-4';
+        wrap.appendChild(grid);
+
+        function draw(filter = '') {
+          grid.innerHTML = '';
+          data.projects
+            .filter(p => JSON.stringify(p).toLowerCase().includes(filter.toLowerCase()))
+            .forEach(p => {
+              const card = document.createElement('article');
+              card.className = 'rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-soft';
+              card.innerHTML = `
+                <div class="flex items-center justify-between">
+                  <h3 class="font-semibold text-lg">${p.title}</h3>
+                  <span class="text-xs px-2 py-1 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300">${p.status}</span>
+                </div>
+                <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">${p.sponsor}｜${p.period}</div>
+                <p class="mt-3">${p.summary}</p>
+                ${ (p.links && p.links.length) ? `<div class="mt-3 flex flex-wrap gap-2">${p.links.map(l => `<a class='text-sm px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700' target='_blank' rel='noopener' href='${l.href}'>${l.label}</a>`).join('')}</div>` : ''}
+              `;
+              grid.appendChild(card);
+            });
+        }
+        draw();
+        head.querySelector('#projSearch').addEventListener('input', (e) => draw(e.target.value));
+
+        return wrap;
+      },
+
+      publications: () => {
+        const wrap = document.createElement('div');
+        wrap.innerHTML = `
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-semibold">期刊論文</h2>
+              <p class="text-slate-500 dark:text-slate-400 text-sm">手動維護：2025/8/12</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <input id="pubSearch" type="search" placeholder="搜尋論文…" class="w-56 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" />
+              <select id="tagFilter" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"></select>
+            </div>
+          </div>
+          <div id="pubList" class="mt-4 space-y-4"></div>
+        `;
+
+        const pubList = wrap.querySelector('#pubList');
+        const tagFilter = wrap.querySelector('#tagFilter');
+        const allTags = Array.from(new Set(data.publications.flatMap(p => p.tags || [])));
+        tagFilter.innerHTML = `<option value="">全部標籤</option>` + allTags.map(t => `<option value="${t}">${t}</option>`).join('');
+
+        function draw(filter = '', tag = '') {
+          pubList.innerHTML = '';
+          data.publications
+            .slice().sort((a,b) => (b.year||0) - (a.year||0))
+            .filter(p => JSON.stringify(p).toLowerCase().includes(filter.toLowerCase()))
+            .filter(p => !tag || (p.tags||[]).includes(tag))
+            .forEach(p => {
+              const item = document.createElement('article');
+              item.className = 'rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-soft';
+              const links = [];
+              if (typeof p.citations !== 'undefined') { links.push(`<span class='text-slate-500 dark:text-slate-400'>引用：${p.citations}</span>`); }
+              if (p.doi) links.push(`<a class='underline hover:no-underline' target='_blank' href='https://doi.org/${p.doi}'>DOI</a>`);
+              if (p.pdf) links.push(`<a class='underline hover:no-underline' target='_blank' href='${p.pdf}'>PDF</a>`);
+              const tags = (p.tags||[]).map(t => `<span class='text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'>${t}</span>`).join(' ');
+              item.innerHTML = `
+                <div class="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <h3 class="font-semibold">${p.title}</h3>
+                    <div class="text-sm text-slate-600 dark:text-slate-300 mt-1">${(p.authors||[]).join(', ')}</div>
+                    <div class="text-sm text-slate-500 dark:text-slate-400">${p.venue || ''}${p.year? `（${p.year}）`:''}</div>
+                  </div>
+                  <div class="text-sm flex items-center gap-3">${links.join(' · ')}</div>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-2">${tags}</div>
+                <div class="mt-3">
+                  <button class="copyBib px-3 py-1 text-sm rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700">複製 BibTeX</button>
+                </div>
+              `;
+              item.querySelector('.copyBib').addEventListener('click', async () => {
+                try { await navigator.clipboard.writeText(p.bibtex || ''); alert('已複製 BibTeX'); } catch { prompt('複製以下 BibTeX：', p.bibtex || ''); }
+              });
+              pubList.appendChild(item);
+            });
+        }
+        draw();
+        wrap.querySelector('#pubSearch').addEventListener('input', (e) => draw(e.target.value, tagFilter.value));
+        tagFilter.addEventListener('change', (e) => draw(wrap.querySelector('#pubSearch').value, e.target.value));
+        return wrap;
+      },
+
+      news: () => {
+        const wrap = document.createElement('div');
+        wrap.innerHTML = `
+          <h2 class="text-2xl font-semibold">最新消息</h2>
+          <div class="mt-4 space-y-4" id="newsList"></div>
+        `;
+        const list = wrap.querySelector('#newsList');
+        data.news
+          .slice().sort((a,b) => new Date(b.date) - new Date(a.date))
+          .forEach(n => {
+            const row = document.createElement('div');
+            row.className = 'rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-soft';
+            row.innerHTML = `
+              <div class="text-sm text-slate-500 dark:text-slate-400">${n.date}</div>
+              <div class="font-semibold mt-1">${n.title}</div>
+              <p class="mt-1">${n.desc || ''}</p>
+            `;
+            list.appendChild(row);
+          });
+        return wrap;
+      },
+
+      students: () => {
+        const wrap = document.createElement('div');
+        wrap.innerHTML = `
+          <h2 class="text-2xl font-semibold">指導學生</h2>
+          <div class="mt-3 flex gap-2">
+            <button id="tabCurrent" class="px-3 py-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">在研</button>
+            <button id="tabAlumni" class="px-3 py-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">已畢</button>
+            <input id="studentSearch" type="search" placeholder="搜尋姓名/主題…" class="ml-auto w-56 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" />
+          </div>
+          <div id="studentGrid" class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        `;
+        const grid = wrap.querySelector('#studentGrid');
+        const tabCurrent = wrap.querySelector('#tabCurrent');
+        const tabAlumni = wrap.querySelector('#tabAlumni');
+        const search = wrap.querySelector('#studentSearch');
+        let mode = 'current';
+        function draw() {
+          const list = (data.students && data.students[mode]) ? data.students[mode] : [];
+          const q = (search.value||'').toLowerCase();
+          grid.innerHTML = '';
+          list.filter(s => JSON.stringify(s).toLowerCase().includes(q)).forEach(s => {
+            const card = document.createElement('article');
+            card.className = 'rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-soft flex gap-4';
+            card.innerHTML = `
+              <img src="${s.avatar||''}" alt="${s.name}" class="w-16 h-16 rounded-xl object-cover"/>
+              <div class="min-w-0">
+                <div class="font-semibold">${s.name} <span class="text-xs text-slate-500">${s.degree||''}</span></div>
+                <div class="text-sm text-slate-500 dark:text-slate-400">${s.years||''}</div>
+                <div class="mt-1 text-sm">${s.topic||''}</div>
+                ${ (Array.isArray(s.links) && s.links.length) ? `<div class="mt-2 flex flex-wrap gap-2">${s.links.map(l=>`<a class='text-xs px-2 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700' target='_blank' rel='noopener' href='${l.href}'>${l.label}</a>`).join('')}</div>` : ''}
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+        }
+        draw();
+        tabCurrent.addEventListener('click', ()=>{ mode='current'; draw(); });
+        tabAlumni.addEventListener('click', ()=>{ mode='alumni'; draw(); });
+        search.addEventListener('input', draw);
+        return wrap;
+      },
+
+      gallery: () => {
+        const wrap = document.createElement('div');
+        wrap.innerHTML = `
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-semibold">相簿</h2>
+            <div class="text-sm text-slate-500 dark:text-slate-400">在 JSON 的 gallery 陣列新增圖片即可</div>
+          </div>
+          <div id="galGrid" class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+          <dialog id="lightbox" class="rounded-2xl p-0 bg-transparent max-w-4xl w-full">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-soft">
+              <img id="lbImg" class="w-full object-contain max-h-[80vh]"/>
+              <div id="lbCap" class="p-3 text-sm text-slate-600 dark:text-slate-300"></div>
+            </div>
+          </dialog>
+        `;
+        const grid = wrap.querySelector('#galGrid');
+        const dlg = wrap.querySelector('#lightbox');
+        const lbImg = wrap.querySelector('#lbImg');
+        const lbCap = wrap.querySelector('#lbCap');
+        (data.gallery||[]).forEach(g => {
+          const fig = document.createElement('figure');
+          fig.className = 'rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-soft';
+          fig.innerHTML = `
+            <img src="${g.src}" alt="${g.alt||''}" class="w-full h-48 object-cover cursor-zoom-in"/>
+            <figcaption class="p-3 text-sm text-slate-600 dark:text-slate-300">${g.caption||''}</figcaption>
+          `;
+          fig.querySelector('img').addEventListener('click', ()=>{ lbImg.src = g.src; lbCap.textContent = g.caption || ''; dlg.showModal(); });
+          grid.appendChild(fig);
+        });
+        dlg.addEventListener('click', (e)=>{ if(e.target===dlg) dlg.close(); });
+        return wrap;
+      },
+
+      contact: () => {
+        const wrap = document.createElement('div');
+        wrap.innerHTML = `
+          <h2 class="text-2xl font-semibold">聯絡資訊</h2>
+          <div class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-soft">
+            <p class="text-sm text-slate-600 dark:text-slate-300">${data.profile.nameZh}（${data.profile.nameEn}）｜${data.profile.title}</p>
+            <p class="mt-2">地點：${data.profile.location}</p>
+            <div class="mt-2 flex flex-wrap gap-2">${(data.profile.keywords||[]).map(k => `<span class='text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'>${k}</span>`).join('')}</div>
+            <div class="mt-4 flex flex-wrap gap-3">${data.profile.contacts.map(c => `<a class='px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700' target='_blank' rel='noopener' href='${c.href}'>${c.label}</a>`).join('')}</div>
+          </div>`;
+        return wrap;
+      }
+    };
+
+    function render(routeId) {
+      const page = data.pages.find(p => p.id === routeId) || data.pages[0];
+      document.title = `${data.profile.nameZh}｜${page.title}`;
+      renderNav();
+      pageRoot.innerHTML = '';
+
+      const header = document.createElement('div');
+      header.className = 'flex items-center justify-between';
+      header.innerHTML = `<div><div class="text-sm text-slate-500 dark:text-slate-400">${data.profile.nameZh}（${data.profile.nameEn}）</div><h1 class="text-3xl font-bold">${page.icon || ''} ${page.title}</h1></div>`;
+      pageRoot.appendChild(header);
+
+      const body = (renderers[page.type] || renderers.markdown)(page);
+      pageRoot.appendChild(body);
+
+      // scroll top for route change
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('hashchange', () => render(location.hash.replace('#/','') || 'home'));
+    // initial
+    if (!location.hash) location.hash = '#/home';
+    render(location.hash.replace('#/',''));
+  </script>
+</body>
+</html>
