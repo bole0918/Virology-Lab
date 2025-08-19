@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant" class="scroll-smooth dark">
+<html lang="zh-Hant" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -346,8 +346,8 @@
     ],
 
     "news": [
-      { "date": "2025-08-01", "title": "獲 NSTC 計畫補助", "desc": "啟動 uPAR–EV 研究計畫（2025–2027）。" },
-      { "date": "2025-06-30", "title": "論文接收", "desc": "Exosome 與纖溶的研究入選 Nat Commun。" }
+      { "date": "2025-01-01", "title": "獲114年中山高醫合作計畫補助", "desc": "Talin 參與登革熱感染引起之血管通透與疾病嚴重程度之相互作用:治療新策略 (2025/1/1-2025/12/31)。" },
+      { "date": "2024-09-23", "title": "論文接收", "desc": "Development of the novel Gene Chip and Restriction Fragment Length Polymorphism (RFLP) methods for rapid detection of Mycobacterium tuberculosis complex in broth culture. - Journal of Microbiology Immunology and Infection." }
     ],
 
     "students": {
@@ -410,7 +410,7 @@
       localStorage.setItem('theme', mode);
       themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
     }
-    const preferred = localStorage.getItem('theme') || 'dark';
+    const preferred = localStorage.getItem('theme') || 'light';
     setTheme(preferred);
     themeToggle.addEventListener('click', () => setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'));
 
