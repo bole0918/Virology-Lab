@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant" class="scroll-smooth">
+<html lang="zh-Hant" class="scroll-smooth dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,6 +38,7 @@
                  .replace(/\*\*(.*?)\*\*/g, '<strong>$1<\/strong>')
                  .replace(/\*(.*?)\*/g, '<em>$1<\/em>')
                  .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-sky-600 hover:underline" target="_blank" rel="noopener">$1<\/a>')
+                 .replace(/\[red\]([\s\S]*?)\[\/red\]/g, '<span class="text-red-600 font-bold">$1<\/span>')
                  .replace(/(^|\n)\s*\- (.*)/g, '$1<li>$2<\/li>')
                  .replace(/(<li>.*<\/li>)/gs, '<ul class="list-disc pl-6 space-y-1">$1<\/ul>')
                  .replace(/\n\n/g, '<br/><br/>' );
@@ -126,7 +127,7 @@
       "location": "高雄，台灣",
       "keywords": ["Virology", "Dengue", "Exosome", "uPA/uPAR", "Fibrinolysis"],
       "contacts": [
-        { "label": "Email", "href": "mailto:yourname@university.edu" },
+        { "label": "Email", "href": "mailto:wenhung@mail.nsysu.edu.tw" },
         { "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=EqXibw0AAAAJ&hl=zh-TW" },
         { "label": "ORCID", "href": "https://orcid.org/0000-0002-4494-1123" },
         { "label": "GitHub", "href": "https://github.com/" }
@@ -141,7 +142,7 @@
        "type": "home", 
        "hero": { "src": "", "alt": "Wen-Hung Wang" },
        "content": 
-       "# 探索無限的病毒學世界\n分子病毒學實驗室（Molecular Virology Laboratory）\n\n分子病毒學實驗室致力於探索病毒的結構和功能,並尋求新的疾病預防和治療方法。我們擁有經驗豐富的研究團隊,在病毒基因組分析和疫苗開發等領域有出色的成就。我們與企業和機構密切合作,將研究成果轉化為實際應用,為人類健康做出貢獻。\n\n目前的研究聚焦於：\n- 病毒誘導 uPAR 表達與作用機制\n- EV 介導之免疫與內皮調控\n- 臨床轉譯：以 TXA 與廣效中和抗體為核心的治療策略"
+       "# 探索無限的病毒學世界\n分子病毒學實驗室（Molecular Virology Laboratory）\n\n分子病毒學實驗室致力於探索病毒的結構和功能,並尋求新的疾病預防和治療方法。我們擁有經驗豐富的研究團隊,在病毒基因組分析和疫苗開發等領域有出色的成就。我們與企業和機構密切合作,將研究成果轉化為實際應用,為人類健康做出貢獻。\n\n目前的研究聚焦於：\n- 登革病毒誘導 uPAR 表達與作用機制\n- EV(exosome) 介導之免疫與內皮調控\n- 臨床轉譯：以 TXA 與廣效中和抗體為核心的登革熱治療策略"
       },
 
       { 
@@ -175,7 +176,17 @@
 
       { "id": "publications", "title": "期刊論文", "icon": "📚", "type": "publications" },
 
-      { "id": "industry", "title": "產學合作", "icon": "🤝", "type": "markdown", "content": "## 產學合作方向\n- 抗病毒藥物與抗體開發\n- 病毒快速檢測與臨床決策支援\n- EV 生物標記、診斷及應用\n\n> 歡迎來信洽談合作與技術移轉。\n\n## 歷年產學合作紀錄\n" },
+      { 
+        "id": "industry", 
+        "title": "專利與產學合作", 
+        "icon": "🤝", 
+        "type": "markdown", 
+        "content": [
+          "## 專利\n- 新冠肺炎恆溫式圈環核酸增幅法引子設計序列(台灣/美國)(US63/031,14)（2020）\n- 專利授權: 新冠病毒核酸檢測試劑，緊急專案核准製造-麥博森股份有限公司(防疫專案核准製造第1096821155號)",
+          "## 產學合作方向\n- 抗病毒藥物與抗體開發\n- 病毒快速檢測與臨床決策支援\n- EV 生物標記、診斷及應用\n\n> [red]**歡迎來信洽談合作與技術轉移**[/red]。",
+          "## 歷年產學合作紀錄\n- 化粧品中微生物檢測與防腐試效能試驗 - 采伊美學有限公司 (2025)\n- 抗病毒防護液試驗 - 㜰芙國際有限公司 (2023)\n- 免培養之結核菌抗原檢測試劑組之效力分析 - TAUNS Laboratories, Inc, Japan (2018)\n- 登革熱病毒核酸分子檢測試劑開發應用(泉沂醫學科技-科技部南科管理局產學合作計畫)\n- 精準判讀肺結核桿菌活性之自動化核酸萃取與檢測系統 (科技部南科管理局產學合作計畫)"
+        ]
+      },
 
       { "id": "news", "title": "最新消息", "icon": "🗞️", "type": "news" },
 
@@ -187,7 +198,7 @@
     "projects": [
       {
         "title": "DENV 感染下 uPAR 介導 EV 訊號與內皮通透性",
-        "sponsor": "NSTC",
+        "sponsor": "NEW",
         "period": "2025–2027",
         "status": "進行中",
         "summary": "結合單細胞分析與 EV 功能學，釐清 uPAR/Plasmin 軸在血管滲漏中的角色。",
@@ -204,7 +215,7 @@
       {
         "title": "評估傳明酸(TXA)做為緩解登革病毒誘發的血管滲漏和出血的治療選擇",
         "sponsor": "MOST",
-        "period": "2024–2025",
+        "period": "2024/8/1–2025/7/31",
         "status": "結案",
         "summary": "以 TXA 藥物減少登革病毒感染引起的血漿外滲與臨床資料驗證。",
         "links": []
@@ -212,7 +223,8 @@
       {
         "title": "登革病毒活化血纖維蛋白溶解酶原促進內皮細胞血漿滲漏",
         "sponsor": "MOST",
-        "period": "2023–2024",
+        "period": "2023/8/1–2024/7/31",
+        "Number": "MOST 111-2621-B-001-001-MY3",
         "status": "結案",
         "summary": "登革病毒感染引起纖溶系統活化，導致血漿外滲之研究。",
         "links": []
@@ -223,68 +235,86 @@
 
     "publications": [
 
-       {
+          {
             "title": "Development of the novel gene chip and restriction fragment length polymorphism (RFLP) methods for rapid detection of Mycobacterium tuberculosis complex in broth culture",
             "authors": ["Wen-Hung Wang", "Chun-Yu Lin", "Shu-Huei Jain", "Po-Liang Lu", "Yen-Hsu Chen"],
-            "venue": "Journal of Microbiology, Immunology and Infection",
+            "venue": "Journal of Microbiology, Immunology and Infection, 58(1), 56-61",
             "year": 2025,
             "doi": "10.1016/j.jmii.2024.09.003",
             "tags": ["Diagnostics", "Tuberculosis"],
-            "citations": 0
+            "citations": 3
           },
           {
             "title": "Antibodies from dengue patients with prior exposure to Japanese encephalitis virus are broadly neutralizing against Zika virus",
             "authors": ["Gielenny M Salem", "Jedhan Ucat Galula", "Shang-Rung Wu", "Jyung-Hurng Liu", "Jyung-Hurng Liu", "Yen-Hsu Chen", "Wen-Hung Wang", "Sheng-Fan Wang", "Cheng-Sheng Song", "Fan-Chi Chen", "Adrian B Abarientos", "Guan-Wen Chen", "Cheng-I Wang", "Day-Yu Chao"],
-            "venue": "Communications Biology",
+            "venue": "Communications Biology, 7(1), 15",
             "year": 2024,
             "doi": "10.1038/s42003-023-05661-w",
             "tags": ["Dengue", "Zika", "Neutralizing antibodies"],
-            "citations": 0
+            "citations": 5
+          },
+          { 
+            "title": "Boosting the detection performance of severe acute respiratory syndrome coronavirus 2 test through a sensitive optical biosensor with new superior antibody",
+            "authors": ["Lin CY", "Wang Wen-Hung", "Li MC", "Lin YT", "Yang ZS", "Urbina AN", "Assavalapsakul W", "Thitithanyanont A", "Chen KR", "Kuo CC", "Lin YX", "Hsiao HH", "Lin KD", "Lin SY", "Chen YH", "Yu ML", "Su LC", "Wang SF"],
+            "venue": "Bioeng Transl Med. 2022 Sep 16;8(5):e10410.",
+            "year": 2022,
+            "doi": "10.1002/btm2.10410",
+            "tags": ["COVID-19", "SARS-CV2", "Biosensor"],
+            "citations": 6
           },
           {
             "title": "Obesity as a clinical predictor for severe manifestation of dengue: a systematic review and meta-analysis",
             "authors": ["Chao-Ying Chen", "Yu-Yao Chiu", "Yu-Cheng Chen", "Chung-Hao Huang", "Wen-Hung Wang", "Yen-Hsu Chen", "Chun-Yu Lin"],
-            "venue": "BMC Infectious Diseases",
+            "venue": "BMC Infectious Diseases, 23(1), 502",
             "year": 2023,
             "doi": "10.1186/s12879-023-08481-9",
             "tags": ["Dengue", "Obesity", "Meta-analysis"],
-            "citations": 0
+            "citations": 24
           },
           {
-            "title": "The association of obesity and dengue severity in hospitalized adult patients",
+            "title": "A novel, rapid (within hours) culture-free diagnostic method for detecting live Mycobacterium tuberculosis with high sensitivity",
+            "authors": ["Wen-Hung Wang", "Rikiya Takeuchi", "Shu-Huei Jain", "Yong-Huang Jiang", "Sonoko Watanuki", "Yoshiharu Ohtaki", "Kazunari Nakaishi", "Satoshi Watabe", "Po-Liang Lu", "Etsuro Ito"],
+            "venue": "EBiomedicine, 60, 103007",
+            "year": 2020,
+            "doi": "10.1016/j.ebiom.2020.103007",
+            "tags": ["Tuberculosis", "Detection", "culture-free"],
+            "citations": 36
+          },
+          {
+            "title": "The association of obesity and dengue severity in hospitalized adult patients ",
             "authors": ["Yu-Yao Chiu", "Chun-Yu Lin", "Ling-Shan Yu", "Wen-Hung Wang", "Chung-Hao Huang", "Yen-Hsu Chen"],
-            "venue": "Journal of Microbiology, Immunology and Infection",
+            "venue": "Journal of Microbiology, Immunology and Infection, 56(2), 267-273",
             "year": 2023,
             "doi": "10.1016/j.jmii.2022.08.008",
             "tags": ["Dengue", "Clinical"],
-            "citations": 0
+            "citations": 21
           },
           {
             "title": "Quantitative detection of dengue serotypes using a smartphone-connected handheld lab-on-chip platform",
             "authors": ["Nicolas Moser", "Ling-Shan Yu", "Jesus Rodriguez Manzano", "Kenny Malpartida-Cardenas", "Anselm Au", "Paul Arkell", "Chiara Cicatiello", "Ahmad Moniri", "Luca Miglietta", "Wen-Hung Wang", "Sheng-Fan Wang", "Alison Holmes", "Yen-Hsu Chen", "Pantelis Georgiou"],
-            "venue": "Frontiers in Bioengineering and Biotechnology",
+            "venue": "Frontiers in Bioengineering and Biotechnology, 10, 892853",
             "year": 2022,
             "doi": "10.3389/fbioe.2022.892853",
             "tags": ["Diagnostics", "Dengue", "Point-of-care"],
-            "citations": 0
+            "citations": 22
           },
           {
             "title": "Synthesis, Assembly and Processing of Viral Proteins",
             "authors": ["Wen-Hung Wang", "Arunee Thitithanyanont", "Sheng-Fan Wang"],
-            "venue": "Viruses",
+            "venue": "Viruses, 14(8), 1650",
             "year": 2022,
             "doi": "10.3390/v14081650",
             "tags": ["Review", "Virology"],
-            "citations": 0
+            "citations": 4
           },
           {
-            "title": "The Autophagosomes Containing Dengue Virus Proteins and Full-Length Genomic RNA Are Infectious",
-            "authors": ["Shan-Ying Wu", "Yu-Lun Chen", "Ying-Ray Lee", "Chiou-Feng Lin", "Sheng-Hui Lan", "Kai-Ying Lan", "Man-Ling Chu", "Pei-Wen Lin", "Zong-Lin Yang", "Yen-Hsu Chen", "Wen-Hung Wang", "Hsiao-Sheng Liu"],
-            "venue": "Viruses",
-            "year": 2021,
+            "title": "DC-SIGN and Galectin-3 individually and collaboratively regulate H5N1 and H7N9 avian influenza A virus infection via interaction with viral envelope hemagglutinin protein",
+            "authors": ["Zih-Syuan Yang", "Wen-Hung Wang", "Yu-Ting Lin", "Chih-Yen Lin", "Aspiro Nayim Urbina", "Arunee Thitithanyanont", "Po-Liang Lu", "Yen-Hsu Chen", "Sheng-Fan Wang"],
+            "venue": "Glycobiology, 33(4), 311-324",
+            "year": 2023,
             "doi": "10.3390/v13102034",
             "tags": ["Dengue", "Autophagy"],
-            "citations": 0
+            "citations": 4
           },
           {
             "title": "Mono-(2-ethylhexyl) phthalate Promotes Dengue Virus Infection by Decreasing IL-23-Mediated Antiviral Responses",
@@ -298,20 +328,20 @@
           {
             "title": "Dengue hemorrhagic fever - A systemic literature review of current perspectives on pathogenesis, prevention and control",
             "authors": ["Wen-Hung Wang", "Aspiro Nayim Urbina", "Max R Chang", "Wanchai Assavalapsakul", "Po-Liang Lu", "Yen-Hsu Chen", "Sheng-Fan Wang"],
-            "venue": "Journal of Microbiology, Immunology and Infection",
+            "venue": "Journal of Microbiology, Immunology and Infection, 53(6), 963-978",
             "year": 2020,
             "doi": "10.1016/j.jmii.2020.03.007",
             "tags": ["Dengue", "Review"],
-            "citations": 0
+            "citations": 390
           },
           {
             "title": "The role of galectins in virus infection - A systemic literature review",
             "authors": ["Wen-Hung Wang", "Chih-Yen Lin", "Max R Chang", "Po-Liang Lu", "Yen-Hsu Chen", "Sheng-Fan Wang"],
-            "venue": "Journal of Microbiology, Immunology and Infection",
+            "venue": "Journal of Microbiology, Immunology and Infection, 53(6), 925-935",
             "year": 2020,
             "doi": "10.1016/j.jmii.2019.09.005",
             "tags": ["Galectins", "Review", "Virus-host interactions"],
-            "citations": 0
+            "citations": 131
           }
     ],
 
@@ -380,7 +410,7 @@
       localStorage.setItem('theme', mode);
       themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
     }
-    const preferred = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const preferred = localStorage.getItem('theme') || 'dark';
     setTheme(preferred);
     themeToggle.addEventListener('click', () => setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'));
 
@@ -437,7 +467,8 @@
       markdown: (page) => {
         const section = document.createElement('section');
         section.className = 'prose dark:prose-invert max-w-none';
-        section.innerHTML = md(page.content || '');
+        const blocks = Array.isArray(page.content) ? page.content : [page.content || ''];
+        section.innerHTML = blocks.map(b => md(b)).join('<hr class="my-6 border-slate-200 dark:border-slate-700">');
         return section;
       },
 
@@ -479,7 +510,7 @@
   const header = document.createElement('div');
   header.innerHTML = `
     <h2 class="text-2xl font-semibold">研究主題</h2>
-    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">2025/8/12動新增/排序</p>
+    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">2025/8/12 新增/排序</p>
   `;
   wrap.appendChild(header);
 
@@ -580,7 +611,7 @@
           <div class="flex items-center justify-between gap-4">
             <div>
               <h2 class="text-2xl font-semibold">期刊論文</h2>
-              <p class="text-slate-500 dark:text-slate-400 text-sm">手動維護：2025/8/12</p>
+              <p class="text-slate-500 dark:text-slate-400 text-sm">資料維護：2025/8/12</p>
             </div>
             <div class="flex items-center gap-2">
               <input id="pubSearch" type="search" placeholder="搜尋論文…" class="w-56 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" />
