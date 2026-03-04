@@ -1,804 +1,883 @@
 <!DOCTYPE html>
-<html lang="zh-Hant" class="scroll-smooth">
+<html lang="zh-TW">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>王文宏｜研究與介紹</title>
-  <meta name="description" content="王文宏（Wen-Hung Wang）個人研究、發表、教學與產學合作介紹。" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230ea5e9'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-family='Arial' font-size='60' fill='white'%3EW%3C/text%3E%3C/svg%3E" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Tailwind config for dark mode
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          container: { center: true, padding: '1rem' },
-          boxShadow: { soft: '0 8px 30px rgba(0,0,0,0.06)' }
-        }
-      }
-    };
-  </script>
-  <!-- Optional: small, safe Markdown renderer for content blocks -->
-  <script>
-    // Minimal Markdown -> HTML (headings, bold/italic, links, lists, line breaks)
-    // Safe enough for personal use; avoids script tags.
-    function md(markdown = '') {
-      const esc = (s) => s
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-      let html = esc(markdown);
-      html = html.replace(/^###### (.*)$/gm, '<h6 class="text-sm font-semibold mt-6 mb-2">$1</h6>')
-                 .replace(/^##### (.*)$/gm, '<h5 class="text-base font-semibold mt-6 mb-2">$1</h5>')
-                 .replace(/^#### (.*)$/gm, '<h4 class="text-lg font-semibold mt-6 mb-2">$1</h4>')
-                 .replace(/^### (.*)$/gm, '<h3 class="text-xl font-semibold mt-6 mb-2">$1</h3>')
-                 .replace(/^## (.*)$/gm, '<h2 class="text-2xl font-semibold mt-6 mb-3">$1</h2>')
-                 .replace(/^# (.*)$/gm, '<h1 class="text-3xl font-bold mt-6 mb-4">$1</h1>')
-                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1<\/strong>')
-                 .replace(/\*(.*?)\*/g, '<em>$1<\/em>')
-                 .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-sky-600 hover:underline" target="_blank" rel="noopener">$1<\/a>')
-                 .replace(/\[red\]([\s\S]*?)\[\/red\]/g, '<span class="text-red-600 font-bold">$1<\/span>')
-                 .replace(/(^|\n)\s*\- (.*)/g, '$1<li>$2<\/li>')
-                 .replace(/(<li>.*<\/li>)/gs, '<ul class="list-disc pl-6 space-y-1">$1<\/ul>')
-                 .replace(/\n\n/g, '<br/><br/>' );
-      return html;
-    }
-  </script>
-  <style>
-    /* Smooth hide for mobile menu */
-    .collapsible[aria-expanded="false"] { height: 0; overflow: hidden; }
-    .collapsible[aria-expanded="true"]  { height: auto; }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>王文宏 | 分子病毒學實驗室</title>
+<style>
+:root{--navy:#0a1f44;--navy2:#132d5e;--gold:#c9a84c;--gold2:#e6c97a;
+  --white:#fff;--off:#f7f8fc;--text:#1a1a2e;--muted:#5a6070;--border:#e2e6f0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Georgia',serif;color:var(--text);background:var(--off);}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--navy);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:62px;border-bottom:2px solid var(--gold);}
+.nav-logo{color:var(--gold);font-size:1rem;font-weight:700;letter-spacing:.05em;}
+.nav-links{display:flex;gap:1.4rem;list-style:none;}
+.nav-links a{color:#cdd4e8;font-size:.78rem;text-decoration:none;font-family:'Arial',sans-serif;
+  letter-spacing:.04em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold2);}
+
+#home{min-height:100vh;background:linear-gradient(135deg,var(--navy) 60%,var(--navy2) 100%);
+  display:flex;align-items:center;padding:80px 5% 60px;position:relative;overflow:hidden;}
+.hero-inner{display:flex;align-items:center;gap:4rem;max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;}
+.hero-avatar{width:190px;height:190px;border-radius:50%;border:4px solid var(--gold);
+  background:linear-gradient(135deg,#1e3a7a,#0a1f44);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:4rem;}
+.hero-text h1{color:var(--white);font-size:2.6rem;line-height:1.2;margin-bottom:.3rem;}
+.hero-text h1 span{color:var(--gold);}
+.hero-subtitle{color:var(--gold2);font-size:1.05rem;margin-bottom:.4rem;font-family:'Arial',sans-serif;}
+.hero-inst{color:#9aa8c8;font-size:.92rem;font-family:'Arial',sans-serif;margin-bottom:1.2rem;line-height:1.7;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
+.tag{background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold2);
+  padding:.25rem .75rem;border-radius:20px;font-size:.78rem;font-family:'Arial',sans-serif;}
+.hero-btns{display:flex;gap:1rem;}
+.btn-primary{background:var(--gold);color:var(--navy);padding:.6rem 1.4rem;border-radius:4px;
+  text-decoration:none;font-family:'Arial',sans-serif;font-size:.85rem;font-weight:700;transition:background .2s;}
+.btn-primary:hover{background:var(--gold2);}
+.btn-outline{border:1px solid var(--gold);color:var(--gold);padding:.6rem 1.4rem;border-radius:4px;
+  text-decoration:none;font-family:'Arial',sans-serif;font-size:.85rem;transition:all .2s;}
+.btn-outline:hover{background:var(--gold);color:var(--navy);}
+
+section{padding:80px 5%;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-header{text-align:center;margin-bottom:3rem;}
+.section-header h2{font-size:2rem;color:var(--navy);margin-bottom:.4rem;}
+.section-header .bar{width:60px;height:3px;background:var(--gold);margin:.5rem auto 0;}
+.section-header p{color:var(--muted);margin-top:.7rem;font-family:'Arial',sans-serif;font-size:.95rem;}
+
+#news{background:var(--white);}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
+.news-card{border-left:4px solid var(--gold);background:var(--off);padding:1.2rem 1.4rem;border-radius:0 6px 6px 0;}
+.news-icon{font-size:1.6rem;margin-bottom:.4rem;}
+.news-date{font-size:.78rem;color:var(--gold);font-family:'Arial',sans-serif;font-weight:700;margin-bottom:.3rem;}
+.news-card h4{font-size:.97rem;color:var(--navy);margin-bottom:.3rem;}
+.news-card p{font-size:.85rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.55;}
+.news-badge{display:inline-block;font-size:.72rem;padding:.15rem .55rem;border-radius:10px;
+  font-family:'Arial',sans-serif;font-weight:700;margin-bottom:.4rem;}
+.badge-pub{background:#e8f0fe;color:#1a56db;}
+.badge-event{background:#dcfce7;color:#166534;}
+
+#about{background:var(--off);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-text p{font-size:.95rem;color:#333;line-height:1.9;margin-bottom:1rem;font-family:'Arial',sans-serif;}
+.about-text h3{color:var(--navy);font-size:1.1rem;margin:1.3rem 0 .6rem;}
+.research-item{display:flex;gap:.8rem;margin-bottom:.7rem;align-items:flex-start;}
+.ri-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;margin-top:.45rem;flex-shrink:0;}
+.research-item p{font-size:.9rem;color:#444;font-family:'Arial',sans-serif;line-height:1.6;}
+.stat-box{background:var(--navy);color:var(--white);border-radius:8px;padding:1.5rem;text-align:center;}
+.stat-box .s-icon{font-size:1.5rem;margin-bottom:.3rem;}
+.stat-box .s-num{font-size:2.2rem;color:var(--gold);font-weight:700;}
+.stat-box .s-label{font-size:.8rem;color:#9aa8c8;font-family:'Arial',sans-serif;margin-top:.2rem;}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+.focus-box{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1.5rem;}
+.focus-box h4{color:var(--navy);font-size:.95rem;margin-bottom:.8rem;border-bottom:2px solid var(--gold);padding-bottom:.4rem;}
+.focus-item{font-size:.85rem;color:#555;font-family:'Arial',sans-serif;padding:.35rem 0;
+  border-bottom:1px dashed var(--border);line-height:1.5;}
+.focus-item:last-child{border:none;}
+
+#research-topics{background:var(--white);}
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem;}
+.topic-card{background:var(--off);border:1px solid var(--border);border-radius:8px;
+  padding:1.5rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.topic-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(10,31,68,.1);}
+.topic-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold);}
+.topic-icon{font-size:2rem;margin-bottom:.5rem;}
+.topic-num{font-size:1.8rem;font-weight:700;color:rgba(201,168,76,.2);position:absolute;top:.8rem;right:1rem;font-family:'Arial',sans-serif;}
+.topic-card h3{font-size:1rem;color:var(--navy);margin:.2rem 0 .6rem;}
+.topic-card p{font-size:.87rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.65;}
+
+#publications{background:var(--off);}
+.pub-list{display:flex;flex-direction:column;gap:1rem;}
+.pub-item{background:var(--white);border:1px solid var(--border);border-radius:8px;
+  padding:1.2rem 1.5rem;transition:border-color .2s;display:flex;gap:1.2rem;align-items:flex-start;}
+.pub-item:hover{border-color:var(--gold);}
+.pub-icon{font-size:1.5rem;flex-shrink:0;}
+.pub-year{background:var(--navy);color:var(--gold);font-size:.75rem;font-family:'Arial',sans-serif;
+  font-weight:700;padding:.2rem .55rem;border-radius:4px;white-space:nowrap;flex-shrink:0;}
+.pub-title{font-size:.95rem;color:var(--navy);font-weight:700;margin-bottom:.3rem;line-height:1.4;}
+.pub-authors{font-size:.82rem;color:var(--muted);font-family:'Arial',sans-serif;margin-bottom:.2rem;}
+.pub-journal{font-size:.82rem;color:var(--gold);font-family:'Arial',sans-serif;font-style:italic;}
+.pub-badge{display:inline-block;background:#fef3c7;color:#92400e;font-size:.7rem;
+  padding:.1rem .45rem;border-radius:8px;margin-left:.4rem;font-family:'Arial',sans-serif;font-weight:700;}
+.pub-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem;}
+.pub-content{flex:1;}
+
+/* HIGHLIGHTS SLIDESHOW */
+#highlights{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);}
+#highlights .section-header h2{color:var(--white);}
+#highlights .section-header p{color:#9aa8c8;}
+#highlights .bar{background:var(--gold);}
+.hl-tabs{display:flex;justify-content:center;gap:.7rem;margin-bottom:2rem;flex-wrap:wrap;}
+.hl-tab{padding:.45rem 1.2rem;border-radius:20px;border:1px solid rgba(201,168,76,.4);
+  background:transparent;color:#9aa8c8;font-family:'Arial',sans-serif;font-size:.82rem;
+  cursor:pointer;transition:all .2s;}
+.hl-tab.active,.hl-tab:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700;}
+.hl-slider{position:relative;overflow:hidden;}
+.hl-track{display:flex;transition:transform .4s ease;gap:1.5rem;}
+.hl-card{min-width:calc(33.333% - 1rem);background:rgba(255,255,255,.06);
+  border:1px solid rgba(201,168,76,.25);border-radius:12px;overflow:hidden;
+  flex-shrink:0;transition:transform .2s,box-shadow .2s;}
+.hl-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.3);}
+.hl-img{width:100%;height:180px;object-fit:cover;display:block;}
+.hl-placeholder{width:100%;height:180px;display:flex;align-items:center;justify-content:center;
+  font-size:4rem;background:rgba(255,255,255,.04);}
+.hl-body{padding:1.2rem;}
+.hl-meta{display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem;}
+.hl-year{font-size:.75rem;font-family:'Arial',sans-serif;font-weight:700;
+  background:var(--gold);color:var(--navy);padding:.15rem .55rem;border-radius:4px;}
+.hl-type{font-size:.72rem;font-family:'Arial',sans-serif;padding:.15rem .55rem;
+  border-radius:10px;font-weight:600;}
+.ht-award{background:rgba(255,215,0,.15);color:#ffd700;}
+.ht-activity{background:rgba(100,220,150,.15);color:#64dc96;}
+.ht-conference{background:rgba(100,160,255,.15);color:#64a0ff;}
+.hl-body h4{font-size:.97rem;color:var(--white);margin-bottom:.4rem;line-height:1.4;}
+.hl-body p{font-size:.83rem;color:#9aa8c8;font-family:'Arial',sans-serif;line-height:1.6;}
+.hl-nav{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1.8rem;}
+.hl-btn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(201,168,76,.5);
+  background:transparent;color:var(--gold);font-size:1.1rem;cursor:pointer;
+  transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.hl-btn:hover{background:var(--gold);color:var(--navy);}
+.hl-dots{display:flex;gap:.5rem;}
+.hl-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);
+  cursor:pointer;transition:background .2s;}
+.hl-dot.active{background:var(--gold);}
+@media(max-width:768px){.hl-card{min-width:85%;}}
+
+.patent-list{display:flex;flex-direction:column;gap:1.2rem;}
+.patent-card{background:var(--off);border:1px solid var(--border);border-radius:8px;
+  padding:1.5rem;border-left:5px solid var(--gold);display:flex;gap:1.2rem;align-items:flex-start;}
+.patent-icon{font-size:2rem;flex-shrink:0;}
+.patent-content{flex:1;}
+.patent-title{font-size:1rem;color:var(--navy);font-weight:700;margin-bottom:.4rem;line-height:1.4;}
+.patent-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:.5rem;}
+.patent-badge{font-size:.75rem;font-family:'Arial',sans-serif;font-weight:700;
+  padding:.2rem .65rem;border-radius:10px;}
+.pb-number{background:#e8f0fe;color:#1a56db;}
+.pb-region{background:#dcfce7;color:#166534;}
+.pb-year{background:var(--navy);color:var(--gold);}
+.pb-licensee{background:#fef3c7;color:#92400e;}
+.patent-desc{font-size:.87rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.65;}
+#projects{background:var(--white);}
+.proj-tabs{display:flex;gap:.8rem;margin-bottom:2rem;border-bottom:2px solid var(--border);padding-bottom:0;}
+.proj-tab{padding:.55rem 1.4rem;font-family:'Arial',sans-serif;font-size:.85rem;cursor:pointer;
+  border:none;background:none;color:var(--muted);border-bottom:3px solid transparent;
+  margin-bottom:-2px;transition:all .2s;font-weight:600;}
+.proj-tab.active{color:var(--navy);border-bottom-color:var(--gold);}
+.proj-panel{display:none;}
+.proj-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
+.proj-panel.past{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
+.proj-card{background:var(--off);border:1px solid var(--border);border-radius:8px;
+  padding:1.5rem;border-top:4px solid var(--gold);transition:transform .2s,box-shadow .2s;}
+.proj-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(10,31,68,.08);}
+.proj-card.past{border-top-color:#b0b8cc;}
+.proj-icon{font-size:2rem;margin-bottom:.7rem;}
+.proj-card h3{font-size:1rem;color:var(--navy);margin-bottom:.4rem;}
+.proj-period{font-size:.78rem;color:var(--muted);font-family:'Arial',sans-serif;margin-bottom:.2rem;}
+.proj-source{font-size:.78rem;color:var(--navy2);font-family:'Arial',sans-serif;font-weight:700;margin-bottom:.4rem;}
+.proj-card p{font-size:.87rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.65;}
+.proj-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem;}
+.proj-tag{font-size:.75rem;padding:.2rem .6rem;border-radius:10px;font-family:'Arial',sans-serif;background:#e8f0fe;color:#1a56db;}
+.proj-tag.collab{background:#fef3c7;color:#92400e;}
+.proj-tag.past-tag{background:#f0f0f5;color:#6070a0;}
+
+/* 產學合作徵求 banner */
+.collab-banner{background:linear-gradient(135deg,var(--navy),var(--navy2));
+  border-radius:12px;padding:2.5rem;margin-top:2.5rem;display:flex;
+  align-items:center;gap:2rem;border:1px solid var(--gold);}
+.collab-icon{font-size:3.5rem;flex-shrink:0;}
+.collab-text h3{color:var(--gold);font-size:1.25rem;margin-bottom:.5rem;}
+.collab-text p{color:#9aa8c8;font-family:'Arial',sans-serif;font-size:.9rem;line-height:1.7;}
+.collab-text .collab-cta{display:inline-block;margin-top:1rem;background:var(--gold);
+  color:var(--navy);padding:.55rem 1.4rem;border-radius:4px;
+  font-family:'Arial',sans-serif;font-size:.85rem;font-weight:700;text-decoration:none;transition:background .2s;}
+.collab-text .collab-cta:hover{background:var(--gold2);}
+.collab-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem;}
+.collab-tag{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);
+  color:var(--gold2);padding:.2rem .7rem;border-radius:20px;font-size:.78rem;font-family:'Arial',sans-serif;}
+
+/* TEAM */
+#team{background:var(--off);}
+.team-section-title{font-size:1.1rem;color:var(--navy);margin:2rem 0 1rem;
+  padding-bottom:.4rem;border-bottom:2px solid var(--gold);font-family:'Arial',sans-serif;display:flex;align-items:center;gap:.4rem;}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.2rem;margin-bottom:1rem;}
+.member-card{background:var(--white);border:1px solid var(--border);border-radius:8px;
+  padding:1.4rem;text-align:center;transition:transform .2s,box-shadow .2s;}
+.member-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(10,31,68,.1);}
+.member-avatar{width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--navy2),var(--navy));
+  display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;
+  border:2px solid var(--gold);font-size:1.8rem;}
+.member-card h4{font-size:.97rem;color:var(--navy);margin-bottom:.15rem;}
+.member-en{font-size:.78rem;color:var(--muted);font-family:'Arial',sans-serif;margin-bottom:.2rem;}
+.member-role{font-size:.8rem;color:var(--gold);font-family:'Arial',sans-serif;margin-bottom:.3rem;font-weight:600;}
+.member-desc{font-size:.8rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.5;}
+.member-topic{font-size:.78rem;color:#555;font-family:'Arial',sans-serif;
+  background:var(--off);border-radius:4px;padding:.2rem .5rem;margin-top:.4rem;display:inline-block;}
+.pi-card{background:var(--navy);color:var(--white);
+  display:flex;align-items:center;gap:2rem;padding:2rem;border-radius:8px;margin-bottom:1.5rem;}
+.pi-avatar{width:90px;height:90px;border-radius:50%;background:rgba(201,168,76,.2);
+  border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;flex-shrink:0;}
+.pi-info h4{font-size:1.2rem;color:var(--gold);}
+.pi-info .pi-en{font-size:.9rem;color:var(--gold2);font-family:'Arial',sans-serif;}
+.pi-info .member-role{color:var(--gold2);font-family:'Arial',sans-serif;font-size:.9rem;margin:.2rem 0;}
+.pi-info p{font-size:.87rem;color:#9aa8c8;font-family:'Arial',sans-serif;line-height:1.6;margin-top:.4rem;}
+.alumni-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.8rem;}
+.alumni-card{background:var(--white);border:1px solid var(--border);border-radius:6px;
+  padding:.9rem 1.1rem;display:flex;align-items:center;gap:.8rem;}
+.alumni-dot{width:36px;height:36px;border-radius:50%;background:var(--off);
+  border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;}
+.alumni-info h5{font-size:.88rem;color:var(--navy);}
+.alumni-info p{font-size:.78rem;color:var(--muted);font-family:'Arial',sans-serif;}
+
+#teaching{background:var(--white);}
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
+.course-card{background:var(--off);border:1px solid var(--border);border-radius:8px;padding:1.5rem;}
+.course-icon{font-size:1.8rem;margin-bottom:.6rem;}
+.course-badge{font-size:.75rem;font-family:'Arial',sans-serif;font-weight:700;
+  padding:.2rem .6rem;border-radius:10px;margin-bottom:.6rem;display:inline-block;}
+.cb-undergrad{background:#dcfce7;color:#166534;}
+.cb-grad{background:#e8f0fe;color:#1a56db;}
+.course-card h3{font-size:1rem;color:var(--navy);margin-bottom:.4rem;}
+.course-card p{font-size:.87rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.6;}
+
+footer{background:var(--navy);color:#9aa8c8;padding:3rem 5%;border-top:2px solid var(--gold);}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;}
+footer h4{color:var(--gold);margin-bottom:.8rem;font-size:.95rem;}
+footer p,footer a{font-size:.85rem;font-family:'Arial',sans-serif;color:#9aa8c8;text-decoration:none;line-height:1.9;}
+footer a:hover{color:var(--gold2);}
+.footer-bottom{max-width:1100px;margin:1.5rem auto 0;padding-top:1rem;
+  border-top:1px solid rgba(255,255,255,.1);text-align:center;
+  font-size:.8rem;font-family:'Arial',sans-serif;color:#6070a0;}
+
+@media(max-width:768px){
+  .hero-inner{flex-direction:column;text-align:center;}
+  .hero-tags,.hero-btns{justify-content:center;}
+  .about-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr;}
+  .pi-card{flex-direction:column;text-align:center;}
+  nav{padding:0 1rem;}
+  .nav-links{gap:.7rem;}
+  .nav-links a{font-size:.7rem;}
+  .collab-banner{flex-direction:column;text-align:center;}
+}
+</style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
-  <!-- =========================== -->
-  <!-- Top Bar / Header            -->
-  <!-- =========================== -->
-  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/90 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex items-center justify-between py-3">
-        <a href="#/home" class="flex items-center gap-3">
-          <img id="heroAvatar" alt="avatar" class="w-10 h-10 rounded-full shadow-soft object-cover" />
-          <div class="leading-tight">
-            <div class="font-semibold text-lg" id="siteTitle">123</div>
-            <div class="text-xs text-slate-500 dark:text-slate-400" id="siteSubtitle">456</div>
+<body>
+
+<script>
+/* ============================================================
+   📋 資料設定區 — 修改此處即可更新所有內容，無需動其他程式碼
+   ============================================================ */
+const DATA = {
+
+  news: [
+    {badge:"badge-pub",badgeLabel:"論文發表",icon:"📄",date:"2026 · January",
+     title:"新論文刊登於 European Journal of Pharmacology",
+     body:"「Dengue Virus Modulates the Fibrinolytic System...」正式接受，王文宏博士為第一作者。"},
+    {badge:"badge-pub",badgeLabel:"論文發表",icon:"📄",date:"2025 · November",
+     title:"台灣2023年登革熱疫情回溯研究發表",
+     body:"與多國團隊合作之回溯性研究刊登於 Journal of Infection and Public Health。"},
+    {badge:"badge-pub",badgeLabel:"論文發表",icon:"📄",date:"2025 · February",
+     title:"結核菌快速檢測新方法發表",
+     body:"開發 Gene Chip 與 RFLP 快速偵測結核菌，第一作者，刊登於 J Microbiol Immunol Infect。"},
+    {badge:"badge-event",badgeLabel:"公告",icon:"🤝",date:"2025",
+     title:"誠徵產學合作夥伴",
+     body:"實驗室積極尋求與生技醫藥、診斷試劑、抗體開發等相關產業合作，歡迎來信洽詢。"},
+  ],
+
+  publications: [
+    {year:2026,icon:"🧬",title:"Dengue Virus Modulates the Fibrinolytic System to Drive Vascular Leakage and Serves as a Therapeutic Target for Tranexamic Acid",
+     authors:"Wen-Hung Wang, Chun-Yu Lin, Syun Huang, Yu-Te Tsai, Sheng-Fan Wang, Tzu-Chuan Ho, Yen-Hsu Chen",
+     journal:"European Journal of Pharmacology · 2026 (Accepted)",badge:"第一作者"},
+    {year:2025,icon:"🦟",title:"An unexpected dengue outbreak in Taiwan, 2023: A retrospective analysis of potential risk factors",
+     authors:"Tung YW, Yang ZS, Wang WH, Hsu YT, ..., Chen YH, Wang SF",
+     journal:"Journal of Infection and Public Health · 2025 Nov;18(11):102939"},
+    {year:2025,icon:"🔬",title:"Development of the novel gene chip and RFLP methods for rapid detection of Mycobacterium tuberculosis complex",
+     authors:"Wang WH, Lin CY, Jain SH, Lu PL, Chen YH",
+     journal:"J Microbiol Immunol Infect · 2025 Feb;58(1):56-61",badge:"第一作者"},
+    {year:2024,icon:"🦠",title:"Antibodies from dengue patients with prior JEV exposure are broadly neutralizing against Zika virus",
+     authors:"Salem GM, Galula JU, Wu SR, ..., Wang WH, Wang SF, et al.",
+     journal:"Communications Biology · 2024 Jan 24;7(1):15"},
+    {year:2023,icon:"🧪",title:"Boosting SARS-CoV-2 detection performance through a sensitive optical biosensor with superior antibody",
+     authors:"Lin CY*, Wang WH*, Li MC, Lin YT, Yang ZS, ..., Wang SF",
+     journal:"Bioengineering & Translational Medicine · 2023. doi:10.1002/btm2.10410",badge:"第一作者 / 通訊作者"},
+    {year:2023,icon:"📊",title:"Dengue Overview: An Updated Systemic Review",
+     authors:"Muhammad Bilal Khan, Zih-Syuan Yang, ..., Wen-Hung Wang, Yen-Hsu Chen, Sheng-Fan Wang",
+     journal:"Journal of Infection and Public Health · 2023;16(10):1625-1642"},
+    {year:2021,icon:"💉",title:"Targets and strategies for vaccine development against dengue viruses",
+     authors:"Wen-Hung Wang, Aspiro Nayim Urbina, Chih-Yen Lin, et al.",
+     journal:"Biomedicine & Pharmacotherapy · Vol.144, Dec 2021, 112304",badge:"第一作者"},
+    {year:2021,icon:"🌍",title:"Emerging and Re-Emerging Diseases",
+     authors:"Wen-Hung Wang, Arunee Thitithanyanont, Aspiro Nayim Urbina, Sheng-Fan Wang",
+     journal:"Pathogens · 2021 Jul;10(7):827",badge:"第一作者"},
+    {year:2021,icon:"📘",title:"[專書] The Antiviral Role of Galectins towards Influenza A Virus Infection",
+     authors:"Wen-Hung Wang, Jason C Huang, Fu-Tong Liu, Sheng-Fan Wang",
+     journal:"VIDE LEAF · ISBN: 978-93-90014-03-3 · Sep 2021"},
+  ],
+
+  // 研究計畫 — current: 現行計畫, past: 歷年計畫
+  projects: {
+    current: [
+      {icon:"🩸",title:"登革病毒纖維蛋白溶解系統調控機制研究",period:"2024 – 迄今",source:"國科會",
+       desc:"探討登革病毒如何調控 tPA/uPA/uPAR–plasmin 軸線誘導血管通透性，以 TXA 作為治療標的進行臨床驗證。",
+       tags:["國科會計畫","基礎研究","臨床轉譯"]},
+      {icon:"🔬",title:"外泌體（EV）診斷平台開發",period:"2024 – 迄今",source:"國科會",
+       desc:"建立以血清 EV 為基礎的登革熱伴隨診斷系統，探索疾病嚴重程度分類生物標記。",
+       tags:["診斷平台","EV/Exosome","精準醫療"]},
+      {icon:"💊",title:"廣效中和抗體研發（登革熱 / 茲卡病毒）",period:"2023 – 迄今",source:"產學合作企業（待補）",
+       desc:"與國際合作夥伴共同開發可廣效中和多血清型登革病毒及茲卡病毒之抗體。",
+       tags:["國際合作","抗體研發","產學合作"]},
+    ],
+    patents: [
+      {icon:"🧬", title:"新冠肺炎恆溫式圈環核酸增幅法引子設計序列",
+       number:"US63/031,14", region:"台灣 / 美國", year:"2020",
+       desc:"針對 SARS-CoV-2 設計之恆溫式 LAMP 引子序列，適用於快速核酸檢測平台。"},
+      {icon:"⚗️", title:"專利授權：新冠病毒核酸檢測試劑",
+       number:"防疫專案核准製造第1096821155號", region:"台灣", year:"2021",
+       desc:"緊急專案核准製造，授權麥博森股份有限公司進行新冠病毒核酸檢測試劑之量產製造。",
+       licensee:"麥博森股份有限公司"},
+    ],
+    past: [
+      {icon:"⚗️",title:"SARS-CoV-2 光學生物感測器快速檢測",period:"2021 – 2023",source:"科技部 / 產學合作",
+       desc:"開發 NIR-emitting perovskite 奈米複合材料之 SPR 生物感測器，成果已技轉合作。",
+       tags:["生醫工程","技術轉移","產學合作"]},
+      {icon:"🧫",title:"半導體生物感測器應用於傳染病快篩",period:"2020 – 2022",source:"產學合作企業",
+       desc:"結合半導體製程與免疫檢測技術，開發登革熱、流感快篩晶片。",
+       tags:["產學合作","快篩開發"]},
+      {icon:"🦠",title:"Galectin 在流感 A 型病毒感染之抗病毒角色探討",period:"2019 – 2021",source:"科技部",
+       desc:"深入研究 Galectin-3 與 DC-SIGN 在 H5N1 及 H7N9 禽流感感染中的分子機制。",
+       tags:["基礎研究","禽流感"]},
+    ]
+  },
+
+  // 實驗室成員
+  // 格式說明：
+  //   isPI: true → PI 卡片
+  //   group: "phd" | "ms" | "ra" | "alumni"
+  //   name: 中文名（必填）, nameEn: 英文名（選填）
+  //   role: 職稱, topic: 研究題目（選填）, desc: 補充說明（選填）
+  //   since: 加入年份（選填）, dest: 畢業後去向（alumni 用）
+  members: [
+    {isPI:true, avatar:"👨‍🔬",
+     name:"王文宏", nameEn:"Wen-Hung Wang, Ph.D.",
+     role:"Principal Investigator · 助理教授",
+     desc:"國立中山大學 學士後醫學系。研究專長：登革病毒致病機制、新興傳染病、臨床轉譯與疫苗開發。"},
+
+    // 博士生 — 請依格式新增/修改
+    {group:"phd", avatar:"🧬", name:"（待補）博士研究生 A", nameEn:"Ph.D. Student A",
+     role:"博士研究生", topic:"登革病毒血管通透性機制研究", since:"2023"},
+    {group:"phd", avatar:"🧬", name:"（待補）博士研究生 B", nameEn:"Ph.D. Student B",
+     role:"博士研究生", topic:"EV 免疫調控機制", since:"2024"},
+
+    // 碩士生
+    {group:"ms", avatar:"🧪", name:"（待補）碩士研究生 A", nameEn:"M.S. Student A",
+     role:"碩士研究生", topic:"血清 EV 生物標記開發", since:"2024"},
+    {group:"ms", avatar:"🧪", name:"（待補）碩士研究生 B", nameEn:"M.S. Student B",
+     role:"碩士研究生", topic:"TXA 臨床資料分析", since:"2025"},
+
+    // 研究助理
+    {group:"ra", avatar:"🔭", name:"（待補）研究助理 A", nameEn:"Research Assistant A",
+     role:"研究助理", topic:"臨床樣本處理與實驗支援"},
+
+    // 畢業校友
+    {group:"alumni", avatar:"🎓", name:"（待補）校友 A", nameEn:"Alumni A",
+     role:"碩士畢業", dest:"現任職於某生技公司"},
+    {group:"alumni", avatar:"🎓", name:"（待補）校友 B", nameEn:"Alumni B",
+     role:"碩士畢業", dest:"繼續攻讀博士學位"},
+  ],
+
+  // 獲獎、活動、研討會
+  // type: "award" | "activity" | "conference"
+  // image: 圖片URL（留空字串則顯示 emoji 佔位）
+  highlights: [
+    {type:"award", emoji:"🏆", year:"2024",
+     title:"高雄醫學大學優良研究獎",
+     desc:"表彰在登革病毒致病機制與臨床轉譯領域之卓越研究貢獻。",
+     image:""},
+    {type:"conference", emoji:"✈️", year:"2024",
+     title:"ASM Microbe 2024（亞特蘭大）",
+     desc:"口頭發表「Dengue Virus-Induced Fibrinolytic Dysregulation」，與國際學者交流最新研究成果。",
+     image:""},
+    {type:"activity", emoji:"📸", year:"2024",
+     title:"實驗室年度聚餐",
+     desc:"全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。",
+     image:""},
+    {type:"conference", emoji:"🌏", year:"2023",
+     title:"International Congress of Infectious Diseases（ICID）",
+     desc:"受邀參加國際傳染病學會議，發表登革熱廣效中和抗體研究成果。",
+     image:""},
+    {type:"award", emoji:"🥇", year:"2023",
+     title:"科技部優秀年輕學者研究計畫",
+     desc:"獲科技部肯定，支持登革病毒 EV 診斷平台之前瞻研究計畫。",
+     image:""},
+    {type:"activity", emoji:"🔬", year:"2023",
+     title:"實驗室新生訓練與安全講習",
+     desc:"迎接新進碩博士生，進行實驗室安全訓練與研究方向導引。",
+     image:""},
+  ],
+
+  courses: [
+    {icon:"🦠",badge:"cb-undergrad",badgeLabel:"學士後醫學系",title:"微生物學與免疫學",
+     desc:"涵蓋細菌、病毒、黴菌基礎知識與宿主免疫反應機制，結合臨床案例，培養感染症診療基礎能力。"},
+    {icon:"🔬",badge:"cb-grad",badgeLabel:"研究所",title:"分子病毒學專論",
+     desc:"深入探討病毒複製週期、病毒與宿主交互作用、新興病毒監測與疫苗設計，並閱讀最新文獻討論。"},
+    {icon:"🌍",badge:"cb-undergrad",badgeLabel:"學士後醫學系",title:"傳染病學",
+     desc:"介紹新興及再現傳染病之流行病學、致病機轉與防治策略，以登革熱、COVID-19、流感為核心案例。"},
+  ]
+};
+
+/* ============================================================
+   ⚙️ 渲染邏輯
+   ============================================================ */
+function render(){
+  // NEWS
+  document.getElementById('news-grid').innerHTML = DATA.news.map(n=>`
+    <div class="news-card">
+      <div class="news-icon">${n.icon}</div>
+      <span class="news-badge ${n.badge}">${n.badgeLabel}</span>
+      <div class="news-date">${n.date}</div>
+      <h4>${n.title}</h4><p>${n.body}</p>
+    </div>`).join('');
+
+  // PUBLICATIONS PAGINATION
+  const PUB_PER_PAGE = 6;
+  let pubPage = 0;
+
+  function renderPubs(){
+    const total = DATA.publications.length;
+    const totalPages = Math.ceil(total / PUB_PER_PAGE);
+    const start = pubPage * PUB_PER_PAGE;
+    const slice = DATA.publications.slice(start, start + PUB_PER_PAGE);
+
+    document.getElementById('pub-list').innerHTML = slice.map(p=>`
+      <div class="pub-item">
+        <div class="pub-icon">${p.icon}</div>
+        <div class="pub-content">
+          <div class="pub-top">
+            <div class="pub-title">${p.title}${p.badge?`<span class="pub-badge">${p.badge}</span>`:''}</div>
+            <span class="pub-year">${p.year}</span>
           </div>
-        </a>
-        <div class="flex items-center gap-2">
-          <button id="themeToggle" class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800" title="切換深淺色">
-            <span id="themeIcon" aria-hidden="true">🌙</span>
-          </button>
-          <button id="menuBtn" class="md:hidden p-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800" aria-controls="mobileNav" aria-expanded="false">☰</button>
+          <div class="pub-authors">${p.authors}</div>
+          <div class="pub-journal">${p.journal}</div>
+        </div>
+      </div>`).join('');
+
+    // 分頁按鈕
+    const pg = document.getElementById('pub-pagination');
+    let btns = `<button class="pub-page-btn arrow" id="pub-prev" ${pubPage===0?'disabled':''}>&#8592;</button>`;
+    for(let i=0;i<totalPages;i++){
+      btns += `<button class="pub-page-btn${i===pubPage?' active':''}" data-p="${i}">${i+1}</button>`;
+    }
+    btns += `<button class="pub-page-btn arrow" id="pub-next" ${pubPage===totalPages-1?'disabled':''}>&#8594;</button>`;
+    pg.innerHTML = btns;
+
+    document.getElementById('pub-page-info').textContent =
+      `顯示第 ${start+1}–${Math.min(start+PUB_PER_PAGE,total)} 筆，共 ${total} 筆著作`;
+
+    // 事件綁定
+    pg.querySelectorAll('[data-p]').forEach(b=>
+      b.addEventListener('click',()=>{pubPage=+b.dataset.p;renderPubs();
+        document.getElementById('publications').scrollIntoView({behavior:'smooth',block:'start'});}));
+    const prev = document.getElementById('pub-prev');
+    const next = document.getElementById('pub-next');
+    if(prev) prev.addEventListener('click',()=>{if(pubPage>0){pubPage--;renderPubs();
+      document.getElementById('publications').scrollIntoView({behavior:'smooth',block:'start'});}});
+    if(next) next.addEventListener('click',()=>{if(pubPage<totalPages-1){pubPage++;renderPubs();
+      document.getElementById('publications').scrollIntoView({behavior:'smooth',block:'start'});}});
+  }
+  renderPubs();
+
+  // PROJECTS tabs
+  renderProjects('current');
+  document.querySelectorAll('.proj-tab').forEach(b=>{
+    b.addEventListener('click',()=>renderProjects(b.dataset.tab));
+  });
+  // 確保 patent/past 面板初始隱藏
+  document.getElementById('proj-panel-patent').style.display='none';
+  document.getElementById('proj-panel-past').style.display='none';
+
+  // TEAM
+  const pi = DATA.members.find(m=>m.isPI);
+  const phd = DATA.members.filter(m=>m.group==='phd');
+  const ms  = DATA.members.filter(m=>m.group==='ms');
+  const ra  = DATA.members.filter(m=>m.group==='ra');
+  const alumni = DATA.members.filter(m=>m.group==='alumni');
+
+  const memberCard = m=>`
+    <div class="member-card">
+      <div class="member-avatar">${m.avatar}</div>
+      <h4>${m.name}</h4>
+      ${m.nameEn?`<div class="member-en">${m.nameEn}</div>`:''}
+      <div class="member-role">${m.role}</div>
+      ${m.since?`<div class="member-desc">加入：${m.since}</div>`:''}
+      ${m.topic?`<div class="member-topic">🔍 ${m.topic}</div>`:''}
+      ${m.desc&&!m.isPI?`<div class="member-desc">${m.desc}</div>`:''}
+    </div>`;
+
+  const alumniCard = m=>`
+    <div class="alumni-card">
+      <div class="alumni-dot">${m.avatar}</div>
+      <div class="alumni-info">
+        <h5>${m.name}${m.nameEn?` <span style="font-weight:400;font-size:.8rem;color:var(--muted)">${m.nameEn}</span>`:''}</h5>
+        <p>${m.role}${m.dest?' · '+m.dest:''}</p>
+      </div>
+    </div>`;
+
+  document.getElementById('team-container').innerHTML = `
+    <div class="pi-card">
+      <div class="pi-avatar">${pi.avatar}</div>
+      <div class="pi-info">
+        <h4>${pi.name}</h4>
+        <div class="pi-en">${pi.nameEn}</div>
+        <div class="member-role">${pi.role}</div>
+        <p>${pi.desc}</p>
+      </div>
+    </div>
+    ${phd.length?`<div class="team-section-title">🎓 博士研究生</div><div class="team-grid">${phd.map(memberCard).join('')}</div>`:''}
+    ${ms.length?`<div class="team-section-title">📚 碩士研究生</div><div class="team-grid">${ms.map(memberCard).join('')}</div>`:''}
+    ${ra.length?`<div class="team-section-title">🔭 研究助理</div><div class="team-grid">${ra.map(memberCard).join('')}</div>`:''}
+    ${alumni.length?`<div class="team-section-title">🎓 畢業校友 Alumni</div><div class="alumni-grid">${alumni.map(alumniCard).join('')}</div>`:''}`;
+
+  // COURSES
+  document.getElementById('course-grid').innerHTML = DATA.courses.map(c=>`
+    <div class="course-card">
+      <div class="course-icon">${c.icon}</div>
+      <span class="course-badge ${c.badge}">${c.badgeLabel}</span>
+      <h3>${c.title}</h3><p>${c.desc}</p>
+    </div>`).join('');
+}
+
+function renderProjects(tab){
+  document.querySelectorAll('.proj-tab').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+
+  const panelCurrent = document.getElementById('proj-panel-current');
+  const panelPatent  = document.getElementById('proj-panel-patent');
+  const panelPast    = document.getElementById('proj-panel-past');
+
+  panelCurrent.style.display = tab==='current' ? 'grid' : 'none';
+  panelPatent.style.display  = tab==='patent'  ? 'block': 'none';
+  panelPast.style.display    = tab==='past'    ? 'grid' : 'none';
+
+  if(tab==='current'){
+    panelCurrent.innerHTML = DATA.projects.current.map(p=>`
+      <div class="proj-card">
+        <div class="proj-icon">${p.icon}</div>
+        <h3>${p.title}</h3>
+        <div class="proj-period">📅 ${p.period}</div>
+        ${p.source?`<div class="proj-source">🏢 ${p.source}</div>`:''}
+        <p>${p.desc}</p>
+        <div class="proj-meta">${p.tags.map(t=>`<span class="proj-tag${t.includes('產學')?' collab':''}">${t}</span>`).join('')}</div>
+      </div>`).join('');
+  }
+
+  if(tab==='patent'){
+    panelPatent.innerHTML = `<div class="patent-list">${DATA.projects.patents.map(p=>`
+      <div class="patent-card">
+        <div class="patent-icon">${p.icon}</div>
+        <div class="patent-content">
+          <div class="patent-title">${p.title}</div>
+          <div class="patent-meta">
+            <span class="patent-badge pb-year">${p.year}</span>
+            <span class="patent-badge pb-region">🌐 ${p.region}</span>
+            <span class="patent-badge pb-number">📋 ${p.number}</span>
+            ${p.licensee?`<span class="patent-badge pb-licensee">🏢 授權：${p.licensee}</span>`:''}
+          </div>
+          <div class="patent-desc">${p.desc}</div>
+        </div>
+      </div>`).join('')}</div>`;
+  }
+
+  if(tab==='past'){
+    panelPast.innerHTML = DATA.projects.past.map(p=>`
+      <div class="proj-card past">
+        <div class="proj-icon">${p.icon}</div>
+        <h3>${p.title}</h3>
+        <div class="proj-period">📅 ${p.period}</div>
+        ${p.source?`<div class="proj-source">🏢 ${p.source}</div>`:''}
+        <p>${p.desc}</p>
+        <div class="proj-meta">${p.tags.map(t=>`<span class="proj-tag past-tag">${t}</span>`).join('')}</div>
+      </div>`).join('');
+  }
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  render();
+  // HIGHLIGHTS SLIDESHOW
+  let hlFilter = 'all', hlIndex = 0, hlFiltered = [];
+  const typeLabel = {award:'🏆 獲獎', activity:'📸 活動', conference:'✈️ 研討會'};
+  const typeClass = {award:'ht-award', activity:'ht-activity', conference:'ht-conference'};
+
+  function buildHL(){
+    hlFiltered = hlFilter==='all' ? DATA.highlights : DATA.highlights.filter(h=>h.type===hlFilter);
+    hlIndex = 0;
+    renderHL();
+  }
+
+  function renderHL(){
+    const track = document.getElementById('hl-track');
+    const perView = window.innerWidth <= 768 ? 1 : 3;
+    track.innerHTML = hlFiltered.map(h=>`
+      <div class="hl-card">
+        ${h.image ? `<img class="hl-img" src="${h.image}" alt="${h.title}"/>`
+          : `<div class="hl-placeholder">${h.emoji}</div>`}
+        <div class="hl-body">
+          <div class="hl-meta">
+            <span class="hl-year">${h.year}</span>
+            <span class="hl-type ${typeClass[h.type]}">${typeLabel[h.type]}</span>
+          </div>
+          <h4>${h.title}</h4>
+          <p>${h.desc}</p>
+        </div>
+      </div>`).join('');
+
+    // dots
+    const maxIdx = Math.max(0, hlFiltered.length - perView);
+    const dots = document.getElementById('hl-dots');
+    dots.innerHTML = Array.from({length: maxIdx+1}, (_,i)=>
+      `<div class="hl-dot${i===hlIndex?' active':''}" data-i="${i}"></div>`).join('');
+    dots.querySelectorAll('.hl-dot').forEach(d=>
+      d.addEventListener('click',()=>{hlIndex=+d.dataset.i;moveHL();}));
+    moveHL();
+  }
+
+  function moveHL(){
+    const track = document.getElementById('hl-track');
+    const card = track.querySelector('.hl-card');
+    if(!card) return;
+    const perView = window.innerWidth <= 768 ? 1 : 3;
+    const maxIdx = Math.max(0, hlFiltered.length - perView);
+    hlIndex = Math.max(0, Math.min(hlIndex, maxIdx));
+    const gap = 24;
+    const w = card.offsetWidth + gap;
+    track.style.transform = `translateX(-${hlIndex * w}px)`;
+    document.querySelectorAll('.hl-dot').forEach((d,i)=>
+      d.classList.toggle('active', i===hlIndex));
+  }
+
+  document.getElementById('hl-prev').addEventListener('click',()=>{hlIndex--;moveHL();});
+  document.getElementById('hl-next').addEventListener('click',()=>{hlIndex++;moveHL();});
+  document.querySelectorAll('.hl-tab').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.hl-tab').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    hlFilter = b.dataset.filter;
+    buildHL();
+  }));
+  window.addEventListener('resize', renderHL);
+  buildHL();
+});
+</script>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🔬 王文宏實驗室</div>
+  <ul class="nav-links">
+    <li><a href="#home">首頁</a></li>
+    <li><a href="#news">最新消息</a></li>
+    <li><a href="#about">關於</a></li>
+    <li><a href="#research-topics">研究主題</a></li>
+    <li><a href="#publications">著作</a></li>
+    <li><a href="#projects">研究計畫</a></li>
+    <li><a href="#team">實驗室</a></li>
+    <li><a href="#highlights">獲獎活動</a></li>
+    <li><a href="#teaching">教學</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <svg style="position:absolute;right:-60px;top:50%;transform:translateY(-50%);opacity:.06;width:500px;" viewBox="0 0 400 800" fill="none">
+    <g stroke="white" stroke-width="2">
+      <path d="M100 0 Q300 100 100 200 Q-100 300 100 400 Q300 500 100 600 Q-100 700 100 800" fill="none"/>
+      <path d="M300 0 Q100 100 300 200 Q500 300 300 400 Q100 500 300 600 Q500 700 300 800" fill="none"/>
+      <line x1="100" y1="50" x2="300" y2="50"/><line x1="140" y1="100" x2="260" y2="100"/>
+      <line x1="100" y1="150" x2="300" y2="150"/><line x1="130" y1="200" x2="270" y2="200"/>
+      <line x1="100" y1="250" x2="300" y2="250"/><line x1="100" y1="300" x2="300" y2="300"/>
+      <line x1="130" y1="350" x2="270" y2="350"/><line x1="100" y1="400" x2="300" y2="400"/>
+      <line x1="140" y1="450" x2="260" y2="450"/><line x1="100" y1="500" x2="300" y2="500"/>
+      <line x1="100" y1="550" x2="300" y2="550"/><line x1="130" y1="600" x2="270" y2="600"/>
+      <line x1="100" y1="650" x2="300" y2="650"/><line x1="100" y1="700" x2="300" y2="700"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-avatar">👨‍🔬</div>
+    <div class="hero-text">
+      <h1>王文宏 <span>Wen-Hung Wang</span></h1>
+      <div class="hero-subtitle">助理教授 | Assistant Professor</div>
+      <div class="hero-inst">🏛 國立中山大學 · 學士後醫學系<br>🔬 分子病毒學實驗室（Molecular Virology Laboratory）</div>
+      <div class="hero-tags">
+        <span class="tag">🦟 登革病毒</span><span class="tag">🩸 血管通透性</span>
+        <span class="tag">🔬 外泌體 EV</span><span class="tag">🌍 新興傳染病</span>
+        <span class="tag">💊 臨床轉譯</span><span class="tag">💉 疫苗開發</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#publications" class="btn-primary">📄 著作目錄</a>
+        <a href="#team" class="btn-outline">🔬 認識實驗室</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="news">
+  <div class="section-inner">
+    <div class="section-header"><h2>📢 最新消息 News & Updates</h2><div class="bar"></div></div>
+    <div class="news-grid" id="news-grid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header"><h2>👤 關於 About</h2><div class="bar"></div></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>王文宏助理教授任職於國立中山大學學士後醫學系，主持<strong>分子病毒學實驗室</strong>。研究聚焦於病毒與宿主交互作用、新興傳染病機制，以及疫苗與治療策略的開發。</p>
+        <p>實驗室致力於探索病毒的結構和功能，尋求新的疾病預防和治療方法，並與企業和機構密切合作，將研究成果轉化為實際應用。</p>
+        <h3>🎯 核心研究方向</h3>
+        <div class="research-item"><div class="ri-dot"></div><p>登革病毒誘導 uPAR 表達與作用機制</p></div>
+        <div class="research-item"><div class="ri-dot"></div><p>EV（exosome）介導之免疫與內皮調控</p></div>
+        <div class="research-item"><div class="ri-dot"></div><p>臨床轉譯：TXA 與廣效中和抗體為核心的登革熱治療策略</p></div>
+        <div class="research-item"><div class="ri-dot"></div><p>新興及再現傳染病之監測與疫苗研發</p></div>
+      </div>
+      <div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="s-icon">📄</div><div class="s-num">20+</div><div class="s-label">期刊論文</div></div>
+          <div class="stat-box"><div class="s-icon">📘</div><div class="s-num">1</div><div class="s-label">學術專書</div></div>
+          <div class="stat-box"><div class="s-icon">🌍</div><div class="s-num">5+</div><div class="s-label">國際合作機構</div></div>
+          <div class="stat-box"><div class="s-icon">🏆</div><div class="s-num">2026</div><div class="s-label">最新發表</div></div>
+        </div>
+        <div class="focus-box">
+          <h4>🔗 學術連結</h4>
+          <div class="focus-item">📧 bole0918@gmail.com</div>
+          <div class="focus-item">🏛 國立中山大學 · 學士後醫學系</div>
+          <div class="focus-item">🔬 分子病毒學實驗室</div>
+          <div class="focus-item">🌐 <a href="https://bole0918.github.io/Virology-Lab/#/home" target="_blank" style="color:var(--gold);">舊版實驗室網站</a></div>
         </div>
       </div>
-      <nav id="mobileNav" class="md:hidden collapsible" aria-expanded="false">
-        <ul id="mobileNavList" class="flex flex-col gap-2 pb-3 text-sm"></ul>
-      </nav>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- =========================== -->
-  <!-- Main                        -->
-  <!-- =========================== -->
-  <main class="max-w-6xl mx-auto px-4 py-8 md:py-12">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-      <!-- Left: Navigation (desktop) -->
-      <aside class="md:col-span-3 hidden md:block">
-        <nav class="sticky top-24">
-          <ul id="sideNav" class="space-y-1"></ul>
-        </nav>
-      </aside>
-      <!-- Right: Content -->
-      <section class="md:col-span-9">
-        <div id="pageRoot" class="space-y-8"></div>
-      </section>
+<!-- RESEARCH TOPICS -->
+<section id="research-topics">
+  <div class="section-inner">
+    <div class="section-header"><h2>🧬 研究主題 Research Topics</h2><div class="bar"></div>
+      <p>三大核心研究方向，從基礎機制到臨床應用</p></div>
+    <div class="topics-grid">
+      <div class="topic-card"><div class="topic-icon">🩸</div><div class="topic-num">01</div>
+        <h3>登革熱病毒與血管通透性</h3>
+        <p>聚焦 tPA、uPA/uPAR 與 plasmin 對內皮完整性的影響，探討與 focal adhesion（Talin/FAK）之關聯，並建立臨床通透性相關生物標記。</p></div>
+      <div class="topic-card"><div class="topic-icon">🔬</div><div class="topic-num">02</div>
+        <h3>外泌體（EV）在感染中的功能</h3>
+        <p>解析 EV 在登革病毒感染中媒介之跨細胞通訊與免疫調控機制，建立血清 EV 伴隨診斷與疾病嚴重程度分類的可能性。</p></div>
+      <div class="topic-card"><div class="topic-icon">💊</div><div class="topic-num">03</div>
+        <h3>臨床轉譯：TXA 藥物與廣效中和抗體</h3>
+        <p>以 Tranexamic Acid（TXA）減少登革病毒引起的血漿外滲，結合臨床資料驗證；同步開發廣效中和抗體作為多血清型登革熱治療策略。</p></div>
     </div>
-  </main>
+  </div>
+</section>
 
-  <!-- =========================== -->
-  <!-- Footer                      -->
-  <!-- =========================== -->
-  <footer class="border-t border-slate-200 dark:border-slate-800 py-8">
-    <div class="max-w-6xl mx-auto px-4 text-sm flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-8 justify-between">
-      <div>
-        <div class="font-semibold" id="footerName">研究者姓名</div>
-        <div class="text-slate-500 dark:text-slate-400" id="footerAffil">單位與職稱</div>
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-header"><h2>📄 著作目錄 Publications</h2><div class="bar"></div></div>
+    <div class="pub-list" id="pub-list"></div>
+    <div class="pub-pagination" id="pub-pagination"></div>
+    <div class="pub-page-info" id="pub-page-info"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-header"><h2>🏛 研究計畫與產學合作</h2><div class="bar"></div></div>
+    <div class="proj-tabs">
+      <button class="proj-tab active" data-tab="current">🟢 現行計畫</button>
+      <button class="proj-tab" data-tab="patent">📜 專利授權</button>
+      <button class="proj-tab" data-tab="past">📁 歷年計畫</button>
+    </div>
+    <div id="proj-panel-current" class="proj-panel active"></div>
+    <div id="proj-panel-patent" class="proj-panel"></div>
+    <div id="proj-panel-past" class="proj-panel"></div>
+
+    <!-- 產學合作徵求 Banner -->
+    <div class="collab-banner">
+      <div class="collab-icon">🤝</div>
+      <div class="collab-text">
+        <h3>誠徵產學合作夥伴 Seeking Industry Collaboration</h3>
+        <p>分子病毒學實驗室積極尋求與生技醫藥、體外診斷、抗體開發等相關產業合作，共同將基礎研究成果轉化為臨床與商業應用。歡迎企業、新創公司或研究機構來信洽談合作可能。</p>
+        <div class="collab-tags">
+          <span class="collab-tag">🦟 登革熱診斷試劑</span>
+          <span class="collab-tag">💊 抗病毒藥物開發</span>
+          <span class="collab-tag">🔬 生物感測器技術</span>
+          <span class="collab-tag">💉 疫苗與抗體平台</span>
+          <span class="collab-tag">🧬 精準醫療應用</span>
+        </div>
+        <a href="mailto:wenhung@mail.nsysu.edu.tw" class="collab-cta">📬 來信洽談合作</a>
       </div>
-      <div id="footerLinks" class="flex flex-wrap gap-3"></div>
-      <div class="text-slate-500 dark:text-slate-400">© <span id="year"></span> All rights reserved.</div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- =========================== -->
-  <!-- Editable Site Data (JUST edit the JSON below; no code changes needed) -->
-  <!-- 說明：您只要編輯下方這段 JSON，就能更新全站內容、增加分頁、換圖片。        -->
-  <!--     1) 姓名/頭像/單位改在 profile 區塊。                                           -->
-  <!--     2) 新增分頁：在 pages 陣列新增一個物件（type 可選 markdown/projects/publications/news/contact/students/gallery/home）。-->
-  <!--     3) 發表/計畫：直接在 publications / projects 陣列增修。                          -->
-  <!--     4) 圖片：把圖片檔放在與此檔相同資料夾，或填入外部連結 URL。                        -->
-  <script id="site-data" type="application/json">
-  {
-    "profile": {
-      "nameZh": "王文宏",
-      "nameEn": "Wen-Hung Wang",
-      "title": "國立中山大學 學士後醫學系｜助理教授",
-      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=200&auto=format&fit=crop",
-      "location": "高雄，台灣",
-      "keywords": ["Virology", "Dengue", "Exosome", "uPA/uPAR", "Fibrinolysis"],
-      "contacts": [
-        { "label": "Email", "href": "mailto:wenhung@mail.nsysu.edu.tw" },
-        { "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=EqXibw0AAAAJ&hl=zh-TW" },
-        { "label": "ORCID", "href": "https://orcid.org/0000-0002-4494-1123" },
-        { "label": "GitHub", "href": "https://github.com/" }
-      ]
-    },
+<!-- HIGHLIGHTS -->
+<section id="highlights">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>🌟 獲獎與活動 Highlights</h2>
+      <div class="bar"></div>
+      <p style="color:#9aa8c8;">實驗室的精彩時刻與重要里程碑</p>
+    </div>
+    <div class="hl-tabs">
+      <button class="hl-tab active" data-filter="all">全部</button>
+      <button class="hl-tab" data-filter="award">🏆 獲獎</button>
+      <button class="hl-tab" data-filter="activity">📸 實驗室活動</button>
+      <button class="hl-tab" data-filter="conference">✈️ 研討會/出國</button>
+    </div>
+    <div class="hl-slider">
+      <div class="hl-track" id="hl-track"></div>
+    </div>
+    <div class="hl-nav">
+      <button class="hl-btn" id="hl-prev">&#8592;</button>
+      <div class="hl-dots" id="hl-dots"></div>
+      <button class="hl-btn" id="hl-next">&#8594;</button>
+    </div>
+  </div>
+</section>
 
-    "pages": [
-      { 
-       "id": "home", 
-       "title": "首頁", 
-       "icon": "🏠", 
-       "type": "home", 
-       "hero": { "src": "", "alt": "Wen-Hung Wang" },
-       "content": 
-       "# 探索無限的病毒學世界\n分子病毒學實驗室（Molecular Virology Laboratory）\n\n分子病毒學實驗室致力於探索病毒的結構和功能,並尋求新的疾病預防和治療方法。我們擁有經驗豐富的研究團隊,在病毒基因組分析和疫苗開發等領域有出色的成就。我們與企業和機構密切合作,將研究成果轉化為實際應用,為人類健康做出貢獻。\n\n目前的研究聚焦於：\n- 登革病毒誘導 uPAR 表達與作用機制\n- EV(exosome) 介導之免疫與內皮調控\n- 臨床轉譯：以 TXA 與廣效中和抗體為核心的登革熱治療策略"
-      },
+<!-- TEAM -->
+<section id="team">
+  <div class="section-inner">
+    <div class="section-header"><h2>👥 實驗室成員 Lab Members</h2><div class="bar"></div></div>
+    <div id="team-container"></div>
+  </div>
+</section>
 
-      { 
-        "id": "research",
-        "title": "研究主題",
-        "icon": "🔬",
-        "type": "research",
-        "research_topics": [
-          {
-            "title": "登革熱病毒與血管通透性",
-            "image": "virus1.webp",
-            "description": "聚焦tPA、uPA/uPAR與plasmin對內皮完整性的影響，並探討與focal adhesion（如 Talin/FAK）之關聯。亦結合臨床資料建立通透性相關生物標記。",
-            "links": [{ "text": "計畫摘要", "url": "#" }]
-          },
-          {
-            "title": "外泌體（EV）在感染中的功能",
-            "image": "virus2.webp",
-            "description": "解析 EV 在登革病毒感染過程中媒介之跨細胞通訊與免疫調控；建立血清 EV 伴隨診斷與疾病嚴重程度分類的可能性。",
-            "links": [{ "text": "海報下載", "url": "#" }]
-          },
-          {
-            "title": "臨床轉譯研究：TXA藥物與廣效中和抗體之研究",
-            "image": "virus3.webp",
-            "description": "以 TXA藥物減少登革病毒感染引起的血漿外滲與臨床資料驗證。",
-            "links": [{ "text": "相關論文", "url": "https://doi.org/10.1016/j.jmii.2020.03.007" }]
-          }
-        ]
-      },
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-inner">
+    <div class="section-header"><h2>📚 教學課程 Teaching</h2><div class="bar"></div>
+      <p>國立中山大學 · 學士後醫學系</p></div>
+    <div class="course-grid" id="course-grid"></div>
+  </div>
+</section>
 
-      { "id": "projects", "title": "研究計畫", "icon": "🔬", "type": "projects" },
-
-      { "id": "publications", "title": "期刊論文", "icon": "📚", "type": "publications" },
-
-      { 
-        "id": "industry", 
-        "title": "專利與產學合作", 
-        "icon": "🤝", 
-        "type": "markdown", 
-        "content": [
-          "## 專利\n- 新冠肺炎恆溫式圈環核酸增幅法引子設計序列(台灣/美國)(US63/031,14)（2020）\n- 專利授權: 新冠病毒核酸檢測試劑，緊急專案核准製造-麥博森股份有限公司(防疫專案核准製造第1096821155號)",
-          "## 產學合作方向\n- 抗病毒藥物與抗體開發\n- 病毒快速檢測與臨床決策支援\n- EV 生物標記、診斷及應用\n\n> [red]**歡迎來信洽談合作與技術轉移**[/red]。",
-          "## 歷年產學合作紀錄\n- 化粧品中微生物檢測與防腐試效能試驗 - 采伊美學有限公司 (2025)\n- 抗病毒防護液試驗 - 㜰芙國際有限公司 (2023)\n- 免培養之結核菌抗原檢測試劑組之效力分析 - TAUNS Laboratories, Inc, Japan (2018)\n- 登革熱病毒核酸分子檢測試劑開發應用(泉沂醫學科技-科技部南科管理局產學合作計畫)\n- 精準判讀肺結核桿菌活性之自動化核酸萃取與檢測系統 (科技部南科管理局產學合作計畫)"
-        ]
-      },
-
-      { "id": "news", "title": "最新消息", "icon": "🗞️", "type": "news" },
-
-      { "id": "teaching", "title": "指導學生", "icon": "🎓", "type": "students" },
-
-      { "id": "contact", "title": "聯絡", "icon": "✉️", "type": "contact" }
-    ],
-                   
-    "projects": [
-      {
-        "title": "DENV 感染下 uPAR 介導 EV 訊號與內皮通透性",
-        "sponsor": "NEW",
-        "period": "2025–2027",
-        "status": "進行中",
-        "summary": "結合單細胞分析與 EV 功能學，釐清 uPAR/Plasmin 軸在血管滲漏中的角色。",
-        "links": [{"label":"計畫簡介PDF","href":"#"}]
-      },
-      {
-        "title": "廣效中和抗體工程與逃逸突變預測",
-        "sponsor": "Cooperation",
-        "period": "2024–2027",
-        "status": "進行中",
-        "summary": "預測登革病毒E蛋白質與廣效中和抗體交互作用，且優化抗體廣度與效力。",
-        "links": []
-      },
-      {
-        "title": "評估傳明酸(TXA)做為緩解登革病毒誘發的血管滲漏和出血的治療選擇",
-        "sponsor": "MOST",
-        "period": "2024/8/1–2025/7/31",
-        "status": "結案",
-        "summary": "以 TXA 藥物減少登革病毒感染引起的血漿外滲與臨床資料驗證。",
-        "links": []
-      },
-      {
-        "title": "登革病毒活化血纖維蛋白溶解酶原促進內皮細胞血漿滲漏",
-        "sponsor": "MOST",
-        "period": "2023/8/1–2024/7/31",
-        "Number": "MOST 111-2621-B-001-001-MY3",
-        "status": "結案",
-        "summary": "登革病毒感染引起纖溶系統活化，導致血漿外滲之研究。",
-        "links": []
-      }
-    ],
-
-    "interests": ["病毒致病機轉", "內皮通透性", "焦點黏附（Talin/FAK）", "外泌體訊息傳遞", "廣效中和抗體設計", "臨床轉譯與生物標記"],
-
-    "publications": [
-
-          {
-            "title": "Development of the novel gene chip and restriction fragment length polymorphism (RFLP) methods for rapid detection of Mycobacterium tuberculosis complex in broth culture",
-            "authors": ["Wen-Hung Wang", "Chun-Yu Lin", "Shu-Huei Jain", "Po-Liang Lu", "Yen-Hsu Chen"],
-            "venue": "Journal of Microbiology, Immunology and Infection, 58(1), 56-61",
-            "year": 2025,
-            "doi": "10.1016/j.jmii.2024.09.003",
-            "tags": ["Diagnostics", "Tuberculosis"],
-            "citations": 3
-          },
-          {
-            "title": "Antibodies from dengue patients with prior exposure to Japanese encephalitis virus are broadly neutralizing against Zika virus",
-            "authors": ["Gielenny M Salem", "Jedhan Ucat Galula", "Shang-Rung Wu", "Jyung-Hurng Liu", "Jyung-Hurng Liu", "Yen-Hsu Chen", "Wen-Hung Wang", "Sheng-Fan Wang", "Cheng-Sheng Song", "Fan-Chi Chen", "Adrian B Abarientos", "Guan-Wen Chen", "Cheng-I Wang", "Day-Yu Chao"],
-            "venue": "Communications Biology, 7(1), 15",
-            "year": 2024,
-            "doi": "10.1038/s42003-023-05661-w",
-            "tags": ["Dengue", "Zika", "Neutralizing antibodies"],
-            "citations": 5
-          },
-          { 
-            "title": "Boosting the detection performance of severe acute respiratory syndrome coronavirus 2 test through a sensitive optical biosensor with new superior antibody",
-            "authors": ["Lin CY", "Wang Wen-Hung", "Li MC", "Lin YT", "Yang ZS", "Urbina AN", "Assavalapsakul W", "Thitithanyanont A", "Chen KR", "Kuo CC", "Lin YX", "Hsiao HH", "Lin KD", "Lin SY", "Chen YH", "Yu ML", "Su LC", "Wang SF"],
-            "venue": "Bioeng Transl Med. 2022 Sep 16;8(5):e10410.",
-            "year": 2022,
-            "doi": "10.1002/btm2.10410",
-            "tags": ["COVID-19", "SARS-CV2", "Biosensor"],
-            "citations": 6
-          },
-          {
-            "title": "Obesity as a clinical predictor for severe manifestation of dengue: a systematic review and meta-analysis",
-            "authors": ["Chao-Ying Chen", "Yu-Yao Chiu", "Yu-Cheng Chen", "Chung-Hao Huang", "Wen-Hung Wang", "Yen-Hsu Chen", "Chun-Yu Lin"],
-            "venue": "BMC Infectious Diseases, 23(1), 502",
-            "year": 2023,
-            "doi": "10.1186/s12879-023-08481-9",
-            "tags": ["Dengue", "Obesity", "Meta-analysis"],
-            "citations": 24
-          },
-          {
-            "title": "A novel, rapid (within hours) culture-free diagnostic method for detecting live Mycobacterium tuberculosis with high sensitivity",
-            "authors": ["Wen-Hung Wang", "Rikiya Takeuchi", "Shu-Huei Jain", "Yong-Huang Jiang", "Sonoko Watanuki", "Yoshiharu Ohtaki", "Kazunari Nakaishi", "Satoshi Watabe", "Po-Liang Lu", "Etsuro Ito"],
-            "venue": "EBiomedicine, 60, 103007",
-            "year": 2020,
-            "doi": "10.1016/j.ebiom.2020.103007",
-            "tags": ["Tuberculosis", "Detection", "culture-free"],
-            "citations": 36
-          },
-          {
-            "title": "The association of obesity and dengue severity in hospitalized adult patients ",
-            "authors": ["Yu-Yao Chiu", "Chun-Yu Lin", "Ling-Shan Yu", "Wen-Hung Wang", "Chung-Hao Huang", "Yen-Hsu Chen"],
-            "venue": "Journal of Microbiology, Immunology and Infection, 56(2), 267-273",
-            "year": 2023,
-            "doi": "10.1016/j.jmii.2022.08.008",
-            "tags": ["Dengue", "Clinical"],
-            "citations": 21
-          },
-          {
-            "title": "Quantitative detection of dengue serotypes using a smartphone-connected handheld lab-on-chip platform",
-            "authors": ["Nicolas Moser", "Ling-Shan Yu", "Jesus Rodriguez Manzano", "Kenny Malpartida-Cardenas", "Anselm Au", "Paul Arkell", "Chiara Cicatiello", "Ahmad Moniri", "Luca Miglietta", "Wen-Hung Wang", "Sheng-Fan Wang", "Alison Holmes", "Yen-Hsu Chen", "Pantelis Georgiou"],
-            "venue": "Frontiers in Bioengineering and Biotechnology, 10, 892853",
-            "year": 2022,
-            "doi": "10.3389/fbioe.2022.892853",
-            "tags": ["Diagnostics", "Dengue", "Point-of-care"],
-            "citations": 22
-          },
-          {
-            "title": "Synthesis, Assembly and Processing of Viral Proteins",
-            "authors": ["Wen-Hung Wang", "Arunee Thitithanyanont", "Sheng-Fan Wang"],
-            "venue": "Viruses, 14(8), 1650",
-            "year": 2022,
-            "doi": "10.3390/v14081650",
-            "tags": ["Review", "Virology"],
-            "citations": 4
-          },
-          {
-            "title": "DC-SIGN and Galectin-3 individually and collaboratively regulate H5N1 and H7N9 avian influenza A virus infection via interaction with viral envelope hemagglutinin protein",
-            "authors": ["Zih-Syuan Yang", "Wen-Hung Wang", "Yu-Ting Lin", "Chih-Yen Lin", "Aspiro Nayim Urbina", "Arunee Thitithanyanont", "Po-Liang Lu", "Yen-Hsu Chen", "Sheng-Fan Wang"],
-            "venue": "Glycobiology, 33(4), 311-324",
-            "year": 2023,
-            "doi": "10.3390/v13102034",
-            "tags": ["Dengue", "Autophagy"],
-            "citations": 4
-          },
-          {
-            "title": "Mono-(2-ethylhexyl) phthalate Promotes Dengue Virus Infection by Decreasing IL-23-Mediated Antiviral Responses",
-            "authors": ["Chun-Yu Lin", "Chung-Hao Huang", "Wen-Hung Wang", "Jyrki Tenhunen", "Ling-Chien Hung", "Chi-Chou Lin", "Yu-Cheng Chen", "Yen-Hsu Chen", "Wei-Ting Liao"],
-            "venue": "Frontiers in Immunology",
-            "year": 2021,
-            "doi": "10.3389/fimmu.2021.599345",
-            "tags": ["Dengue", "Immunology"],
-            "citations": 0
-          },
-          {
-            "title": "Dengue hemorrhagic fever - A systemic literature review of current perspectives on pathogenesis, prevention and control",
-            "authors": ["Wen-Hung Wang", "Aspiro Nayim Urbina", "Max R Chang", "Wanchai Assavalapsakul", "Po-Liang Lu", "Yen-Hsu Chen", "Sheng-Fan Wang"],
-            "venue": "Journal of Microbiology, Immunology and Infection, 53(6), 963-978",
-            "year": 2020,
-            "doi": "10.1016/j.jmii.2020.03.007",
-            "tags": ["Dengue", "Review"],
-            "citations": 390
-          },
-          {
-            "title": "The role of galectins in virus infection - A systemic literature review",
-            "authors": ["Wen-Hung Wang", "Chih-Yen Lin", "Max R Chang", "Po-Liang Lu", "Yen-Hsu Chen", "Sheng-Fan Wang"],
-            "venue": "Journal of Microbiology, Immunology and Infection, 53(6), 925-935",
-            "year": 2020,
-            "doi": "10.1016/j.jmii.2019.09.005",
-            "tags": ["Galectins", "Review", "Virus-host interactions"],
-            "citations": 131
-          }
-    ],
-
-    "news": [
-      { "date": "2025-01-01", "title": "獲114年中山高醫合作計畫補助", "desc": "Talin 參與登革熱感染引起之血管通透與疾病嚴重程度之相互作用:治療新策略 (2025/1/1-2025/12/31)。" },
-      { "date": "2024-09-23", "title": "論文接受", "desc": "Development of the novel Gene Chip and Restriction Fragment Length Polymorphism (RFLP) methods for rapid detection of Mycobacterium tuberculosis complex in broth culture. - Journal of Microbiology Immunology and Infection." }
-    ],
-
-    "students": {
-      "current": [
-        { "name": "張小明", "degree": "碩二", "years": "2024–", "topic": "uPAR 與內皮通透性", "avatar": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200", "links": [] },
-        { "name": "李小華", "degree": "博一", "years": "2025–", "topic": "EV 與纖溶系統交互", "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200", "links": [] }
-      ],
-      "alumni": [
-        { "name": "黃勛", "degree": "碩士（2025）", "years": "2023–2025", "topic": "登革病毒對纖維溶解系統及血管通透性的調節及血栓溶解抑制劑的潛在治療作用。", "avatar": "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=200", "links": [ {"label":"論文","href":"#"} ] }
-      ]
-    },
-
-    "gallery": [
-      { "src": "https://images.unsplash.com/photo-1581091870622-7c61fc4b2b9b?w=1200", "alt": "實驗室儀器", "caption": "顯微鏡觀察日常" },
-      { "src": "https://images.unsplash.com/photo-1532634896-26909d0d4b6a?w=1200", "alt": "研究會議", "caption": "每週 Journal Club" },
-      { "src": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200", "alt": "校園風景", "caption": "中山大學海景" }
-    ]
-  }
-  </script>
-
-  <!-- =========================== -->
-  <!-- Render Logic (no framework) -->
-  <!-- =========================== -->
-  <script>
-    const $ = (sel, root = document) => root.querySelector(sel);
-    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-
-    // Parse JSON config (will throw if invalid) — basic self-test
-    const rawData = document.getElementById('site-data').textContent;
-    let data;
-    try {
-      data = JSON.parse(rawData);
-    } catch (e) {
-      console.error('[CONFIG ERROR] JSON 解析失敗：', e);
-      throw e; // stop here if config is broken
-    }
-
-    // ---------- DEV: Self-tests (simple runtime checks) ----------
-    (function selfTests(){
-      try {
-        console.assert(typeof data.profile.nameZh === 'string' && data.profile.nameZh.length > 0, 'profile.nameZh 應為非空字串');
-        console.assert(Array.isArray(data.pages) && data.pages.some(p=>p.id==='publications'), 'pages 應包含 publications 分頁');
-        console.assert(Array.isArray(data.news), 'news 應為陣列');
-        console.assert(data.pages.find(p=>p.id==='home' && p.type==='home'), 'home 分頁應存在且為 type:home');
-        console.assert(data.pages.find(p=>p.id==='teaching' && p.type==='students'), 'teaching 分頁應為 type:students');
-        // md renderer test
-        const mdIn = '# T\n**b** and *i* and [l](http://e)\n- x';
-        const mdOut = md(mdIn);
-        console.assert(/<h1/.test(mdOut) && /<strong>b<\/strong>/.test(mdOut) && /<em>i<\/em>/.test(mdOut) && /<a href=/.test(mdOut) && /<ul/.test(mdOut), 'Markdown 轉換測試');
-        console.log('%cSelf-tests passed','color:green');
-      } catch (e) { console.warn('Self-tests failed', e); }
-    })();
-
-    // ---------- Theme ----------
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    function setTheme(mode) {
-      if (mode === 'dark') document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', mode);
-      themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
-    }
-    const preferred = localStorage.getItem('theme') || 'light';
-    setTheme(preferred);
-    themeToggle.addEventListener('click', () => setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'));
-
-    // ---------- Header/Profile ----------
-    $('#siteTitle').textContent = `${data.profile.nameZh}｜${data.profile.nameEn}`;
-    $('#siteSubtitle').textContent = data.profile.title;
-    $('#footerName').textContent = `${data.profile.nameZh}（${data.profile.nameEn}）`;
-    $('#footerAffil').textContent = data.profile.title;
-    $('#year').textContent = new Date().getFullYear();
-    $('#heroAvatar').src = data.profile.avatar;
-
-    // ---------- Footer Links ----------
-    const footerLinks = document.getElementById('footerLinks');
-    data.profile.contacts.forEach(c => {
-      const a = document.createElement('a');
-      a.href = c.href; a.target = '_blank'; a.rel = 'noopener';
-      a.className = 'px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800';
-      a.textContent = c.label;
-      footerLinks.appendChild(a);
-    });
-
-    // ---------- Navigation ----------
-    function renderNav() {
-      const sideNav = document.getElementById('sideNav');
-      sideNav.innerHTML = '';
-      data.pages.forEach(p => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="#/${p.id}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 ${location.hash === '#/' + p.id ? 'bg-slate-100 dark:bg-slate-800' : ''}">${p.icon || ''}<span>${p.title}</span></a>`;
-        sideNav.appendChild(li);
-      });
-
-      const mobileNavList = document.getElementById('mobileNavList');
-      mobileNavList.innerHTML = '';
-      data.pages.forEach(p => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="#/${p.id}" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">${p.icon || ''} ${p.title}</a>`;
-        mobileNavList.appendChild(li);
-      });
-    }
-
-    // ---------- Mobile Menu ----------
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    menuBtn.addEventListener('click', () => {
-      const exp = mobileNav.getAttribute('aria-expanded') === 'true';
-      mobileNav.setAttribute('aria-expanded', !exp);
-      menuBtn.setAttribute('aria-expanded', !exp);
-    });
-
-    // ---------- Page Renderers ----------
-    const pageRoot = document.getElementById('pageRoot');
-
-    const renderers = {
-      markdown: (page) => {
-        const section = document.createElement('section');
-        section.className = 'prose dark:prose-invert max-w-none';
-        const blocks = Array.isArray(page.content) ? page.content : [page.content || ''];
-        section.innerHTML = blocks.map(b => md(b)).join('<hr class="my-6 border-slate-200 dark:border-slate-700">');
-        return section;
-      },
-
-      home: (page) => {
-        const wrap = document.createElement('div');
-        // Hero / Intro
-        const intro = document.createElement('section');
-        intro.className = 'prose dark:prose-invert max-w-none';
-        intro.innerHTML = md(page.content || '');
-        wrap.appendChild(intro);
-        // Latest News (top 3)
-        if (Array.isArray(data.news) && data.news.length) {
-          const block = document.createElement('section');
-          block.innerHTML = `
-            <div class="mt-6 flex items-center justify-between">
-              <h2 class="text-xl font-semibold">最新消息</h2>
-              <a href="#/news" class="text-sm text-sky-600 hover:underline">查看全部 →</a>
-            </div>
-            <div class="mt-3 space-y-3" id="homeNews"></div>
-          `;
-          const list = block.querySelector('#homeNews');
-          data.news.slice().sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,3).forEach(n=>{
-            const card = document.createElement('div');
-            card.className = 'rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-soft';
-            card.innerHTML = `
-              <div class="text-xs text-slate-500 dark:text-slate-400">${n.date}</div>
-              <div class="font-semibold mt-1">${n.title}</div>
-              <p class="mt-1 text-sm">${n.desc||''}</p>
-            `;
-            list.appendChild(card);
-          });
-          wrap.appendChild(block);
-        }
-        return wrap;
-      },
-
-      research: (page) => {
-  const wrap = document.createElement('div');
-  const header = document.createElement('div');
-  header.innerHTML = `
-    <h2 class="text-2xl font-semibold">研究主題</h2>
-    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">2025/8/12 新增/排序</p>
-  `;
-  wrap.appendChild(header);
-
-  const grid = document.createElement('div');
-  grid.className = 'mt-4 grid sm:grid-cols-2 gap-4';
-  wrap.appendChild(grid);
-
-  const topics = page.research_topics || [];
-  if (!topics.length) {
-    const empty = document.createElement('p');
-    empty.className = 'text-slate-500 dark:text-slate-400';
-    empty.textContent = '尚未設定研究主題。請在 JSON 的 pages[?].research_topics 陣列加入項目。';
-    grid.appendChild(empty);
-    return wrap;
-  }
-
-  topics.forEach(t => {
-    const card = document.createElement('article');
-    card.className = 'rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-soft';
-    card.innerHTML = `
-      ${t.image ? `<img src="${t.image}" alt="${t.title||''}" class="w-full h-40 object-cover">` : ''}
-      <div class="p-5">
-        <h3 class="font-semibold text-lg">${t.title||''}</h3>
-        <p class="mt-2 text-sm leading-6">${t.description||''}</p>
-        ${
-          Array.isArray(t.links) && t.links.length
-            ? `<div class="mt-3 flex flex-wrap gap-2">
-                 ${t.links.map(l => `<a target="_blank" rel="noopener" href="${l.url}" class="text-sm px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700">${l.text}</a>`).join('')}
-               </div>`
-            : ''
-        }
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-
-  return wrap;
-},
-      projects: () => {
-        const wrap = document.createElement('div');
-        // Interests
-        if (Array.isArray(data.interests) && data.interests.length) {
-          const interests = document.createElement('div');
-          interests.innerHTML = `
-            <h2 class="text-2xl font-semibold">研究計畫</h2>
-            <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">研究興趣：</div>
-            <div class="mt-2 flex flex-wrap gap-2">${data.interests.map(i=>`<span class='text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'>${i}</span>`).join('')}</div>
-          `;
-          wrap.appendChild(interests);
-        } else {
-          const h = document.createElement('h2');
-          h.className = 'text-2xl font-semibold';
-          h.textContent = '研究計畫';
-          wrap.appendChild(h);
-        }
-
-        // Head with search
-        const head = document.createElement('div');
-        head.className = 'mt-3 flex items-center justify-between gap-4';
-        head.innerHTML = `
-          <p class="text-slate-500 dark:text-slate-400 text-sm">可於下方快速檢索與篩選</p>
-          <input id="projSearch" type="search" placeholder="搜尋計畫…" class="w-56 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" />
-        `;
-        wrap.appendChild(head);
-
-        const grid = document.createElement('div');
-        grid.className = 'mt-4 grid sm:grid-cols-2 gap-4';
-        wrap.appendChild(grid);
-
-        function draw(filter = '') {
-          grid.innerHTML = '';
-          data.projects
-            .filter(p => JSON.stringify(p).toLowerCase().includes(filter.toLowerCase()))
-            .forEach(p => {
-              const card = document.createElement('article');
-              card.className = 'rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-soft';
-              card.innerHTML = `
-                <div class="flex items-center justify-between">
-                  <h3 class="font-semibold text-lg">${p.title}</h3>
-                  <span class="text-xs px-2 py-1 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300">${p.status}</span>
-                </div>
-                <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">${p.sponsor}｜${p.period}</div>
-                <p class="mt-3">${p.summary}</p>
-                ${ (p.links && p.links.length) ? `<div class="mt-3 flex flex-wrap gap-2">${p.links.map(l => `<a class='text-sm px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700' target='_blank' rel='noopener' href='${l.href}'>${l.label}</a>`).join('')}</div>` : ''}
-              `;
-              grid.appendChild(card);
-            });
-        }
-        draw();
-        head.querySelector('#projSearch').addEventListener('input', (e) => draw(e.target.value));
-
-        return wrap;
-      },
-
-      publications: () => {
-        const wrap = document.createElement('div');
-        wrap.innerHTML = `
-          <div class="flex items-center justify-between gap-4">
-            <div>
-              <h2 class="text-2xl font-semibold">期刊論文</h2>
-              <p class="text-slate-500 dark:text-slate-400 text-sm">資料維護：2025/8/12</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <input id="pubSearch" type="search" placeholder="搜尋論文…" class="w-56 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" />
-              <select id="tagFilter" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"></select>
-            </div>
-          </div>
-          <div id="pubList" class="mt-4 space-y-4"></div>
-        `;
-
-        const pubList = wrap.querySelector('#pubList');
-        const tagFilter = wrap.querySelector('#tagFilter');
-        const allTags = Array.from(new Set(data.publications.flatMap(p => p.tags || [])));
-        tagFilter.innerHTML = `<option value="">全部標籤</option>` + allTags.map(t => `<option value="${t}">${t}</option>`).join('');
-
-        function draw(filter = '', tag = '') {
-          pubList.innerHTML = '';
-          data.publications
-            .slice().sort((a,b) => (b.year||0) - (a.year||0))
-            .filter(p => JSON.stringify(p).toLowerCase().includes(filter.toLowerCase()))
-            .filter(p => !tag || (p.tags||[]).includes(tag))
-            .forEach(p => {
-              const item = document.createElement('article');
-              item.className = 'rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-soft';
-              const links = [];
-              if (typeof p.citations !== 'undefined') { links.push(`<span class='text-slate-500 dark:text-slate-400'>引用：${p.citations}</span>`); }
-              if (p.doi) links.push(`<a class='underline hover:no-underline' target='_blank' href='https://doi.org/${p.doi}'>DOI</a>`);
-              if (p.pdf) links.push(`<a class='underline hover:no-underline' target='_blank' href='${p.pdf}'>PDF</a>`);
-              const tags = (p.tags||[]).map(t => `<span class='text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'>${t}</span>`).join(' ');
-              item.innerHTML = `
-                <div class="flex flex-wrap items-start justify-between gap-2">
-                  <div>
-                    <h3 class="font-semibold">${p.title}</h3>
-                    <div class="text-sm text-slate-600 dark:text-slate-300 mt-1">${(p.authors||[]).join(', ')}</div>
-                    <div class="text-sm text-slate-500 dark:text-slate-400">${p.venue || ''}${p.year? `（${p.year}）`:''}</div>
-                  </div>
-                  <div class="text-sm flex items-center gap-3">${links.join(' · ')}</div>
-                </div>
-                <div class="mt-3 flex flex-wrap gap-2">${tags}</div>
-                <div class="mt-3">
-                  <button class="copyBib px-3 py-1 text-sm rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700">複製 BibTeX</button>
-                </div>
-              `;
-              item.querySelector('.copyBib').addEventListener('click', async () => {
-                try { await navigator.clipboard.writeText(p.bibtex || ''); alert('已複製 BibTeX'); } catch { prompt('複製以下 BibTeX：', p.bibtex || ''); }
-              });
-              pubList.appendChild(item);
-            });
-        }
-        draw();
-        wrap.querySelector('#pubSearch').addEventListener('input', (e) => draw(e.target.value, tagFilter.value));
-        tagFilter.addEventListener('change', (e) => draw(wrap.querySelector('#pubSearch').value, e.target.value));
-        return wrap;
-      },
-
-      news: () => {
-        const wrap = document.createElement('div');
-        wrap.innerHTML = `
-          <h2 class="text-2xl font-semibold">最新消息</h2>
-          <div class="mt-4 space-y-4" id="newsList"></div>
-        `;
-        const list = wrap.querySelector('#newsList');
-        data.news
-          .slice().sort((a,b) => new Date(b.date) - new Date(a.date))
-          .forEach(n => {
-            const row = document.createElement('div');
-            row.className = 'rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-soft';
-            row.innerHTML = `
-              <div class="text-sm text-slate-500 dark:text-slate-400">${n.date}</div>
-              <div class="font-semibold mt-1">${n.title}</div>
-              <p class="mt-1">${n.desc || ''}</p>
-            `;
-            list.appendChild(row);
-          });
-        return wrap;
-      },
-
-      students: () => {
-        const wrap = document.createElement('div');
-        wrap.innerHTML = `
-          <h2 class="text-2xl font-semibold">指導學生</h2>
-          <div class="mt-3 flex gap-2">
-            <button id="tabCurrent" class="px-3 py-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">在學中</button>
-            <button id="tabAlumni" class="px-3 py-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">已畢業</button>
-            <input id="studentSearch" type="search" placeholder="搜尋姓名/主題…" class="ml-auto w-56 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800" />
-          </div>
-          <div id="studentGrid" class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-        `;
-        const grid = wrap.querySelector('#studentGrid');
-        const tabCurrent = wrap.querySelector('#tabCurrent');
-        const tabAlumni = wrap.querySelector('#tabAlumni');
-        const search = wrap.querySelector('#studentSearch');
-        let mode = 'current';
-        function draw() {
-          const list = (data.students && data.students[mode]) ? data.students[mode] : [];
-          const q = (search.value||'').toLowerCase();
-          grid.innerHTML = '';
-          list.filter(s => JSON.stringify(s).toLowerCase().includes(q)).forEach(s => {
-            const card = document.createElement('article');
-            card.className = 'rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-soft flex gap-4';
-            card.innerHTML = `
-              <img src="${s.avatar||''}" alt="${s.name}" class="w-16 h-16 rounded-xl object-cover"/>
-              <div class="min-w-0">
-                <div class="font-semibold">${s.name} <span class="text-xs text-slate-500">${s.degree||''}</span></div>
-                <div class="text-sm text-slate-500 dark:text-slate-400">${s.years||''}</div>
-                <div class="mt-1 text-sm">${s.topic||''}</div>
-                ${ (Array.isArray(s.links) && s.links.length) ? `<div class="mt-2 flex flex-wrap gap-2">${s.links.map(l=>`<a class='text-xs px-2 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700' target='_blank' rel='noopener' href='${l.href}'>${l.label}</a>`).join('')}</div>` : ''}
-              </div>
-            `;
-            grid.appendChild(card);
-          });
-        }
-        draw();
-        tabCurrent.addEventListener('click', ()=>{ mode='current'; draw(); });
-        tabAlumni.addEventListener('click', ()=>{ mode='alumni'; draw(); });
-        search.addEventListener('input', draw);
-        return wrap;
-      },
-
-      gallery: () => {
-        const wrap = document.createElement('div');
-        wrap.innerHTML = `
-          <div class="flex items-center justify-between gap-4">
-            <h2 class="text-2xl font-semibold">相簿</h2>
-            <div class="text-sm text-slate-500 dark:text-slate-400">在 JSON 的 gallery 陣列新增圖片即可</div>
-          </div>
-          <div id="galGrid" class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-          <dialog id="lightbox" class="rounded-2xl p-0 bg-transparent max-w-4xl w-full">
-            <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-soft">
-              <img id="lbImg" class="w-full object-contain max-h-[80vh]"/>
-              <div id="lbCap" class="p-3 text-sm text-slate-600 dark:text-slate-300"></div>
-            </div>
-          </dialog>
-        `;
-        const grid = wrap.querySelector('#galGrid');
-        const dlg = wrap.querySelector('#lightbox');
-        const lbImg = wrap.querySelector('#lbImg');
-        const lbCap = wrap.querySelector('#lbCap');
-        (data.gallery||[]).forEach(g => {
-          const fig = document.createElement('figure');
-          fig.className = 'rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-soft';
-          fig.innerHTML = `
-            <img src="${g.src}" alt="${g.alt||''}" class="w-full h-48 object-cover cursor-zoom-in"/>
-            <figcaption class="p-3 text-sm text-slate-600 dark:text-slate-300">${g.caption||''}</figcaption>
-          `;
-          fig.querySelector('img').addEventListener('click', ()=>{ lbImg.src = g.src; lbCap.textContent = g.caption || ''; dlg.showModal(); });
-          grid.appendChild(fig);
-        });
-        dlg.addEventListener('click', (e)=>{ if(e.target===dlg) dlg.close(); });
-        return wrap;
-      },
-
-      contact: () => {
-        const wrap = document.createElement('div');
-        wrap.innerHTML = `
-          <h2 class="text-2xl font-semibold">聯絡資訊</h2>
-          <div class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-soft">
-            <p class="text-sm text-slate-600 dark:text-slate-300">${data.profile.nameZh}（${data.profile.nameEn}）｜${data.profile.title}</p>
-            <p class="mt-2">地點：${data.profile.location}</p>
-            <div class="mt-2 flex flex-wrap gap-2">${(data.profile.keywords||[]).map(k => `<span class='text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'>${k}</span>`).join('')}</div>
-            <div class="mt-4 flex flex-wrap gap-3">${data.profile.contacts.map(c => `<a class='px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700' target='_blank' rel='noopener' href='${c.href}'>${c.label}</a>`).join('')}</div>
-          </div>`;
-        return wrap;
-      }
-    };
-
-    function render(routeId) {
-      const page = data.pages.find(p => p.id === routeId) || data.pages[0];
-      document.title = `${data.profile.nameZh}｜${page.title}`;
-      renderNav();
-      pageRoot.innerHTML = '';
-
-      const header = document.createElement('div');
-      header.className = 'flex items-center justify-between';
-      header.innerHTML = `<div><div class="text-sm text-slate-500 dark:text-slate-400">${data.profile.nameZh}（${data.profile.nameEn}）</div><h1 class="text-3xl font-bold">${page.icon || ''} ${page.title}</h1></div>`;
-      pageRoot.appendChild(header);
-
-      const body = (renderers[page.type] || renderers.markdown)(page);
-      pageRoot.appendChild(body);
-
-      // scroll top for route change
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    window.addEventListener('hashchange', () => render(location.hash.replace('#/','') || 'home'));
-    // initial
-    if (!location.hash) location.hash = '#/home';
-    render(location.hash.replace('#/',''));
-  </script>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div><h4>🔬 王文宏實驗室</h4>
+      <p>分子病毒學實驗室<br>Molecular Virology Laboratory<br><br>國立中山大學 · 學士後醫學系</p></div>
+    <div><h4>📬 聯絡資訊</h4>
+      <p>📧 <a href="mailto:bole0918@gmail.com">bole0918@gmail.com</a><br><br>
+      🏛 國立中山大學<br>高雄市鼓山區蓮海路70號<br><br>歡迎有意加入的同學來信洽詢</p></div>
+    <div><h4>🧬 研究領域</h4>
+      <p>🦟 登革病毒 · 血管通透性<br>🔬 外泌體 EV · 免疫調控<br>💊 臨床轉譯研究<br>💉 疫苗 · 抗體開發<br>🌍 新興傳染病</p></div>
+  </div>
+  <div class="footer-bottom">© 2025 王文宏 · 分子病毒學實驗室 · 國立中山大學學士後醫學系 · All Rights Reserved</div>
+</footer>
 </body>
 </html>
