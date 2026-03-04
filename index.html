@@ -129,6 +129,7 @@ section{padding:80px 5%;}
   font-weight:700;padding:.2rem .55rem;border-radius:4px;white-space:nowrap;flex-shrink:0;}
 .pub-authors{font-size:.82rem;color:var(--muted);font-family:'Arial',sans-serif;margin-bottom:.2rem;}
 .pub-journal{font-size:.82rem;color:var(--gold);font-family:'Arial',sans-serif;font-style:italic;}
+.pub-metrics{font-size:.8rem;color:#6070a0;font-family:'Arial',sans-serif;margin-top:.3rem;font-weight:600;}
 .pub-pagination{display:flex;justify-content:center;align-items:center;gap:.5rem;margin-top:2rem;flex-wrap:wrap;}
 .pub-page-btn{min-width:42px;height:42px;padding:0 .9rem;border-radius:8px;
   border:1.5px solid var(--border);background:var(--white);color:var(--muted);
@@ -556,7 +557,8 @@ const DATA = {
     { year:2026, icon:'🧬', badge:'第一作者',
       title:'Dengue Virus Modulates the Fibrinolytic System to Drive Vascular Leakage and Serves as a Therapeutic Target for Tranexamic Acid',
       authors:'Wen-Hung Wang, Chun-Yu Lin, Syun Huang, Yu-Te Tsai, Sheng-Fan Wang, Tzu-Chuan Ho, Yen-Hsu Chen',
-      journal:'European Journal of Pharmacology · 2026 Feb 15;1015:178553. (Accepted)' },
+      journal:'European Journal of Pharmacology · 2026 Feb 15;1015:178553. (Accepted)',
+      metrics:'IF: 4.2 · Ranking: Q1 (Pharmacology & Pharmacy)' },
     { year:2025, icon:'🦟',
       title:'An unexpected dengue outbreak in Taiwan, 2023: A retrospective analysis of potential risk factors',
       authors:'Tung YW, Yang ZS, Wen-Hung Wang, Hsu YT, ..., Chen YH, Wang SF',
@@ -607,7 +609,7 @@ const DATA = {
       { icon:'🔬', title:'外泌體（EV）診斷平台開發', period:'2024 – 迄今', source:'產學合作企業',
         desc:'建立以血清外泌體為基礎的登革熱伴隨診斷系統，探索疾病嚴重程度分類生物標記。',
         tags:['診斷平台','外泌體','精準醫療'] },
-      { icon:'💊', title:'廣效中和抗體研發（登革熱 / 茲卡病毒）', period:'2023 – 迄今', source:'產學合作）',
+      { icon:'💊', title:'廣效中和抗體研發（登革熱 / 茲卡病毒）', period:'2023 – 迄今', source:'產學合作',
         desc:'與國際合作夥伴共同開發可廣效中和多血清型登革病毒及茲卡病毒之抗體。',
         tags:['國際合作','抗體研發','產學合作'] },
     ],
@@ -740,6 +742,7 @@ function renderPubs() {
         </div>
         <div class="pub-authors">${p.authors}</div>
         <div class="pub-journal">${p.journal}</div>
+        ${p.metrics ? `<div class="pub-metrics">${p.metrics}</div>` : ''}
       </div>
     </div>`).join('');
 
