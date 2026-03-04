@@ -295,8 +295,11 @@ section{padding:80px 5%;}
 .course-icon{font-size:1.8rem;margin-bottom:.6rem;}
 .course-badge{font-size:.75rem;font-family:'Arial',sans-serif;font-weight:700;
   padding:.2rem .6rem;border-radius:10px;margin-bottom:.6rem;display:inline-block;}
-.cb-undergrad{background:#dcfce7;color:#166534;}
-.cb-grad{background:#e8f0fe;color:#1a56db;}
+.cb-undergrad{background:#dcfce7;color:#166534;} /* 綠色 */
+.cb-grad{background:#e8f0fe;color:#1a56db;} /* 藍色 */
+.cb-biomed{background:#f3e8ff;color:#7e22ce;} /* 紫色：適用於生醫科技系 */
+.cb-nursing{background:#fce7f3;color:#be185d;} /* 粉色：適用於護理系 */
+.cb-general{background:#fef3c7;color:#92400e;} /* 橘黃色：適用於通識課程 */
 .course-card h3{font-size:1rem;color:var(--navy);margin-bottom:.4rem;}
 .course-card p{font-size:.87rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.6;}
 
@@ -671,18 +674,18 @@ const DATA = {
       desc:'主要以介紹不同心臟與血管系統之疾病的病因 Pathogenesis、診斷 Diagnosis、治療 Treatment、以及流行病學 Epidemiology等相關知識，涵蓋基礎醫學與臨床醫學。' },
     { icon:'🔬', badge:'cb-grad',      badgeLabel:'研究所',       title:'專題討論',
       desc:'深入探討病毒複製週期、病毒與宿主交互作用、新興病毒監測與疫苗設計，並閱讀最新文獻討論。' },
-    { icon:'🌍', badge:'cb-undergrad', badgeLabel:'生醫科技系', title:'微生物免疫學及實驗',
+    { icon:'🌳', badge:'cb-biomed', badgeLabel:'生醫科技系', title:'微生物免疫學及實驗',
       desc:'使學生了解人類免疫系統的運作基礎，與微生物學的基礎特性。' },
-    { icon:'🌍', badge:'cb-undergrad', badgeLabel:'護理系', title:'微生物免疫學之臨床應用',
+    { icon:'🚑', badge:'cb-nursing', badgeLabel:'護理系', title:'微生物免疫學之臨床應用',
       desc:'為護理系基礎課程，使學生了解基礎免疫學與微生物學的機制，與疾病的關聯性。' },
-    { icon:'🌍', badge:'cb-undergrad', badgeLabel:'跨院選修-通識', title:'瘟疫與人類歷史',
+    { icon:'🍿', badge:'cb-general', badgeLabel:'跨院選修-通識', title:'瘟疫與人類歷史',
       desc:'藉由講述歷史上著名的傳染病與疾病，引導學生思考人類文明與病毒、細菌及瘟疫之間的關係。' },
-    { icon:'🌍', badge:'cb-undergrad', badgeLabel:'跨院選修-通識', title:'共病時代-談人類與動物共通傳染病',
-      desc:'人類與動物均為地球生態系中的一小部分。千萬年來，在微生物與宿主交錯演化的發展歷史中。人類的許多疾病其實與生活環境及其他生物密不可分。本課程在講動物疾病故事的同時，將協助學生認識自己，認識疾病，學習成為地球生態系的健康共同體。' },
-    { icon:'🌍', badge:'cb-undergrad', badgeLabel:'跨院選修-通識', title:'微生物與癌症',
-      desc:'大概有20%的癌症病例會被歸類於病毒或細菌感染所導致，這些病毒或細菌的感染被認為會增加罹癌風險。本課程將介紹這些病毒及細菌的生子生物學和致病機轉，並且藉由期刊討論提供病毒及細菌誘導腫瘤發生的原因及潛在的治療策略。' },
-    { icon:'🌍', badge:'cb-undergrad', badgeLabel:'跨院選修-通識', title:'身心健康醫學講座',
-      desc:'為了建立並讓學生們有良好的身心健康，本課程會以與大學生日常生活中切身相關的醫療健康資訊作為主題，每週探討不同科別主題，諸如心理諮商、基礎健康知識、急救知識等，讓學生建立良好的健康知識，並藉由不同專業領域的人士替學生們解惑與對話。' },
+    { icon:'🌭', badge:'cb-general', badgeLabel:'跨院選修-通識', title:'共病時代-談人類與動物共通傳染病',
+      desc:'在微生物與宿主交錯演化的發展歷史中，人類的許多疾病其實與生活環境及其他生物密不可分。本課程在講動物疾病故事的同時，將協助學生認識自己，認識疾病，學習成為地球生態系的健康共同體。' },
+    { icon:'🍞', badge:'cb-general', badgeLabel:'跨院選修-通識', title:'微生物與癌症',
+      desc:'大概有20%的癌症病例會被歸類於病毒或細菌感染所導致，這些病毒或細菌的感染被認為會增加罹癌風險。本課程將介紹這些病毒及細菌的生子生物學和致病機轉及潛在的治療策略。' },
+    { icon:'🌍', badge:'cb-general', badgeLabel:'跨院選修-通識', title:'身心健康醫學講座',
+      desc:'為了建立並讓學生們有良好的身心健康，本課程以探討大學生日常生活中切身相關的醫療健康資訊作為主題，諸如心理諮商、基礎健康知識、急救知識等。' },
   ],
 };
 
