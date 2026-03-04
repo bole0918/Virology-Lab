@@ -668,6 +668,7 @@ const DATA = {
     { group:'phd', avatar:'🧬', name:'（期待您的加入）博士研究生', nameEn:'Ph.D. Student', role:'博士研究生', topic:'登革病毒研究', since:'2026' },
     { group:'ms',  avatar:'🧪', name:'（湘媛）碩士研究生', nameEn:'M.S. Student',  role:'碩士研究生', topic:'登革熱致病機選與sialic acid變化之研究',      since:'2024' },
     { group:'ms',  avatar:'🧪', name:'（劉品妤）碩士研究生', nameEn:'M.S. Student',  role:'碩士研究生', topic:'登革病毒誘導uPAR表達之作用機制',          since:'2025' },
+    { group:'ug',  avatar:'🌱', name:'（仁豪）大學部專題生', nameEn:'Undergraduate Student', role:'大學部專題生', topic:'嬰兒床滅菌實驗', since:'2026' },
     { group:'ra',  avatar:'🔭', name:'（洪菱謙）研究助理',   nameEn:'Research Assistant', role:'研究助理', topic:'臨床樣本處理與實驗支援' },
     { group:'alumni', avatar:'🎓', name:'(黃勛) 校友', nameEn:'Alumni A', role:'碩士畢業', dest:'繼續攻讀博士學位-國立中山大學' },
   ],
@@ -940,7 +941,7 @@ function renderTimeline() {
 /* ── TEAM ── */
 function renderTeam() {
   const pi = DATA.members.find(m => m.isPI);
-  const g  = { phd:[], ms:[], ra:[], alumni:[] };
+  const g  = { phd:[], ms:[], ra:[], ug:[], alumni:[] };
   DATA.members.filter(m => !m.isPI).forEach(m => { if (g[m.group]) g[m.group].push(m); });
 
   const memberCard = m => `
@@ -962,7 +963,7 @@ function renderTeam() {
       </div>
     </div>`;
 
-  const labels = { phd:'🎓 博士研究生', ms:'📚 碩士研究生', ra:'🔭 研究助理', alumni:'🎓 畢業校友 Alumni' };
+  const labels = { phd:'🎓 博士研究生', ms:'📚 碩士研究生', ug:'🌱大學部專題生', ra:'🔭 研究助理', alumni:'🎓 畢業校友 Alumni' };
   let html = `
     <div class="pi-card">
       <div class="pi-avatar">${pi.avatar}</div>
@@ -974,7 +975,7 @@ function renderTeam() {
       </div>
     </div>`;
 
-  ['phd','ms','ra'].forEach(k => {
+  ['phd','ms','ra', 'ug'].forEach(k => {
     if (g[k].length)
       html += `<div class="team-section-title">${labels[k]}</div>
                <div class="team-grid">${g[k].map(memberCard).join('')}</div>`;
