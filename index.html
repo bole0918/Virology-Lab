@@ -204,9 +204,11 @@ section{padding:80px 5%;}
 .hl-tab.active,.hl-tab:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700;}
 .hl-slider{overflow:hidden;}
 .hl-track{display:flex;gap:1.5rem;transition:transform .4s ease;}
-.hl-card{min-width:calc(33.333% - 1rem);flex-shrink:0;
+.hl-card{width:calc(33.333% - 1rem);flex-shrink:0;
   background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.25);
-  border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+  border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;
+  display: flex;
+  flex-direction: column; }
 .hl-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.3);}
 .hl-placeholder{width:100%;height:180px;display:flex;align-items:center;
   justify-content:center;font-size:4rem;background:rgba(255,255,255,.04);}
@@ -219,8 +221,8 @@ section{padding:80px 5%;}
 .ht-award{background:rgba(255,215,0,.15);color:#ffd700;}
 .ht-activity{background:rgba(100,220,150,.15);color:#64dc96;}
 .ht-conference{background:rgba(100,160,255,.15);color:#64a0ff;}
-.hl-body h4{font-size:.97rem;color:var(--white);margin-bottom:.4rem;line-height:1.4;}
-.hl-body p{font-size:.83rem;color:#9aa8c8;font-family:'Arial',sans-serif;line-height:1.6;}
+.hl-body h4{font-size:.97rem;color:var(--white);margin-bottom:.4rem;line-height:1.4; word-break: break-word;}
+.hl-body p{font-size:.83rem;color:#9aa8c8;font-family:'Arial',sans-serif;line-height:1.6; word-break: break-word;}
 .hl-nav{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1.8rem;}
 .hl-btn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(201,168,76,.5);
   background:transparent;color:var(--gold);font-size:1.1rem;cursor:pointer;
@@ -325,7 +327,7 @@ footer a:hover{color:var(--gold2);}
   nav{padding:0 1rem;}
   .nav-links{gap:.5rem;}
   .nav-links a{font-size:.65rem;}
-  .hl-card{min-width:85%;}
+  .hl-card{width:85%;}
   .timeline::before{left:1rem;}
   .tl-item,.tl-item:nth-child(even){justify-content:flex-start;padding-right:0;padding-left:2.8rem;}
   .tl-dot{left:1rem;}
@@ -645,7 +647,7 @@ const DATA = {
     { type:'award',      emoji:'🏆', year:'2024', image:'virus1.webp', title:'高雄醫學大學優良研究獎',                    desc:'表彰在登革病毒致病機制與臨床轉譯領域之卓越研究貢獻。' },
     { type:'conference', emoji:'✈️', year:'2024', image:'', title:'ASM Microbe 2024（亞特蘭大）',              desc:'口頭發表「Dengue Virus-Induced Fibrinolytic Dysregulation」。' },
     { type:'activity',   emoji:'📸', year:'2024', image:'', title:'實驗室年度聚餐2026',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
-    { type:'activity',   emoji:'📸', year:'2024', image:'', title:'實驗室年度聚餐2025',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
+    { type:'activity',   emoji:'📸', year:'2024', image:'', title:'實驗室年度聚餐2025',                            desc:'全體成員共聚0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
     { type:'conference', emoji:'🌏', year:'2023', image:'', title:'International Congress of Infectious Diseases', desc:'受邀參加國際傳染病學會議，發表登革熱廣效中和抗體研究成果。' },
     { type:'activity',   emoji:'📸', year:'2024', image:'', title:'實驗室年度聚餐2024',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
     { type:'activity',   emoji:'🔬', year:'2023', image:'', title:'實驗室新生訓練與安全講習',                  desc:'迎接新進碩博士生，進行實驗室安全訓練與研究方向導引。' },
