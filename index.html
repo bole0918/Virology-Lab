@@ -902,7 +902,8 @@ function moveSlider() {
   const perView = window.innerWidth <= 768 ? 1 : 3;
   const max = Math.max(0, hlFiltered.length - perView);
   hlIndex = Math.max(0, Math.min(hlIndex, max));
-  track.style.transform = `translateX(-${hlIndex * (card.offsetWidth + 24)}px)`;
+  const gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+  track.style.transform = `translateX(-${hlIndex * (card.offsetWidth + gap)}px)`;
   document.querySelectorAll('.hl-dot').forEach((d, i) => d.classList.toggle('active', i === hlIndex));
 }
 
@@ -993,6 +994,24 @@ function renderCourses() {
       <h3>${c.title}</h3><p>${c.desc}</p>
     </div>`).join('');
 }
+/* ── 新增：手機觸控滑動支援 ── */
+let touchStartX = 0;
+const sliderArea = document.getElementById('hl-slider-area');
+
+sliderArea.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+}, {passive: true});
+
+sliderArea.addEventListener('touchend', e => {
+  let touchEndX = e.changedTouches[0].clientX;
+  if (touchStartX - touchEndX > 40) { 
+    // 向左滑 (等同點擊下一張)
+    document.getElementById('hl-next').click();
+  } else if (touchEndX - touchStartX > 40) { 
+    // 向右滑 (等同點擊上一張)
+    document.getElementById('hl-prev').click();
+  }
+});
 </script>
 </body>
 </html>
