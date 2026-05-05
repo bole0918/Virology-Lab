@@ -50,12 +50,89 @@ section{padding:80px 5%;}
 .tag{background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold2);
   padding:.25rem .75rem;border-radius:20px;font-size:.78rem;font-family:'Arial',sans-serif;}
 .hero-btns{display:flex;gap:1rem;}
-.btn-primary{background:var(--gold);color:var(--navy);padding:.6rem 1.4rem;border-radius:4px;
-  text-decoration:none;font-family:'Arial',sans-serif;font-size:.85rem;font-weight:700;transition:background .2s;}
-.btn-primary:hover{background:var(--gold2);}
-.btn-outline{border:1px solid var(--gold);color:var(--gold);padding:.6rem 1.4rem;border-radius:4px;
-  text-decoration:none;font-family:'Arial',sans-serif;font-size:.85rem;transition:all .2s;}
-.btn-outline:hover{background:var(--gold);color:var(--navy);}
+.btn-primary{background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 100%);
+  color:var(--navy);padding:.75rem 1.6rem;border-radius:6px;
+  text-decoration:none;font-family:'Arial',sans-serif;font-size:.88rem;font-weight:700;
+  letter-spacing:.03em;box-shadow:0 4px 14px rgba(201,168,76,.35);
+  transition:transform .25s,box-shadow .25s,background .25s;position:relative;overflow:hidden;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(201,168,76,.55);
+  background:linear-gradient(135deg,var(--gold2) 0%,#fff5d8 100%);}
+.btn-outline{border:1.5px solid var(--gold);color:var(--gold);padding:.75rem 1.6rem;border-radius:6px;
+  text-decoration:none;font-family:'Arial',sans-serif;font-size:.88rem;font-weight:600;
+  letter-spacing:.03em;transition:all .25s;background:rgba(201,168,76,.05);}
+.btn-outline:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(201,168,76,.35);}
+
+/* ── HERO ENHANCEMENTS ── */
+/* floating virus particles */
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+.particle{position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,.55) 0%,rgba(201,168,76,.18) 55%,transparent 80%);
+  box-shadow:0 0 80px rgba(201,168,76,.4),inset 0 0 30px rgba(255,210,120,.25);
+  border:1.5px solid rgba(230,201,122,.55);
+  animation:float 22s ease-in-out infinite;}
+.particle::before,.particle::after{content:'';position:absolute;inset:-22%;
+  border-radius:50%;border:1.5px dashed rgba(230,201,122,.55);}
+.particle::after{inset:-44%;border-color:rgba(201,168,76,.35);border-style:dotted;border-width:1.5px;}
+.p1{width:180px;height:180px;top:8%;left:5%;animation-delay:0s;}
+.p2{width:110px;height:110px;top:60%;left:11%;animation-delay:-5s;animation-duration:26s;}
+.p3{width:140px;height:140px;top:16%;right:7%;animation-delay:-9s;animation-duration:24s;}
+.p4{width:85px;height:85px;top:70%;right:16%;animation-delay:-13s;animation-duration:19s;}
+.p5{width:70px;height:70px;top:42%;left:46%;animation-delay:-3s;animation-duration:28s;}
+@keyframes float{
+  0%,100%{transform:translate(0,0) scale(1);opacity:.95;}
+  25%{transform:translate(25px,-35px) scale(1.08);opacity:1;}
+  50%{transform:translate(-18px,-55px) scale(.95);opacity:.8;}
+  75%{transform:translate(-28px,-22px) scale(1.04);opacity:.95;}
+}
+
+/* gradient + glow name */
+.hero-text h1{text-shadow:0 0 40px rgba(255,255,255,.12);}
+.hero-text h1 span{
+  background:linear-gradient(135deg,var(--gold2) 0%,var(--gold) 50%,#fff5d8 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 0 12px rgba(201,168,76,.45));}
+
+/* avatar pulse rings */
+.hero-avatar{position:relative;}
+.hero-avatar::before,.hero-avatar::after{
+  content:'';position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid var(--gold);opacity:0;pointer-events:none;
+  animation:pulseRing 2.8s cubic-bezier(.4,0,.2,1) infinite;}
+.hero-avatar::after{animation-delay:1.4s;}
+@keyframes pulseRing{
+  0%{transform:scale(1);opacity:.75;}
+  100%{transform:scale(1.45);opacity:0;}
+}
+
+/* hero stats */
+.hero-stats{display:flex;gap:2.2rem;margin-top:1.6rem;padding-top:1.4rem;
+  border-top:1px solid rgba(201,168,76,.22);}
+.hero-stat{display:flex;flex-direction:column;}
+.hero-stat-num{font-family:'Arial',sans-serif;font-size:1.7rem;font-weight:700;
+  color:var(--gold);line-height:1;
+  text-shadow:0 0 18px rgba(201,168,76,.4);}
+.hero-stat-label{font-size:.75rem;color:#9aa8c8;font-family:'Arial',sans-serif;
+  margin-top:.35rem;letter-spacing:.06em;text-transform:uppercase;}
+
+/* scroll hint */
+.scroll-hint{position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);
+  color:#9aa8c8;font-family:'Arial',sans-serif;font-size:.7rem;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  letter-spacing:.25em;text-transform:uppercase;z-index:2;
+  text-decoration:none;transition:color .2s;}
+.scroll-hint:hover{color:var(--gold2);}
+.scroll-hint .arrow{width:18px;height:30px;border:1.5px solid rgba(201,168,76,.5);
+  border-radius:10px;position:relative;}
+.scroll-hint .arrow::before{content:'';position:absolute;left:50%;top:6px;
+  width:3px;height:7px;background:var(--gold);border-radius:2px;
+  transform:translateX(-50%);animation:scrollDot 2s ease-in-out infinite;}
+@keyframes scrollDot{
+  0%{transform:translate(-50%,0);opacity:1;}
+  60%{transform:translate(-50%,12px);opacity:0;}
+  100%{transform:translate(-50%,0);opacity:0;}
+}
 
 /* ── NEWS ── */
 #news{background:var(--white);}
@@ -231,25 +308,23 @@ section{padding:80px 5%;}
 .hl-dots{display:flex;gap:.5rem;}
 .hl-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:background .2s;}
 .hl-dot.active{background:var(--gold);}
-/* timeline */
-.timeline{position:relative;max-width:800px;margin:0 auto;padding:0 1rem;}
-.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;
-  width:2px;background:rgba(201,168,76,.3);transform:translateX(-50%);}
-.tl-item{display:flex;justify-content:flex-end;padding-right:calc(50% + 2rem);
-  margin-bottom:2rem;position:relative;}
-.tl-item:nth-child(even){justify-content:flex-start;padding-right:0;padding-left:calc(50% + 2rem);}
-.tl-dot{position:absolute;left:50%;top:1rem;transform:translateX(-50%);
-  width:14px;height:14px;border-radius:50%;background:var(--gold);
-  border:2px solid var(--navy2);box-shadow:0 0 0 3px rgba(201,168,76,.3);z-index:1;}
-.tl-card{background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.2);
-  border-radius:10px;padding:1.1rem 1.3rem;max-width:320px;transition:transform .2s,box-shadow .2s;}
-.tl-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
-.tl-meta{display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem;}
-.tl-year{font-size:.78rem;font-family:'Arial',sans-serif;font-weight:700;
-  background:var(--gold);color:var(--navy);padding:.15rem .55rem;border-radius:4px;}
-.tl-emoji{font-size:1.2rem;margin-bottom:.3rem;}
-.tl-card h4{font-size:.93rem;color:var(--white);margin-bottom:.3rem;line-height:1.4;}
-.tl-card p{font-size:.82rem;color:#9aa8c8;font-family:'Arial',sans-serif;line-height:1.6;}
+/* history (year-grouped cards) */
+.history-grid{max-width:1100px;margin:0 auto;padding:0 1rem;}
+.year-group{margin-bottom:2.5rem;}
+.year-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;}
+.year-header::before,.year-header::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.25);}
+.year-label{font-family:'Arial',sans-serif;font-size:1.3rem;font-weight:700;color:var(--gold);
+  background:rgba(201,168,76,.08);padding:.4rem 1.3rem;border-radius:22px;
+  border:1.5px solid rgba(201,168,76,.4);letter-spacing:.05em;}
+.year-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
+.yr-card{background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.2);
+  border-radius:10px;padding:1.1rem 1.3rem;transition:transform .2s,box-shadow .2s;}
+.yr-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3);
+  border-color:rgba(201,168,76,.5);}
+.tl-meta{display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem;flex-wrap:wrap;}
+.tl-emoji{font-size:1.4rem;margin-bottom:.4rem;}
+.yr-card h4{font-size:.93rem;color:var(--white);margin-bottom:.4rem;line-height:1.4;}
+.yr-card p{font-size:.82rem;color:#9aa8c8;font-family:'Arial',sans-serif;line-height:1.6;}
 .tl-toggle-wrap{display:flex;justify-content:center;margin-top:1.5rem;}
 .tl-toggle-btn{background:transparent;border:1.5px solid rgba(201,168,76,.5);
   color:var(--gold);padding:.55rem 1.8rem;border-radius:20px;cursor:pointer;
@@ -319,7 +394,12 @@ footer a:hover{color:var(--gold2);}
 /* ── RWD ── */
 @media(max-width:768px){
   .hero-inner{flex-direction:column;text-align:center;}
-  .hero-tags,.hero-btns{justify-content:center;}
+  .hero-tags,.hero-btns,.hero-stats{justify-content:center;}
+  .hero-stats{gap:1.4rem;flex-wrap:wrap;}
+  .hero-stat-num{font-size:1.4rem;}
+  .p1,.p4{display:none;}
+  .particle{opacity:.5;}
+  .scroll-hint{display:none;}
   .about-grid{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr;}
   .pi-card{flex-direction:column;text-align:center;}
@@ -328,9 +408,8 @@ footer a:hover{color:var(--gold2);}
   .nav-links{gap:.5rem;}
   .nav-links a{font-size:.65rem;}
   .hl-card{width:85%;}
-  .timeline::before{left:1rem;}
-  .tl-item,.tl-item:nth-child(even){justify-content:flex-start;padding-right:0;padding-left:2.8rem;}
-  .tl-dot{left:1rem;}
+  .year-label{font-size:1.1rem;padding:.3rem 1rem;}
+  .year-cards{grid-template-columns:1fr;}
   .tl-card{max-width:100%;}
 }
 </style>
@@ -365,6 +444,13 @@ footer a:hover{color:var(--gold2);}
       <line x1="130" y1="350" x2="270" y2="350"/><line x1="100" y1="400" x2="300" y2="400"/>
     </g>
   </svg>
+  <div class="hero-particles" aria-hidden="true">
+    <div class="particle p1"></div>
+    <div class="particle p2"></div>
+    <div class="particle p3"></div>
+    <div class="particle p4"></div>
+    <div class="particle p5"></div>
+  </div>
   <div class="hero-inner">
     <div class="hero-avatar">👨‍🔬</div>
     <div class="hero-text">
@@ -380,8 +466,16 @@ footer a:hover{color:var(--gold2);}
         <a href="#publications" class="btn-primary">📄 著作目錄</a>
         <a href="#team" class="btn-outline">🔬 認識實驗室</a>
       </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">20+</div><div class="hero-stat-label">期刊論文</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">5+</div><div class="hero-stat-label">國際合作</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">研究方向</div></div>
+      </div>
     </div>
   </div>
+  <a href="#news" class="scroll-hint" aria-label="scroll down">
+    <span>Scroll</span><span class="arrow"></span>
+  </a>
 </section>
 
 <!-- NEWS -->
@@ -496,7 +590,7 @@ footer a:hover{color:var(--gold2);}
     </div>
   </div>
   <div id="hl-history-area" style="display:none;">
-    <div class="timeline" id="hl-timeline"></div>
+    <div class="history-grid" id="hl-timeline"></div>
     <div class="tl-toggle-wrap">
       <button class="tl-toggle-btn" id="tl-toggle-btn"></button>
     </div>
@@ -528,15 +622,155 @@ footer a:hover{color:var(--gold2);}
     <div><h4>🧬 研究領域</h4>
       <p>🦟 登革病毒 · 血管通透性<br>🔬 外泌體  · 免疫調控<br>💊 臨床轉譯研究<br>💉 疫苗 · 抗體開發<br>🌍 新興傳染病</p></div>
   </div>
-  <div class="footer-bottom">© 2026 王文宏 · 分子病毒學實驗室 · 國立中山大學學士後醫學系 · All Rights Reserved</div>
+  <div class="footer-bottom">© <span id="footer-year">2026</span> 王文宏 · 分子病毒學實驗室 · 國立中山大學學士後醫學系 · All Rights Reserved</div>
 </footer>
 
 <script>
 /* ============================================================
-   📋 資料設定區 — 只需修改此處即可更新網站內容
+   📋 資料來源 — Google Sheets
+   試算表 ID（修改這裡可換成不同的試算表）
    ============================================================ */
-const DATA = {
+const SHEET_ID = '1vsWJdaav2tyVIYdcPnlRNZ7Yu6dwVu6nNIpYTJkoikY';
+const sheetUrl = name =>
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(name)}`;
 
+/* news 類型映射（試算表中 type 欄位 → 顯示樣式） */
+const NEWS_TYPE = {
+  pub:    { badge:'badge-pub',     badgeLabel:'論文發表', icon:'📄' },
+  event:  { badge:'badge-event',   badgeLabel:'公告',     icon:'🤝' },
+  recruit:{ badge:'badge-recruit', badgeLabel:'長期招募', icon:'🎓' },
+};
+
+/* 課程資料保持寫死於程式碼（內容變動極少）*/
+const COURSES_DATA = [
+  { icon:'🦠', badge:'cb-undergrad', badgeLabel:'學士後醫學系', title:'醫用微生物學導論',
+    desc:'涵蓋細菌、病毒、黴菌基礎知識與宿主免疫反應機制，結合臨床案例，培養感染症診療基礎能力。' },
+  { icon:'🦠', badge:'cb-undergrad', badgeLabel:'學士後醫學系', title:'心血管基礎醫學',
+    desc:'主要以介紹不同心臟與血管系統之疾病的病因 Pathogenesis、診斷 Diagnosis、治療 Treatment、以及流行病學 Epidemiology等相關知識，涵蓋基礎醫學與臨床醫學。' },
+  { icon:'🔬', badge:'cb-grad', badgeLabel:'研究所', title:'專題討論',
+    desc:'深入探討病毒複製週期、病毒與宿主交互作用、新興病毒監測與疫苗設計，並閱讀最新文獻討論。' },
+  { icon:'🌳', badge:'cb-biomed', badgeLabel:'生醫科技系', title:'微生物免疫學及實驗',
+    desc:'使學生了解人類免疫系統的運作基礎，與微生物學的基礎特性。' },
+  { icon:'🚑', badge:'cb-nursing', badgeLabel:'護理系', title:'微生物免疫學之臨床應用',
+    desc:'為護理系基礎課程，使學生了解基礎免疫學與微生物學的機制，與疾病的關聯性。' },
+  { icon:'🍿', badge:'cb-general', badgeLabel:'跨院選修-通識', title:'瘟疫與人類歷史',
+    desc:'藉由講述歷史上著名的傳染病與疾病，引導學生思考人類文明與病毒、細菌及瘟疫之間的關係。' },
+  { icon:'🌭', badge:'cb-general', badgeLabel:'跨院選修-通識', title:'共病時代-談人類與動物共通傳染病',
+    desc:'在微生物與宿主交錯演化的發展歷史中，人類的許多疾病其實與生活環境及其他生物密不可分。本課程在講動物疾病故事的同時，將協助學生認識自己，認識疾病，學習成為地球生態系的健康共同體。' },
+  { icon:'🍞', badge:'cb-general', badgeLabel:'跨院選修-通識', title:'微生物與癌症',
+    desc:'大概有20%的癌症病例會被歸類於病毒或細菌感染所導致，這些病毒或細菌的感染被認為會增加罹癌風險。本課程將介紹這些病毒及細菌的生子生物學和致病機轉及潛在的治療策略。' },
+  { icon:'🌍', badge:'cb-general', badgeLabel:'跨院選修-通識', title:'身心健康醫學講座',
+    desc:'為了建立並讓學生們有良好的身心健康，本課程以探討大學生日常生活中切身相關的醫療健康資訊作為主題，諸如心理諮商、基礎健康知識、急救知識等。' },
+];
+
+/* DATA 物件 — 啟動時由 loadAllData() 填入 */
+let DATA = {
+  news:[], publications:[],
+  projects:{ current:[], patents:[], past:[] },
+  highlights:[], history:[], members:[],
+  courses: COURSES_DATA,
+};
+
+/* ── CSV 解析（支援雙引號跳脫、欄內逗號與換行）── */
+function parseCSV(text) {
+  const rows = []; let row = [], field = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i], n = text[i+1];
+    if (q) {
+      if (c === '"' && n === '"') { field += '"'; i++; }
+      else if (c === '"') q = false;
+      else field += c;
+    } else {
+      if (c === '"') q = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\r') { /* skip */ }
+      else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else field += c;
+    }
+  }
+  if (field !== '' || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
+function csvToObjects(text) {
+  const rows = parseCSV(text);
+  if (rows.length < 2) return [];
+  const headers = rows[0].map(h => h.trim());
+  return rows.slice(1)
+    .filter(r => r.some(c => (c || '').trim() !== ''))
+    .map(r => {
+      const o = {};
+      headers.forEach((h, i) => { o[h] = (r[i] || '').trim(); });
+      return o;
+    });
+}
+
+const truthy = v => /^(true|yes|1|✓|是)$/i.test(String(v || '').trim());
+
+async function loadSheet(name) {
+  const res = await fetch(sheetUrl(name));
+  if (!res.ok) throw new Error(`無法載入 ${name}：HTTP ${res.status}`);
+  return csvToObjects(await res.text());
+}
+
+async function loadAllData() {
+  const [news, pubs, hl, hist, members, projects] = await Promise.all([
+    loadSheet('news'), loadSheet('publications'), loadSheet('highlights'),
+    loadSheet('history'), loadSheet('members'), loadSheet('projects'),
+  ]);
+
+  DATA.news = news.map(r => ({
+    ...(NEWS_TYPE[r.type] || NEWS_TYPE.event),
+    date: r.date, title: r.title, body: r.body,
+    permanent: truthy(r.permanent),
+  }));
+
+  DATA.publications = pubs.map(r => ({
+    year: parseInt(r.year, 10) || r.year,
+    icon: r.icon || '📄',
+    badge: truthy(r.first_author) ? '第一作者' : '',
+    title: r.title, authors: r.authors, journal: r.journal,
+    metrics: r.metrics,
+  }));
+
+  DATA.highlights = hl.map(r => ({
+    type: r.type, year: r.year, emoji: r.emoji,
+    image: r.image, title: r.title, desc: r.desc,
+  }));
+
+  DATA.history = hist.map(r => ({
+    year: r.year, type: r.type, emoji: r.emoji,
+    title: r.title, desc: r.desc,
+  }));
+
+  DATA.members = members.map(r => {
+    const m = {
+      group: r.group, avatar: r.avatar, name: r.name, nameEn: r.name_en,
+      role: r.role, topic: r.topic, since: r.since, desc: r.desc, dest: r.dest,
+    };
+    if (r.group === 'pi') m.isPI = true;
+    return m;
+  });
+
+  DATA.projects = { current:[], patents:[], past:[] };
+  projects.forEach(r => {
+    const tags = r.tags ? r.tags.split('|').map(t => t.trim()).filter(Boolean) : [];
+    if (r.category === 'patents') {
+      DATA.projects.patents.push({
+        icon: r.icon, title: r.title, number: r.number, region: r.region,
+        year: r.year, desc: r.desc, licensee: r.licensee || '',
+      });
+    } else if (r.category === 'current' || r.category === 'past') {
+      DATA.projects[r.category].push({
+        icon: r.icon, title: r.title, period: r.period, source: r.source,
+        desc: r.desc, tags,
+      });
+    }
+  });
+}
+
+/* 此區塊結束 — 以下為原本資料設定，已停用，僅作為備援參考
+const _LEGACY_DATA = {
   news: [
     { badge:'badge-pub', badgeLabel:'論文發表', icon:'📄', date:'2026 · January',
       title:'新論文刊登於 European Journal of Pharmacology',
@@ -647,12 +881,12 @@ const DATA = {
   highlights: [
     { type:'award',      emoji:'🏆', year:'2026', image:'virus1.webp', title:'高醫中山合作研究優秀獎',                    desc:'表彰在登革病毒致病機制與臨床轉譯領域之卓越研究貢獻。' },
     { type:'conference', emoji:'✈️', year:'2024', image:'', title:'ASM Microbe（亞特蘭大）',              desc:'口頭發表「Dengue Virus-Induced Fibrinolytic Dysregulation」。' },
-    { type:'activity',   emoji:'📸', year:'2024', image:'', title:'實驗室年度聚餐2026',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
-    { type:'activity',   emoji:'📸', year:'2024', image:'', title:'實驗室年度聚餐2025',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
+    { type:'activity',   emoji:'📸', year:'2026', image:'', title:'實驗室年度聚餐2026',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
+    { type:'activity',   emoji:'📸', year:'2025', image:'', title:'實驗室年度聚餐2025',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
     { type:'conference', emoji:'🌏', year:'2023', image:'', title:'International Congress of Infectious Diseases', desc:'受邀參加國際傳染病學會議，發表登革熱廣效中和抗體研究成果。' },
     { type:'activity',   emoji:'📸', year:'2024', image:'', title:'實驗室年度聚餐2024',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
     { type:'activity',   emoji:'🔬', year:'2023', image:'', title:'實驗室新生訓練與安全講習',                  desc:'迎接新進碩博士生，進行實驗室安全訓練與研究方向導引。' },
-    { type:'activity',   emoji:'📸', year:'2024', image:'', title:'實驗室年度聚餐2023',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
+    { type:'activity',   emoji:'📸', year:'2023', image:'', title:'實驗室年度聚餐2023',                            desc:'全體成員共聚，慶祝年度研究成果，感謝每位夥伴的付出與努力。' },
   ],
 
   history: [
@@ -695,6 +929,7 @@ const DATA = {
       desc:'為了建立並讓學生們有良好的身心健康，本課程以探討大學生日常生活中切身相關的醫療健康資訊作為主題，諸如心理諮商、基礎健康知識、急救知識等。' },
   ],
 };
+*/
 
 /* ============================================================
    常數 & 工具
@@ -707,7 +942,28 @@ const PUB_PER_PAGE = 6;
 /* ============================================================
    啟動
    ============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  const fy = document.getElementById('footer-year');
+  if (fy) fy.textContent = new Date().getFullYear();
+
+  // 顯示載入中提示
+  const newsGrid = document.getElementById('news-grid');
+  if (newsGrid) newsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:#9aa8c8;">⏳ 資料載入中...</div>';
+
+  try {
+    await loadAllData();
+  } catch (e) {
+    console.error('資料載入失敗：', e);
+    if (newsGrid) {
+      newsGrid.innerHTML =
+        `<div style="grid-column:1/-1;text-align:center;padding:2rem;color:#c00;background:#fff3f3;border-radius:8px;">
+          ⚠️ 無法載入資料，請確認網路或試算表發佈狀態。<br>
+          <small style="color:#888;">${e.message || e}</small>
+        </div>`;
+    }
+    return;
+  }
+
   renderNews();
   renderPubs();
   initProjects();
@@ -910,33 +1166,30 @@ function moveSlider() {
   document.querySelectorAll('.hl-dot').forEach((d, i) => d.classList.toggle('active', i === hlIndex));
 }
 
-/* ── TIMELINE ── */
-let tlExpanded = false;
+/* ── HISTORY (year-grouped cards) ── */
 function renderTimeline() {
-  const total = DATA.history.length;
-  document.getElementById('hl-timeline').innerHTML = DATA.history.map((h, i) => `
-    <div class="tl-item" style="${i >= TL_DEFAULT ? 'display:none' : ''}">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="tl-emoji">${h.emoji}</div>
-        <div class="tl-meta">
-          <span class="tl-year">${h.year}</span>
-          <span class="hl-type-badge ${TYPE_CLASS[h.type]}">${TYPE_LABEL[h.type]}</span>
-        </div>
-        <h4>${h.title}</h4><p>${h.desc}</p>
+  const groups = {};
+  DATA.history.forEach(h => {
+    (groups[h.year] = groups[h.year] || []).push(h);
+  });
+  const years = Object.keys(groups).sort((a, b) => b.localeCompare(a));
+  document.getElementById('hl-timeline').innerHTML = years.map(y => `
+    <div class="year-group">
+      <div class="year-header"><span class="year-label">${y}</span></div>
+      <div class="year-cards">
+        ${groups[y].map(h => `
+          <div class="yr-card">
+            <div class="tl-emoji">${h.emoji}</div>
+            <div class="tl-meta">
+              <span class="hl-type-badge ${TYPE_CLASS[h.type]}">${TYPE_LABEL[h.type]}</span>
+            </div>
+            <h4>${h.title}</h4><p>${h.desc}</p>
+          </div>`).join('')}
       </div>
     </div>`).join('');
 
   const btn = document.getElementById('tl-toggle-btn');
-  if (total <= TL_DEFAULT) { btn.style.display = 'none'; return; }
-  btn.textContent = `▼ 展開全部（共 ${total} 筆）`;
-  btn.addEventListener('click', () => {
-    tlExpanded = !tlExpanded;
-    document.querySelectorAll('#hl-timeline .tl-item').forEach((el, i) => {
-      if (i >= TL_DEFAULT) el.style.display = tlExpanded ? 'flex' : 'none';
-    });
-    btn.textContent = tlExpanded ? '▲ 收合' : `▼ 展開全部（共 ${total} 筆）`;
-  });
+  if (btn) btn.style.display = 'none';
 }
 
 /* ── TEAM ── */
