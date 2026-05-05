@@ -477,7 +477,7 @@ footer a:hover{color:var(--gold2);}
         <a href="#team" class="btn-outline">🔬 認識實驗室</a>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-num">20+</div><div class="hero-stat-label">期刊論文</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" id="hero-pub-count">…</div><div class="hero-stat-label">期刊論文</div></div>
         <div class="hero-stat"><div class="hero-stat-num">5+</div><div class="hero-stat-label">國際合作</div></div>
         <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">研究方向</div></div>
       </div>
@@ -509,7 +509,7 @@ footer a:hover{color:var(--gold2);}
     </div>
     <div>
       <div class="stats-row">
-        <div class="stat-box"><div class="s-icon">📄</div><div class="s-num">20+</div><div class="s-label">期刊論文</div></div>
+        <div class="stat-box"><div class="s-icon">📄</div><div class="s-num" id="about-pub-count">…</div><div class="s-label">期刊論文</div></div>
         <div class="stat-box"><div class="s-icon">📘</div><div class="s-num">3+</div><div class="s-label">研討會論文</div></div>
         <div class="stat-box"><div class="s-icon">🌍</div><div class="s-num">5+</div><div class="s-label">國際合作機構</div></div>
         <div class="stat-box"><div class="s-icon">🏆</div><div class="s-num">2026</div><div class="s-label">最新發表</div></div>
@@ -999,6 +999,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const heroAv = document.querySelector('.hero-avatar');
     if (heroAv) heroAv.innerHTML = renderAvatar(pi.avatar);
   }
+
+  // 期刊論文計數（hero + about 區塊各一處）
+  const pubCount = DATA.publications.length;
+  const heroCount = document.getElementById('hero-pub-count');
+  const aboutCount = document.getElementById('about-pub-count');
+  if (heroCount)  heroCount.textContent = pubCount + '+';
+  if (aboutCount) aboutCount.textContent = pubCount + '+';
 
   renderNews();
   renderPubs();
