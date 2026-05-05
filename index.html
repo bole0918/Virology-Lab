@@ -1249,7 +1249,7 @@ function renderTeam() {
       <div class="alumni-dot">${renderAvatar(m.avatar)}</div>
       <div class="alumni-info">
         <h5>${m.name}</h5>
-        <p>${m.role}${m.dest ? ' · ' + m.dest : ''}</p>
+        <p>${m.since ? m.since + ' · ' : ''}${m.role}${m.dest ? ' · ' + m.dest : ''}</p>
       </div>
     </div>`;
 
