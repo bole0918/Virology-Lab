@@ -205,6 +205,13 @@ section{padding:80px 5%;}
 .pub-title{font-size:.95rem;color:var(--navy);font-weight:700;margin-bottom:.3rem;line-height:1.4;}
 .pub-badge{display:inline-block;background:#fef3c7;color:#92400e;font-size:.7rem;
   padding:.1rem .45rem;border-radius:8px;margin-left:.4rem;font-family:'Arial',sans-serif;font-weight:700;}
+.pub-type-badge{display:inline-block;font-size:.7rem;padding:.1rem .5rem;border-radius:8px;
+  margin-left:.4rem;font-family:'Arial',sans-serif;font-weight:700;letter-spacing:.02em;}
+.pt-original{background:#dbeafe;color:#1e40af;}
+.pt-review{background:#ede9fe;color:#6d28d9;}
+.pt-book{background:#d1fae5;color:#047857;}
+.pt-letter{background:#f3f4f6;color:#374151;}
+.pt-case{background:#ffedd5;color:#9a3412;}
 .pub-year{background:var(--navy);color:var(--gold);font-size:.75rem;font-family:'Arial',sans-serif;
   font-weight:700;padding:.2rem .55rem;border-radius:4px;white-space:nowrap;flex-shrink:0;}
 .pub-authors{font-size:.82rem;color:var(--muted);font-family:'Arial',sans-serif;margin-bottom:.2rem;}
@@ -644,6 +651,15 @@ const NEWS_TYPE = {
   recruit:{ badge:'badge-recruit', badgeLabel:'長期招募', icon:'🎓' },
 };
 
+/* publications article_type → 顯示徽章 */
+const PUB_TYPE = {
+  original: { label:'Original Article', cls:'pt-original' },
+  review:   { label:'Review',           cls:'pt-review' },
+  book:     { label:'Book Chapter',     cls:'pt-book' },
+  letter:   { label:'Letter',           cls:'pt-letter' },
+  case:     { label:'Case Report',      cls:'pt-case' },
+};
+
 /* 課程資料保持寫死於程式碼（內容變動極少）*/
 const COURSES_DATA = [
   { icon:'🦠', badge:'cb-undergrad', badgeLabel:'學士後醫學系', title:'醫用微生物學導論',
@@ -741,6 +757,7 @@ async function loadAllData() {
     year: parseInt(r.year, 10) || r.year,
     icon: r.icon || '📄',
     badge: truthy(r.first_author) ? '第一作者' : '',
+    articleType: (r.article_type || '').trim().toLowerCase(),
     title: r.title, authors: r.authors, journal: r.journal,
     metrics: r.metrics,
   }));
@@ -1017,7 +1034,7 @@ function renderPubs() {
       <div class="pub-icon">${p.icon}</div>
       <div class="pub-content">
         <div class="pub-top">
-          <div class="pub-title">${p.title}${p.badge ? `<span class="pub-badge">${p.badge}</span>` : ''}</div>
+          <div class="pub-title">${p.title}${p.badge ? `<span class="pub-badge">${p.badge}</span>` : ''}${PUB_TYPE[p.articleType] ? `<span class="pub-type-badge ${PUB_TYPE[p.articleType].cls}">${PUB_TYPE[p.articleType].label}</span>` : ''}</div>
           <span class="pub-year">${p.year}</span>
         </div>
         <div class="pub-authors">${p.authors}</div>
