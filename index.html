@@ -97,17 +97,7 @@ section{padding:80px 5%;}
   -webkit-text-fill-color:transparent;color:transparent;
   filter:drop-shadow(0 0 12px rgba(201,168,76,.45));}
 
-/* avatar pulse rings */
 .hero-avatar{position:relative;}
-.hero-avatar::before,.hero-avatar::after{
-  content:'';position:absolute;inset:-6px;border-radius:50%;
-  border:2px solid var(--gold);opacity:0;pointer-events:none;
-  animation:pulseRing 2.8s cubic-bezier(.4,0,.2,1) infinite;}
-.hero-avatar::after{animation-delay:1.4s;}
-@keyframes pulseRing{
-  0%{transform:scale(1);opacity:.75;}
-  100%{transform:scale(1.45);opacity:0;}
-}
 
 /* hero stats */
 .hero-stats{display:flex;gap:2.2rem;margin-top:1.6rem;padding-top:1.4rem;
@@ -520,6 +510,7 @@ footer a:hover{color:var(--gold2);}
         <div class="focus-item">🏛 國立中山大學 · 學士後醫學系</div>
         <div class="focus-item">🔬 分子病毒學實驗室</div>
         <div class="focus-item">🌐 <a href="https://www.nsysu.edu.tw/?Lang=zh-tw" target="_blank">國立中山大學網站</a></div>
+        <div class="focus-item">🔐 <a href="internal/" target="_blank">實驗室內部網站</a>（成員專用）</div>
       </div>
     </div>
   </div>
