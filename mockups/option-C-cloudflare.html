@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<title>方案 C 模擬：Cloudflare Pages + Access</title>
+<style>
+:root{
+  --navy:#0a1f44; --navy2:#132d5e;
+  --gold:#c9a84c; --gold2:#e6c97a;
+  --white:#fff; --off:#f7f8fc;
+  --text:#1a1a2e; --muted:#5a6070; --border:#e2e6f0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia',serif;color:var(--text);background:var(--off);}
+.label{position:fixed;top:10px;right:10px;background:var(--gold);color:var(--navy);
+  padding:.5rem 1rem;border-radius:4px;font-weight:700;font-size:.85rem;z-index:999;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);}
+
+/* TAB SWITCHER */
+.tabs{position:fixed;top:10px;left:10px;display:flex;gap:.4rem;z-index:999;}
+.tab{padding:.5rem 1rem;background:var(--navy);color:var(--white);
+  border:1px solid var(--gold);border-radius:4px;cursor:pointer;font-size:.8rem;
+  font-family:Arial,sans-serif;font-weight:700;}
+.tab.active{background:var(--gold);color:var(--navy);}
+
+/* PRE-LOGIN VIEW */
+.prelogin{display:none;min-height:100vh;background:linear-gradient(135deg,#1a1a2e,#0a1f44);
+  align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.prelogin.show{display:flex;}
+.cf-bg{position:absolute;inset:0;opacity:.04;
+  background-image:radial-gradient(circle at 20% 30%,#fff 1px,transparent 1px),
+                  radial-gradient(circle at 70% 60%,#fff 1px,transparent 1px);
+  background-size:60px 60px;}
+.cf-card{background:var(--white);border-radius:12px;padding:3rem 2.5rem;
+  max-width:440px;width:90%;text-align:center;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);position:relative;z-index:1;}
+.cf-logo{font-size:2.5rem;margin-bottom:1rem;}
+.cf-card h1{color:var(--navy);font-size:1.4rem;margin-bottom:.3rem;font-family:Arial,sans-serif;}
+.cf-card .cf-sub{color:var(--muted);font-size:.88rem;margin-bottom:.4rem;font-family:Arial,sans-serif;}
+.cf-card .cf-app{color:var(--gold);font-size:.85rem;font-family:Arial,sans-serif;
+  font-weight:700;margin-bottom:1.8rem;background:rgba(201,168,76,.1);
+  display:inline-block;padding:.3rem .8rem;border-radius:4px;border:1px solid rgba(201,168,76,.3);}
+.cf-divider{height:1px;background:var(--border);margin:1.5rem 0;}
+.cf-method{padding:1rem;border:1.5px solid var(--border);border-radius:8px;
+  margin-bottom:.8rem;cursor:pointer;display:flex;align-items:center;gap:.8rem;
+  transition:all .2s;text-align:left;}
+.cf-method:hover{border-color:var(--gold);background:#fffaf0;}
+.cf-method-icon{font-size:1.4rem;}
+.cf-method-text{flex:1;}
+.cf-method-text .cf-mt-title{color:var(--navy);font-size:.9rem;font-weight:600;font-family:Arial,sans-serif;}
+.cf-method-text .cf-mt-sub{color:var(--muted);font-size:.78rem;font-family:Arial,sans-serif;margin-top:.15rem;}
+.cf-arrow{color:var(--muted);}
+.cf-footer{font-size:.72rem;color:var(--muted);margin-top:1.2rem;
+  font-family:Arial,sans-serif;line-height:1.6;}
+.cf-footer strong{color:var(--gold);}
+
+/* DASHBOARD VIEW */
+.dashboard{display:none;}
+.dashboard.show{display:block;}
+
+nav{position:sticky;top:0;z-index:99;background:var(--navy);
+  border-bottom:2px solid var(--gold);padding:0 2.5rem;height:62px;
+  display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{color:var(--gold);font-size:1.2rem;font-weight:700;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:#cdd4e8;font-size:.8rem;text-decoration:none;
+  font-family:Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase;}
+.nav-links a.active{color:var(--gold);}
+.user-pill{display:flex;align-items:center;gap:.6rem;color:#cdd4e8;
+  font-family:Arial,sans-serif;font-size:.85rem;}
+.user-pill .uavt{width:32px;height:32px;border-radius:50%;background:var(--gold);
+  color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;}
+.user-pill .uname{color:var(--gold2);}
+.user-pill .ulogout{color:var(--muted);font-size:.72rem;cursor:pointer;border:1px solid var(--muted);
+  padding:.2rem .5rem;border-radius:4px;}
+
+#hero{min-height:340px;background:linear-gradient(135deg,var(--navy) 60%,var(--navy2) 100%);
+  display:flex;align-items:center;padding:60px 5%;color:var(--white);}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;}
+.hero-inner h1{font-size:2.2rem;margin-bottom:.5rem;}
+.hero-inner h1 span{color:var(--gold);}
+.hero-inner p{color:#9aa8c8;font-family:Arial,sans-serif;font-size:.95rem;}
+
+section{padding:60px 5%;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-header{margin-bottom:2rem;}
+.section-header h2{font-size:1.5rem;color:var(--navy);}
+.section-header .bar{width:50px;height:3px;background:var(--gold);margin-top:.5rem;}
+
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;}
+.dash-card{background:var(--white);border:1px solid var(--border);border-radius:10px;
+  padding:1.5rem;cursor:pointer;transition:transform .2s,box-shadow .2s;
+  border-top:3px solid var(--gold);position:relative;overflow:hidden;}
+.dash-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(10,31,68,.12);}
+.dash-icon{font-size:2rem;margin-bottom:.5rem;}
+.dash-card h3{font-size:1rem;color:var(--navy);margin-bottom:.4rem;}
+.dash-card p{font-size:.83rem;color:var(--muted);font-family:Arial,sans-serif;line-height:1.6;}
+.dash-tag{position:absolute;top:1rem;right:1rem;font-size:.7rem;
+  background:rgba(201,168,76,.15);color:var(--gold);
+  padding:.15rem .5rem;border-radius:4px;font-family:Arial,sans-serif;font-weight:700;}
+
+/* Embedded form preview */
+.embed{background:var(--white);border:1px solid var(--border);border-radius:10px;
+  padding:2rem;margin-top:2rem;border-left:4px solid var(--gold);}
+.embed h3{color:var(--navy);margin-bottom:1rem;font-size:1.1rem;}
+.embed-row{padding:.6rem 0;border-bottom:1px solid var(--off);}
+.embed-row label{display:block;font-size:.75rem;color:var(--muted);font-family:Arial,sans-serif;margin-bottom:.2rem;}
+.embed-input{width:100%;padding:.5rem .8rem;border:1px solid var(--border);
+  border-radius:4px;font-size:.88rem;color:var(--muted);background:var(--off);}
+.btn-go{background:var(--gold);color:var(--navy);padding:.6rem 1.5rem;border:none;
+  border-radius:4px;font-weight:700;cursor:pointer;margin-top:.8rem;font-family:Arial,sans-serif;}
+
+footer{background:var(--navy);color:#9aa8c8;padding:2rem 5%;text-align:center;
+  font-size:.8rem;font-family:Arial,sans-serif;border-top:2px solid var(--gold);}
+
+.mockup-note{position:fixed;bottom:20px;left:20px;background:var(--navy);color:#fff;
+  padding:1rem 1.5rem;border-radius:8px;font-size:.85rem;max-width:340px;line-height:1.6;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);border-left:4px solid var(--gold);}
+.mockup-note strong{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<div class="label">📋 方案 C 模擬</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="show('prelogin')">① 首次造訪（登入畫面）</div>
+  <div class="tab" onclick="show('dashboard')">② 登入後（內部 dashboard）</div>
+</div>
+
+<!-- ============ PRE-LOGIN VIEW ============ -->
+<div id="prelogin" class="prelogin show">
+  <div class="cf-bg"></div>
+  <div class="cf-card">
+    <div class="cf-logo">🔐</div>
+    <h1>Cloudflare Access</h1>
+    <div class="cf-sub">您正在嘗試存取受保護的應用程式</div>
+    <div class="cf-app">🔬 王文宏實驗室 · 內部網站</div>
+    <div class="cf-divider"></div>
+    <div style="font-size:.85rem;color:#666;margin-bottom:1rem;font-family:Arial,sans-serif;">
+      請選擇登入方式：
+    </div>
+    <div class="cf-method">
+      <div class="cf-method-icon">🅖</div>
+      <div class="cf-method-text">
+        <div class="cf-mt-title">使用 Google 帳號登入</div>
+        <div class="cf-mt-sub">支援 @mail.nsysu.edu.tw 與個人 Gmail</div>
+      </div>
+      <div class="cf-arrow">→</div>
+    </div>
+    <div class="cf-method">
+      <div class="cf-method-icon">📧</div>
+      <div class="cf-method-text">
+        <div class="cf-mt-title">寄送一次性驗證碼到 Email</div>
+        <div class="cf-mt-sub">輸入 email → 收信件中的 6 位數驗證碼</div>
+      </div>
+      <div class="cf-arrow">→</div>
+    </div>
+    <div class="cf-footer">
+      <strong>不在名單裡？</strong>請聯絡 PI 申請存取權。<br>
+      Cloudflare 不會儲存您的密碼。
+    </div>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD VIEW ============ -->
+<div id="dashboard" class="dashboard">
+  <nav>
+    <div class="nav-logo">🔬 王文宏實驗室 · 內部</div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">DASHBOARD</a></li>
+      <li><a href="#">DOCS</a></li>
+      <li><a href="#">採購</a></li>
+      <li><a href="#">儀器</a></li>
+      <li><a href="#">庫存</a></li>
+    </ul>
+    <div class="user-pill">
+      <span class="uname">王文宏</span>
+      <div class="uavt">王</div>
+      <span class="ulogout">登出</span>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-inner">
+      <h1>歡迎回來，<span>王文宏</span> 老師</h1>
+      <p>🔐 已透過 Cloudflare Access 驗證 · 您的存取權有效期 24 小時</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="section-header">
+        <h2>🧭 內部資源中心</h2>
+        <div class="bar"></div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card"><span class="dash-tag">3 NEW</span>
+          <div class="dash-icon">📁</div><h3>共用文件區</h3>
+          <p>SOP、實驗 protocol、安全手冊、會議紀錄</p>
+        </div>
+        <div class="dash-card"><span class="dash-tag">2 待審</span>
+          <div class="dash-icon">🛒</div><h3>採購申請</h3>
+          <p>線上提交 → 自動 email 通知 PI</p>
+        </div>
+        <div class="dash-card">
+          <div class="dash-icon">📅</div><h3>儀器預約</h3>
+          <p>qPCR · 共軛焦 · 流式細胞儀</p>
+        </div>
+        <div class="dash-card"><span class="dash-tag">5 即將用完</span>
+          <div class="dash-icon">💊</div><h3>試劑庫存</h3>
+          <p>即時查詢與更新</p>
+        </div>
+        <div class="dash-card">
+          <div class="dash-icon">📚</div><h3>Paper Club</h3>
+          <p>本週文獻 + 報告分配</p>
+        </div>
+        <div class="dash-card">
+          <div class="dash-icon">📞</div><h3>緊急聯絡 / 安全</h3>
+          <p>意外處理、聯絡電話</p>
+        </div>
+      </div>
+
+      <div class="embed">
+        <h3>🛒 採購申請快速通道</h3>
+        <div class="embed-row">
+          <label>申請人</label>
+          <input class="embed-input" type="text" value="王文宏" disabled>
+        </div>
+        <div class="embed-row">
+          <label>品項名稱</label>
+          <input class="embed-input" type="text" value="（待填）" disabled>
+        </div>
+        <div class="embed-row">
+          <label>緊急程度</label>
+          <input class="embed-input" type="text" value="一般 / 緊急" disabled>
+        </div>
+        <button class="btn-go">送出申請</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    🔬 王文宏實驗室 · 內部網站 · 受 Cloudflare Access 保護<br>
+    僅限授權成員存取 · 違法擷取將追究責任
+  </footer>
+</div>
+
+<div class="mockup-note">
+  💡 <strong>方案 C 重點</strong><br>
+  ✅ 設計可完全沿用主站風格（深藍 + 金）<br>
+  ✅ Cloudflare Access 把關，無法繞過<br>
+  ✅ 一次驗證 24 小時免登入<br>
+  ⚠️ 需要 20 分鐘設定 Cloudflare<br>
+  ⚠️ 內容仍需用 Google Forms / Drive 等工具
+</div>
+
+<script>
+function show(which) {
+  document.getElementById('prelogin').classList.toggle('show', which === 'prelogin');
+  document.getElementById('dashboard').classList.toggle('show', which === 'dashboard');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

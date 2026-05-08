@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<title>方案 D 模擬：Google Sites</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Roboto','Noto Sans TC',Arial,sans-serif;background:#f1f3f4;color:#202124;}
+.label{position:fixed;top:10px;right:10px;background:#fbbc04;color:#202124;
+  padding:.5rem 1rem;border-radius:4px;font-weight:700;font-size:.85rem;z-index:999;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);}
+
+/* Google account chrome */
+.google-header{background:#fff;border-bottom:1px solid #dadce0;
+  padding:.6rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.gh-left{display:flex;align-items:center;gap:1rem;}
+.gh-logo{font-size:1.1rem;color:#5f6368;font-weight:500;}
+.gh-divider{height:24px;width:1px;background:#dadce0;}
+.gh-site-name{color:#202124;font-weight:500;font-size:.95rem;}
+.gh-right{display:flex;align-items:center;gap:1rem;}
+.gh-share{background:#1a73e8;color:#fff;padding:.5rem 1rem;border-radius:4px;
+  font-size:.85rem;font-weight:500;cursor:pointer;}
+.gh-avatar{width:32px;height:32px;border-radius:50%;background:#1a73e8;
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.85rem;}
+
+/* Sites top bar */
+.site-top{background:#fff;padding:1rem 2rem;border-bottom:1px solid #e8eaed;}
+.site-title{font-size:1.5rem;color:#202124;font-weight:400;}
+.site-nav{display:flex;gap:1.8rem;margin-top:.8rem;}
+.site-nav a{color:#5f6368;text-decoration:none;font-size:.9rem;padding-bottom:.3rem;
+  border-bottom:2px solid transparent;}
+.site-nav a.active{color:#1a73e8;border-color:#1a73e8;font-weight:500;}
+
+/* Main content */
+.container{max-width:1100px;margin:2rem auto;padding:0 2rem;}
+.hero{background:linear-gradient(135deg,#4285f4,#1a73e8);color:#fff;
+  padding:3rem 2rem;border-radius:8px;margin-bottom:2rem;}
+.hero h1{font-size:1.8rem;font-weight:400;margin-bottom:.4rem;}
+.hero p{font-size:.95rem;opacity:.9;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:2rem;}
+.card{background:#fff;border-radius:8px;padding:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,.08);
+  border:1px solid #e8eaed;cursor:pointer;transition:box-shadow .2s;}
+.card:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);}
+.card-icon{font-size:1.8rem;margin-bottom:.6rem;}
+.card h3{font-size:1rem;color:#202124;margin-bottom:.3rem;font-weight:500;}
+.card p{font-size:.82rem;color:#5f6368;line-height:1.5;}
+
+.embed{background:#fff;border:1px solid #e8eaed;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem;}
+.embed h3{font-size:1.1rem;color:#202124;margin-bottom:1rem;font-weight:500;
+  display:flex;align-items:center;gap:.5rem;}
+.form-row{padding:.6rem 0;border-bottom:1px solid #f1f3f4;font-size:.9rem;color:#202124;}
+.form-row label{display:block;color:#5f6368;font-size:.78rem;margin-bottom:.2rem;}
+.form-input{width:100%;padding:.5rem;border:1px solid #dadce0;border-radius:4px;
+  font-size:.9rem;background:#fff;color:#5f6368;font-family:inherit;}
+.btn-submit{background:#1a73e8;color:#fff;padding:.6rem 1.5rem;border:none;
+  border-radius:4px;font-size:.85rem;cursor:pointer;margin-top:.8rem;font-weight:500;}
+
+.note{background:#fef7e0;border-left:4px solid #fbbc04;padding:1rem 1.2rem;
+  border-radius:4px;font-size:.85rem;color:#5f6368;line-height:1.6;margin-bottom:1.5rem;}
+.note strong{color:#202124;}
+
+/* footer note */
+.mockup-note{position:fixed;bottom:20px;left:20px;background:#202124;color:#fff;
+  padding:1rem 1.5rem;border-radius:8px;font-size:.85rem;max-width:340px;line-height:1.6;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);}
+.mockup-note strong{color:#fbbc04;}
+</style>
+</head>
+<body>
+
+<div class="label">📋 方案 D 模擬</div>
+
+<!-- Google chrome -->
+<div class="google-header">
+  <div class="gh-left">
+    <div class="gh-logo">🌐 Google Sites</div>
+    <div class="gh-divider"></div>
+    <div class="gh-site-name">王文宏實驗室 — 內部網站</div>
+  </div>
+  <div class="gh-right">
+    <div class="gh-share">🔒 共用</div>
+    <div class="gh-avatar">王</div>
+  </div>
+</div>
+
+<!-- Site nav -->
+<div class="site-top">
+  <div class="site-title">🔬 王文宏實驗室 · 內部資源</div>
+  <div class="site-nav">
+    <a href="#" class="active">首頁</a>
+    <a href="#">採購申請</a>
+    <a href="#">儀器預約</a>
+    <a href="#">Protocol 文件</a>
+    <a href="#">試劑庫存</a>
+    <a href="#">緊急聯絡</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="hero">
+    <h1>歡迎，王文宏 老師 👋</h1>
+    <p>實驗室內部資源中心 · 僅限授權成員存取</p>
+  </div>
+
+  <div class="note">
+    <strong>🔐 登入機制：</strong>由 Google 帳號控管。PI 在此頁右上角「共用」按鈕加入 email，被加入者用 Google 登入即可看到本站；不在名單者顯示「沒有權限」。
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">📁</div>
+      <h3>共用文件區</h3>
+      <p>SOP、實驗 protocol、安全手冊、會議紀錄</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛒</div>
+      <h3>採購申請</h3>
+      <p>填寫表單 → 自動寄信給 PI 審核</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h3>儀器預約</h3>
+      <p>qPCR、共軛焦顯微鏡、流式細胞儀</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💊</div>
+      <h3>試劑庫存表</h3>
+      <p>即時查詢與更新（共編 Sheets）</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📚</div>
+      <h3>Paper Club</h3>
+      <p>本週文獻 + 報告分配</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📞</div>
+      <h3>緊急聯絡</h3>
+      <p>意外處理、安全須知、聯絡電話</p>
+    </div>
+  </div>
+
+  <div class="embed">
+    <h3>🛒 本週採購申請（嵌入 Google Forms）</h3>
+    <div class="form-row">
+      <label>申請人</label>
+      <input class="form-input" type="text" value="（待填寫）" disabled>
+    </div>
+    <div class="form-row">
+      <label>品項名稱</label>
+      <input class="form-input" type="text" value="（待填寫）" disabled>
+    </div>
+    <div class="form-row">
+      <label>數量</label>
+      <input class="form-input" type="text" value="（待填寫）" disabled>
+    </div>
+    <div class="form-row">
+      <label>緊急程度</label>
+      <input class="form-input" type="text" value="一般 / 緊急" disabled>
+    </div>
+    <button class="btn-submit">送出申請</button>
+  </div>
+
+  <div class="embed">
+    <h3>📅 儀器使用排程（嵌入 Google Calendar）</h3>
+    <div style="background:#f8f9fa;padding:2rem;border-radius:4px;text-align:center;color:#5f6368;border:2px dashed #dadce0;">
+      （此處會嵌入 Google Calendar 顯示週/月檢視）<br>
+      <small>同事預約 qPCR 14:00–16:00 / 王老師會議 10:00–11:00</small>
+    </div>
+  </div>
+</div>
+
+<div class="mockup-note">
+  💡 <strong>方案 D 重點</strong><br>
+  ✅ 拖曳建置、零程式碼<br>
+  ✅ Google 帳號自動登入<br>
+  ✅ Forms / Calendar / Sheets 一鍵嵌入<br>
+  ⚠️ 看起來像 Google 風（無法完全自訂顏色 / 字型 / Layout）
+</div>
+
+</body>
+</html>
