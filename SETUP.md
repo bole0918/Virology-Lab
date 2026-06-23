@@ -124,6 +124,7 @@ images/lab-dinner-2026.jpg
 | `pub`      | 論文發表 | 📄   | 新論文 accepted、刊登  |
 | `event`    | 公告     | 🤝   | 一般公告、產學合作邀請 |
 | `recruit`  | 長期招募 | 🎓   | 招生、徵助理           |
+| `project`  | 研究計畫 | 🔬   | 新計畫獲補助、計畫啟動 |
 
 > 💡 招募類消息建議把 `permanent` 設成 `TRUE`，這樣它會被釘選顯示為紫色卡片。
 
